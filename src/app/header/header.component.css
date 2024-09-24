@@ -5,6 +5,7 @@
   text-align: center;
   border-bottom: 2px solid #00ff00;
   position: relative;
+  z-index: 1;
 }
 
 .header-container h1 {
