@@ -38,6 +38,7 @@
   color: #00ff00;
   text-decoration: none;
   font-size: 1.2em;
+  cursor: pointer;
 }
 
 .header-container nav ul li a:hover {

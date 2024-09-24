@@ -1,0 +1,31 @@
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 220px);
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 10;
+  /* outline: none; */
+}
+
+.carousel-button.prev {
+  left: 10px;
+  color: #00ff00;
+}
+
+.carousel-button.next {
+  right: 10px;
+  color: #00ff00;
+}

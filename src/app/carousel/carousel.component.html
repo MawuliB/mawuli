@@ -1,0 +1,5 @@
+<div class="carousel" #carousel (keydown)="keyDown($event)">
+  <button class="carousel-button prev" (click)="previousPage(); blurButton($event); focusCarousel()" (keydown)="stopPropagation($event)"><</button>
+  <router-outlet></router-outlet>
+  <button class="carousel-button next" (click)="nextPage(); blurButton($event); focusCarousel()" (keydown)="stopPropagation($event)">></button>
+</div>

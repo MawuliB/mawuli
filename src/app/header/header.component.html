@@ -6,12 +6,12 @@
   </div>
   <nav [class.open]="menuOpen">
 	<ul>
-	  <li><a routerLink="/">Home</a></li>
-	  <li><a routerLink="/skills">Skills</a></li>
-	  <li><a routerLink="/experience">Experience</a></li>
-	  <li><a routerLink="/education">Education</a></li>
-	  <li><a routerLink="/projects">Projects</a></li>
-	  <li><a routerLink="/contact">Contact</a></li>
+	  <li><a (click)="route('/')">Home</a></li>
+	  <li><a (click)="route('/skills')">Skills</a></li>
+	  <li><a (click)="route('/experience')">Experience</a></li>
+	  <li><a (click)="route('/education')">Education</a></li>
+	  <li><a (click)="route('/projects')">Projects</a></li>
+	  <li><a (click)="route('/contact')">Contact</a></li>
 	</ul>
   </nav>
 </header>
