@@ -1,13 +1,146 @@
 <div class="skills-container">
-  <h2>My Skills</h2>
-  <ul>
-	<li>JavaScript</li>
-	<li>TypeScript</li>
-	<li>Angular</li>
-	<li>HTML & CSS</li>
-	<li>Node.js</li>
-	<li>Python</li>
-	<li>Git & GitHub</li>
-	<li>SQL</li>
-  </ul>
+  <!-- Terminal Window -->
+  <div class="terminal-window">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="command-line">
+        <span class="prompt">$</span> ls -la /skills/
+      </div>
+      <h2 class="section-title">
+        <span class="icon">🛠️</span> Technical Skills
+      </h2>
+      <p class="section-description">
+        Total {{ skills.length }} skills | {{ categories.length }} categories
+      </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <div class="filter-label">
+        <span class="prompt">$</span> Filter by directory:
+      </div>
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === null"
+          (click)="filterByCategory(null)"
+        >
+          <span class="icon">📂</span> All Skills
+        </button>
+        <button
+          *ngFor="let category of categories"
+          class="filter-btn"
+          [class.active]="selectedCategory === category"
+          (click)="filterByCategory(category)"
+        >
+          <span class="icon">{{ getCategoryIcon(category) }}</span>
+          {{ getCategoryDisplayName(category) }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Skills by Category -->
+    <div class="skills-categories" *ngIf="!selectedCategory">
+      <div class="category-section" *ngFor="let category of categories">
+        <div class="category-header">
+          <span class="prompt">$</span> cd ./{{ category }}/
+          <h3 class="category-title">
+            <span class="icon">{{ getCategoryIcon(category) }}</span>
+            {{ getCategoryDisplayName(category) }}
+          </h3>
+          <span class="skill-count"
+            >({{ getSkillsByCategory(category).length }} skills)</span
+          >
+        </div>
+
+        <div class="skills-grid">
+          <div
+            class="skill-card"
+            *ngFor="let skill of getSkillsByCategory(category)"
+            [attr.data-level]="skill.level"
+          >
+            <div class="skill-header">
+              <span class="skill-icon">{{ skill.icon }}</span>
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
+
+            <div class="skill-meta">
+              <span class="experience" *ngIf="skill.yearsOfExperience">
+                {{ skill.yearsOfExperience }}+ years
+              </span>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  [style.width.%]="skill.level"
+                  [attr.data-level]="skill.level"
+                ></div>
+              </div>
+              <span class="progress-text">{{ skill.level }}%</span>
+            </div>
+
+            <div class="loading-bar">
+              <span class="loading-text">[</span>
+              <span class="loading-fill" [style.width.%]="skill.level"></span>
+              <span class="loading-text">]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtered Skills -->
+    <div class="skills-grid-filtered" *ngIf="selectedCategory">
+      <div class="filtered-header">
+        <span class="prompt">$</span> ls -la ./{{ selectedCategory }}/
+        <span class="result-count"
+          >Found {{ filteredSkills.length }} skills</span
+        >
+      </div>
+
+      <div class="skills-grid">
+        <div
+          class="skill-card"
+          *ngFor="let skill of filteredSkills"
+          [attr.data-level]="skill.level"
+        >
+          <div class="skill-header">
+            <span class="skill-icon">{{ skill.icon }}</span>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+
+          <div class="skill-meta">
+            <span class="experience" *ngIf="skill.yearsOfExperience">
+              {{ skill.yearsOfExperience }}+ years
+            </span>
+          </div>
+
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="skill.level"
+                [attr.data-level]="skill.level"
+              ></div>
+            </div>
+            <span class="progress-text">{{ skill.level }}%</span>
+          </div>
+
+          <div class="loading-bar">
+            <span class="loading-text">[</span>
+            <span class="loading-fill" [style.width.%]="skill.level"></span>
+            <span class="loading-text">]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Prompt -->
+    <div class="command-prompt">
+      <span class="prompt">mawuli&#64;skills:~$</span>
+      <span class="cursor-blink">▊</span>
+    </div>
+  </div>
 </div>

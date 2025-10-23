@@ -1,17 +1,101 @@
 <header class="header-container">
-  <h1>My Portfolio</h1>
-  <div class="hamburger" 
-  (click)="toggleMenu()">
-	&#9776;
+  <!-- Terminal Window Style -->
+  <div class="terminal-header-bar">
+    <div class="terminal-dots">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <div class="terminal-title">mawuli&#64;portfolio:~$</div>
+    <button
+      class="shortcuts-btn"
+      (click)="toggleShortcuts()"
+      title="Show keyboard shortcuts (?)"
+    >
+      <span class="shortcut-icon">?</span>
+    </button>
   </div>
-  <nav [class.open]="menuOpen">
-	<ul>
-	  <li><a (click)="route('/')">Home</a></li>
-	  <li><a (click)="route('/skills')">Skills</a></li>
-	  <li><a (click)="route('/experience')">Experience</a></li>
-	  <li><a (click)="route('/education')">Education</a></li>
-	  <li><a (click)="route('/projects')">Projects</a></li>
-	  <li><a (click)="route('/contact')">Contact</a></li>
-	</ul>
-  </nav>
+
+  <!-- Main Navigation -->
+  <div class="header-content">
+    <div class="brand">
+      <span class="prompt">root&#64;mawuli</span>
+      <span class="separator">:</span>
+      <span class="directory">~/portfolio</span>
+      <span class="cursor-symbol">$</span>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="hamburger"
+      (click)="toggleMenu()"
+      [class.active]="menuOpen"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav [class.open]="menuOpen">
+      <ul>
+        <li *ngFor="let nav of routes; let i = index">
+          <a
+            (click)="route(nav.path)"
+            [class.active]="isActive(nav.path)"
+            [attr.aria-current]="isActive(nav.path) ? 'page' : null"
+          >
+            <span class="nav-number">[{{ i + 1 }}]</span>
+            <span class="nav-label">{{ nav.label }}</span>
+            <span class="nav-shortcut" *ngIf="!menuOpen">{{
+              nav.shortcut
+            }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Keyboard Shortcuts Overlay -->
+  <div
+    class="shortcuts-overlay"
+    *ngIf="showShortcuts"
+    (click)="toggleShortcuts()"
+  >
+    <div class="shortcuts-panel" (click)="$event.stopPropagation()">
+      <div class="shortcuts-header">
+        <h3><span class="terminal-prompt">$</span> Keyboard Shortcuts</h3>
+        <button class="close-btn" (click)="toggleShortcuts()">×</button>
+      </div>
+      <div class="shortcuts-content">
+        <div class="shortcut-section">
+          <h4>Navigation</h4>
+          <div class="shortcut-list">
+            <div class="shortcut-item" *ngFor="let nav of routes">
+              <kbd>{{ nav.shortcut }}</kbd>
+              <span>Go to {{ nav.label }}</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd>←</kbd> <kbd>→</kbd>
+              <span>Navigate between pages</span>
+            </div>
+          </div>
+        </div>
+        <div class="shortcut-section">
+          <h4>General</h4>
+          <div class="shortcut-list">
+            <div class="shortcut-item">
+              <kbd>?</kbd>
+              <span>Toggle this panel</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd>Esc</kbd>
+              <span>Close menu/overlays</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

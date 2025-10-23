@@ -1,0 +1,415 @@
+{
+  "profile": {
+    "name": "Mawuli Badassou",
+    "title": "Full Stack Developer",
+    "bio": "Passionate software developer with expertise in building scalable web applications. Specialized in modern JavaScript frameworks and cloud technologies. Always eager to learn and tackle new challenges.",
+    "avatar": "assets/mine.png",
+    "tagline": "Code. Create. Innovate.",
+    "location": "Accra, Ghana",
+    "email": "mawuli.dev@example.com",
+    "phone": "+233 XX XXX XXXX"
+  },
+  "skills": [
+    {
+      "name": "Angular",
+      "category": "frontend",
+      "level": 90,
+      "yearsOfExperience": 3,
+      "icon": "🅰️"
+    },
+    {
+      "name": "TypeScript",
+      "category": "frontend",
+      "level": 85,
+      "yearsOfExperience": 3,
+      "icon": "📘"
+    },
+    {
+      "name": "JavaScript",
+      "category": "frontend",
+      "level": 90,
+      "yearsOfExperience": 4,
+      "icon": "📜"
+    },
+    {
+      "name": "HTML5",
+      "category": "frontend",
+      "level": 95,
+      "yearsOfExperience": 5,
+      "icon": "🌐"
+    },
+    {
+      "name": "CSS3/SCSS",
+      "category": "frontend",
+      "level": 90,
+      "yearsOfExperience": 5,
+      "icon": "🎨"
+    },
+    {
+      "name": "React",
+      "category": "frontend",
+      "level": 75,
+      "yearsOfExperience": 2,
+      "icon": "⚛️"
+    },
+    {
+      "name": "Spring Boot",
+      "category": "backend",
+      "level": 80,
+      "yearsOfExperience": 3,
+      "icon": "🍃"
+    },
+    {
+      "name": "Node.js",
+      "category": "backend",
+      "level": 75,
+      "yearsOfExperience": 2,
+      "icon": "🟢"
+    },
+    {
+      "name": "Python",
+      "category": "backend",
+      "level": 70,
+      "yearsOfExperience": 2,
+      "icon": "🐍"
+    },
+    {
+      "name": "Django",
+      "category": "backend",
+      "level": 65,
+      "yearsOfExperience": 1,
+      "icon": "🎸"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "database",
+      "level": 80,
+      "yearsOfExperience": 3,
+      "icon": "🐘"
+    },
+    {
+      "name": "MongoDB",
+      "category": "database",
+      "level": 75,
+      "yearsOfExperience": 2,
+      "icon": "🍃"
+    },
+    {
+      "name": "MySQL",
+      "category": "database",
+      "level": 80,
+      "yearsOfExperience": 3,
+      "icon": "🐬"
+    },
+    {
+      "name": "Docker",
+      "category": "devops",
+      "level": 75,
+      "yearsOfExperience": 2,
+      "icon": "🐳"
+    },
+    {
+      "name": "Git",
+      "category": "devops",
+      "level": 90,
+      "yearsOfExperience": 4,
+      "icon": "📦"
+    },
+    {
+      "name": "AWS",
+      "category": "devops",
+      "level": 65,
+      "yearsOfExperience": 1,
+      "icon": "☁️"
+    },
+    {
+      "name": "Linux",
+      "category": "devops",
+      "level": 80,
+      "yearsOfExperience": 3,
+      "icon": "🐧"
+    },
+    {
+      "name": "VS Code",
+      "category": "tools",
+      "level": 95,
+      "yearsOfExperience": 5,
+      "icon": "💻"
+    },
+    {
+      "name": "Figma",
+      "category": "tools",
+      "level": 70,
+      "yearsOfExperience": 2,
+      "icon": "🎨"
+    },
+    {
+      "name": "Postman",
+      "category": "tools",
+      "level": 85,
+      "yearsOfExperience": 3,
+      "icon": "📮"
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "company": "TechCorp Solutions",
+      "position": "Senior Full Stack Developer",
+      "location": "Accra, Ghana",
+      "startDate": "2023-01",
+      "endDate": "Present",
+      "description": "Leading development of enterprise web applications using modern tech stack.",
+      "responsibilities": [
+        "Architected and developed scalable microservices using Spring Boot and Angular",
+        "Led a team of 5 developers in agile sprint planning and code reviews",
+        "Implemented CI/CD pipelines reducing deployment time by 60%",
+        "Mentored junior developers on best practices and design patterns"
+      ],
+      "technologies": ["Angular", "Spring Boot", "PostgreSQL", "Docker", "Kubernetes", "AWS"],
+      "achievements": [
+        "Reduced application load time by 40% through optimization",
+        "Successfully delivered 3 major projects ahead of schedule"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Digital Innovations Ltd",
+      "position": "Full Stack Developer",
+      "location": "Accra, Ghana",
+      "startDate": "2021-06",
+      "endDate": "2022-12",
+      "description": "Developed and maintained multiple client-facing web applications.",
+      "responsibilities": [
+        "Built responsive web applications using Angular and Node.js",
+        "Integrated third-party APIs and payment gateways",
+        "Collaborated with UX designers to implement pixel-perfect designs",
+        "Wrote comprehensive unit and integration tests"
+      ],
+      "technologies": ["Angular", "Node.js", "MongoDB", "Express", "TypeScript"],
+      "achievements": [
+        "Developed e-commerce platform handling 10k+ daily users",
+        "Improved code coverage from 45% to 85%"
+      ]
+    },
+    {
+      "id": 3,
+      "company": "StartupHub Ghana",
+      "position": "Junior Web Developer",
+      "location": "Kumasi, Ghana",
+      "startDate": "2020-01",
+      "endDate": "2021-05",
+      "description": "Entry-level position focusing on frontend development and learning backend technologies.",
+      "responsibilities": [
+        "Developed responsive landing pages and web interfaces",
+        "Fixed bugs and implemented feature requests",
+        "Participated in daily standups and sprint retrospectives",
+        "Assisted in database design and optimization"
+      ],
+      "technologies": ["HTML", "CSS", "JavaScript", "React", "Python", "Django"],
+      "achievements": [
+        "Redesigned company website increasing traffic by 30%",
+        "Completed 50+ tickets in first 6 months"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "institution": "University of Ghana",
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "location": "Legon, Accra",
+      "startDate": "2016-09",
+      "endDate": "2020-06",
+      "gpa": "3.7/4.0",
+      "achievements": [
+        "Dean's List - All semesters",
+        "Best Final Year Project Award",
+        "President of Computer Science Students Association"
+      ],
+      "coursework": [
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Web Technologies",
+        "Software Engineering",
+        "Operating Systems",
+        "Computer Networks"
+      ]
+    },
+    {
+      "id": 2,
+      "institution": "Accra Technical Institute",
+      "degree": "Diploma",
+      "field": "Information Technology",
+      "location": "Accra, Ghana",
+      "startDate": "2014-09",
+      "endDate": "2016-06",
+      "gpa": "3.9/4.0",
+      "achievements": [
+        "Valedictorian",
+        "Outstanding Student in Programming"
+      ],
+      "coursework": [
+        "Programming Fundamentals",
+        "Web Design",
+        "Database Basics",
+        "Computer Hardware"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "description": "Full-featured online shopping platform with payment integration",
+      "longDescription": "Built a comprehensive e-commerce solution with user authentication, product catalog, shopping cart, order management, and payment processing. Implemented admin dashboard for inventory management.",
+      "technologies": ["Angular", "Spring Boot", "PostgreSQL", "Stripe API", "AWS S3"],
+      "imageUrl": "assets/project1.jpg",
+      "githubUrl": "https://github.com/yourusername/ecommerce-platform",
+      "liveUrl": "https://demo-ecommerce.example.com",
+      "startDate": "2023-06",
+      "endDate": "2023-12",
+      "status": "completed",
+      "featured": true,
+      "highlights": [
+        "Handles 10,000+ daily active users",
+        "99.9% uptime",
+        "Mobile-responsive design",
+        "Secure payment processing"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Task Management System",
+      "description": "Collaborative project management tool with real-time updates",
+      "longDescription": "Developed a Trello-like task management application with drag-and-drop functionality, real-time collaboration using WebSockets, and team management features.",
+      "technologies": ["React", "Node.js", "MongoDB", "Socket.io", "Redis"],
+      "imageUrl": "assets/project2.jpg",
+      "githubUrl": "https://github.com/yourusername/task-manager",
+      "liveUrl": "https://tasks.example.com",
+      "startDate": "2023-01",
+      "endDate": "2023-05",
+      "status": "completed",
+      "featured": true,
+      "highlights": [
+        "Real-time collaboration",
+        "Drag-and-drop interface",
+        "Team management",
+        "File attachments"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Weather Dashboard",
+      "description": "Real-time weather application with forecasts and alerts",
+      "longDescription": "Created a weather dashboard that displays current weather, 7-day forecasts, and severe weather alerts. Integrated multiple weather APIs for accurate data.",
+      "technologies": ["Angular", "TypeScript", "OpenWeather API", "Chart.js"],
+      "imageUrl": "assets/project3.jpg",
+      "githubUrl": "https://github.com/yourusername/weather-dashboard",
+      "liveUrl": "https://weather.example.com",
+      "startDate": "2022-08",
+      "endDate": "2022-10",
+      "status": "completed",
+      "featured": false,
+      "highlights": [
+        "Location-based weather",
+        "Interactive charts",
+        "Severe weather alerts",
+        "7-day forecasts"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Portfolio CMS",
+      "description": "Content management system for portfolio websites",
+      "longDescription": "Building a headless CMS specifically designed for developers to manage their portfolio content with markdown support and API-first approach.",
+      "technologies": ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
+      "imageUrl": "assets/project4.jpg",
+      "githubUrl": "https://github.com/yourusername/portfolio-cms",
+      "startDate": "2024-09",
+      "status": "in-progress",
+      "featured": false,
+      "highlights": [
+        "Markdown support",
+        "RESTful API",
+        "Authentication & Authorization",
+        "Media management"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Chat Application",
+      "description": "Real-time messaging app with group chat and file sharing",
+      "longDescription": "Developed a feature-rich chat application with private messaging, group chats, file sharing, and emoji support. Implemented end-to-end encryption for secure communication.",
+      "technologies": ["Vue.js", "Express", "Socket.io", "MongoDB", "AWS S3"],
+      "imageUrl": "assets/project5.jpg",
+      "githubUrl": "https://github.com/yourusername/chat-app",
+      "liveUrl": "https://chat.example.com",
+      "startDate": "2022-03",
+      "endDate": "2022-07",
+      "status": "completed",
+      "featured": false,
+      "highlights": [
+        "End-to-end encryption",
+        "Group chat support",
+        "File sharing",
+        "Real-time notifications"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Blog Platform",
+      "description": "Modern blogging platform with SEO optimization",
+      "longDescription": "Created a blogging platform with markdown editor, SEO optimization, commenting system, and social sharing. Implemented server-side rendering for better performance.",
+      "technologies": ["Next.js", "Django", "PostgreSQL", "Redis", "Nginx"],
+      "imageUrl": "assets/project6.jpg",
+      "githubUrl": "https://github.com/yourusername/blog-platform",
+      "liveUrl": "https://blog.example.com",
+      "startDate": "2021-11",
+      "endDate": "2022-02",
+      "status": "completed",
+      "featured": false,
+      "highlights": [
+        "SEO optimized",
+        "Markdown editor",
+        "Commenting system",
+        "Social sharing"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "mawuli.dev@example.com",
+    "phone": "+233 XX XXX XXXX",
+    "location": "Accra, Ghana",
+    "socials": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/MawuliB",
+        "icon": "github",
+        "username": "@MawuliB"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/mawuli-badassou",
+        "icon": "linkedin",
+        "username": "Mawuli Badassou"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/mawulidev",
+        "icon": "twitter",
+        "username": "@mawulidev"
+      },
+      {
+        "name": "Dev.to",
+        "url": "https://dev.to/mawulib",
+        "icon": "dev",
+        "username": "@mawulib"
+      }
+    ],
+    "availableForWork": true,
+    "preferredContactMethod": "email"
+  },
+  "lastUpdated": "2025-10-23"
+}

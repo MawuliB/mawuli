@@ -1,15 +1,150 @@
-<div class="home-container">
-  <div class="profile-pic-container">
-    <img src="assets/mine.png" alt="Mawuli Badassou" class="profile-pic">
-  </div>
-  <div class="text-container">
-    <h1 class="name">I am Mawuli Badassou</h1>
-    <p class="bio">
-      I am a software developer with a passion for creating web applications. I am
-      a full stack developer with experience in front-end and back-end
-      technologies. I am proficient in HTML, CSS, JavaScript, Angular, and Spring
-      Boot. I am also familiar with Python, Django, and SQL. I am a quick learner
-      and I am always looking to learn new technologies.
-    </p>
+<div class="home-container" *ngIf="profile">
+  <!-- Terminal Window -->
+  <div class="terminal-window">
+    <!-- ASCII Art Banner -->
+    <div class="ascii-banner">
+      <pre>{{ asciiArt }}</pre>
+    </div>
+
+    <!-- Boot Sequence -->
+    <div class="boot-sequence">
+      <div class="boot-line">
+        <span class="prompt">$</span> Loading portfolio...
+      </div>
+      <div class="boot-line">
+        <span class="prompt">$</span> Initializing components...
+        <span class="success">[OK]</span>
+      </div>
+      <div class="boot-line">
+        <span class="prompt">$</span> Connecting to data service...
+        <span class="success">[OK]</span>
+      </div>
+      <div class="boot-line">
+        <span class="prompt">$</span> Welcome to my terminal portfolio!
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <!-- Profile Image -->
+      <div class="profile-image-container">
+        <div class="image-frame">
+          <img
+            [src]="profile.avatar"
+            [alt]="profile.name"
+            class="profile-image"
+          />
+        </div>
+        <div class="image-caption">
+          <span class="prompt">user&#64;portfolio:~$</span> whoami
+        </div>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="profile-info">
+        <!-- Name with typing effect -->
+        <div class="name-section">
+          <span class="prompt">$</span>
+          <h1 class="name">
+            {{ displayedText }}<span class="cursor-blink">_</span>
+          </h1>
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+          <span class="bracket">[</span>
+          <span class="title">{{ profile.title }}</span>
+          <span class="bracket">]</span>
+        </div>
+
+        <!-- Tagline with typing effect -->
+        <div class="tagline">
+          <span class="prompt">></span>
+          {{ displayedTagline
+          }}<span
+            class="cursor-blink"
+            *ngIf="displayedTagline.length < profile.tagline.length"
+            >_</span
+          >
+        </div>
+
+        <!-- Info Grid -->
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">📍 Location:</span>
+            <span class="info-value">{{ profile.location }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">📧 Email:</span>
+            <span class="info-value">{{ profile.email }}</span>
+          </div>
+          <div class="info-item" *ngIf="profile.phone">
+            <span class="info-label">📞 Phone:</span>
+            <span class="info-value">{{ profile.phone }}</span>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="bio-section">
+          <div class="bio-header">
+            <span class="prompt">$</span> cat about.txt
+          </div>
+          <div class="bio-content">
+            <p>{{ profile.bio }}</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+          <div class="link-header">
+            <span class="prompt">$</span> ls -la sections/
+          </div>
+          <div class="links-grid">
+            <a class="link-item" href="javascript:void(0)" routerLink="/skills">
+              <span class="icon">🛠️</span>
+              <span class="link-text">skills.sh</span>
+            </a>
+            <a
+              class="link-item"
+              href="javascript:void(0)"
+              routerLink="/experience"
+            >
+              <span class="icon">💼</span>
+              <span class="link-text">experience.log</span>
+            </a>
+            <a
+              class="link-item"
+              href="javascript:void(0)"
+              routerLink="/education"
+            >
+              <span class="icon">🎓</span>
+              <span class="link-text">education.md</span>
+            </a>
+            <a
+              class="link-item"
+              href="javascript:void(0)"
+              routerLink="/projects"
+            >
+              <span class="icon">🚀</span>
+              <span class="link-text">projects/</span>
+            </a>
+            <a
+              class="link-item"
+              href="javascript:void(0)"
+              routerLink="/contact"
+            >
+              <span class="icon">📬</span>
+              <span class="link-text">contact.json</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Prompt -->
+    <div class="command-prompt">
+      <span class="prompt">mawuli&#64;portfolio:~$</span>
+      <span class="cursor-blink">▊</span>
+    </div>
   </div>
 </div>
