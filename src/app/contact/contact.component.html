@@ -1,1 +1,248 @@
-<p>contact works!</p>
+<div class="contact-container terminal-window">
+  <!-- Terminal Header -->
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;portfolio:~/contact</div>
+  </div>
+
+  <!-- Terminal Body -->
+  <div class="terminal-body">
+    <!-- Command Prompt -->
+    <div class="command-line">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/contact$</span>
+      <span class="command">./send-message.sh</span>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-line" *ngIf="isLoading">
+      <span class="loading-spinner">▓</span> Loading contact interface...
+    </div>
+
+    <!-- Contact Content -->
+    <div class="contact-content" *ngIf="!isLoading && contactInfo">
+      <!-- Contact Info Section -->
+      <div class="info-section">
+        <h2 class="section-title"><span class="hash">#</span> Get In Touch</h2>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="icon">📧</span>
+            <div class="info-details">
+              <span class="label">Email:</span>
+              <a [href]="'mailto:' + contactInfo.email" class="value">{{
+                contactInfo.email
+              }}</a>
+            </div>
+          </div>
+
+          <div class="info-item" *ngIf="contactInfo.phone">
+            <span class="icon">📱</span>
+            <div class="info-details">
+              <span class="label">Phone:</span>
+              <span class="value">{{ contactInfo.phone }}</span>
+            </div>
+          </div>
+
+          <div class="info-item" *ngIf="contactInfo.location">
+            <span class="icon">📍</span>
+            <div class="info-details">
+              <span class="label">Location:</span>
+              <span class="value">{{ contactInfo.location }}</span>
+            </div>
+          </div>
+
+          <div class="info-item" *ngIf="contactInfo.availableForWork">
+            <span class="icon">✓</span>
+            <div class="info-details">
+              <span class="label">Status:</span>
+              <span class="value available">Available for work</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div
+          class="social-section"
+          *ngIf="contactInfo.socials && contactInfo.socials.length > 0"
+        >
+          <h3 class="subsection-title">
+            <span class="arrow">└──</span> Find me on:
+          </h3>
+          <div class="social-grid">
+            <a
+              *ngFor="let social of contactInfo.socials"
+              [href]="social.url"
+              target="_blank"
+              class="social-item"
+            >
+              <span class="social-icon">{{ getSocialIcon(social.icon) }}</span>
+              <div class="social-details">
+                <span class="social-name">{{ social.name }}</span>
+                <span class="social-username">{{ social.username }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- Contact Form Section -->
+      <div class="form-section">
+        <h2 class="section-title"><span class="hash">#</span> Send Message</h2>
+
+        <!-- Command History -->
+        <div class="command-history">
+          <div class="history-line" *ngFor="let line of commandHistory">
+            {{ line }}
+          </div>
+        </div>
+
+        <!-- Interactive Form -->
+        <div class="interactive-form" *ngIf="!isSubmitted">
+          <!-- Name Field -->
+          <div class="form-field" *ngIf="currentField === 'name'">
+            <label class="field-label">
+              <span class="prompt">$</span> Enter your name:
+            </label>
+            <input
+              type="text"
+              [(ngModel)]="formData.name.value"
+              (keyup.enter)="submitField('name')"
+              class="field-input"
+              placeholder="John Doe"
+              autofocus
+            />
+            <div class="field-hint">Press Enter to continue</div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-field" *ngIf="currentField === 'email'">
+            <label class="field-label">
+              <span class="prompt">$</span> Enter your email:
+            </label>
+            <input
+              type="email"
+              [(ngModel)]="formData.email.value"
+              (keyup.enter)="submitField('email')"
+              class="field-input"
+              placeholder="john@example.com"
+              autofocus
+            />
+            <div class="field-hint">Press Enter to continue</div>
+          </div>
+
+          <!-- Subject Field -->
+          <div class="form-field" *ngIf="currentField === 'subject'">
+            <label class="field-label">
+              <span class="prompt">$</span> Enter subject:
+            </label>
+            <input
+              type="text"
+              [(ngModel)]="formData.subject.value"
+              (keyup.enter)="submitField('subject')"
+              class="field-input"
+              placeholder="Project Inquiry"
+              autofocus
+            />
+            <div class="field-hint">Press Enter to continue</div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-field" *ngIf="currentField === 'message'">
+            <label class="field-label">
+              <span class="prompt">$</span> Enter your message:
+            </label>
+            <textarea
+              [(ngModel)]="formData.message.value"
+              class="field-textarea"
+              placeholder="Hello! I'd like to discuss..."
+              rows="5"
+              autofocus
+            ></textarea>
+            <button (click)="submitField('message')" class="continue-btn">
+              <span class="prompt">$</span> Continue
+            </button>
+          </div>
+
+          <!-- Submit Confirmation -->
+          <div class="submit-section" *ngIf="currentField === 'submit'">
+            <div class="summary">
+              <h3 class="summary-title">
+                <span class="check">✓</span> Review your message:
+              </h3>
+              <div class="summary-item">
+                <span class="summary-label">Name:</span>
+                <span class="summary-value">{{ formData.name.value }}</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Email:</span>
+                <span class="summary-value">{{ formData.email.value }}</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Subject:</span>
+                <span class="summary-value">{{ formData.subject.value }}</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Message:</span>
+                <span class="summary-value message">{{
+                  formData.message.value
+                }}</span>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button
+                (click)="submitForm()"
+                [disabled]="isSubmitting"
+                class="submit-btn"
+              >
+                <span *ngIf="!isSubmitting">
+                  <span class="prompt">$</span> Send Message
+                </span>
+                <span *ngIf="isSubmitting">
+                  <span class="spinner">▓</span> Sending...
+                </span>
+              </button>
+              <button
+                (click)="resetForm()"
+                [disabled]="isSubmitting"
+                class="reset-btn"
+              >
+                <span class="prompt">$</span> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-section" *ngIf="currentField === 'complete'">
+          <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h3>Message Sent Successfully!</h3>
+            <p>
+              Thank you for reaching out. I'll get back to you as soon as
+              possible.
+            </p>
+          </div>
+          <button (click)="resetForm()" class="new-message-btn">
+            <span class="prompt">$</span> Send Another Message
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Footer -->
+    <div class="command-footer" *ngIf="!isLoading">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/contact$</span>
+      <span class="cursor">_</span>
+    </div>
+  </div>
+</div>

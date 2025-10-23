@@ -1,1 +1,296 @@
-<p>projects works!</p>
+<div class="projects-container terminal-window">
+  <!-- Terminal Header -->
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;portfolio:~/projects</div>
+  </div>
+
+  <!-- Terminal Body -->
+  <div class="terminal-body">
+    <!-- Command Prompt -->
+    <div class="command-line">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/projects$</span>
+      <span class="command">ls -la --color=auto</span>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-line" *ngIf="isLoading">
+      <span class="loading-spinner">▓</span> Scanning directories...
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-section" *ngIf="!isLoading">
+      <div class="filter-label"><span class="prompt">$</span> Filter:</div>
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'all'"
+          (click)="filterProjects('all')"
+        >
+          all
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'featured'"
+          (click)="filterProjects('featured')"
+        >
+          --featured
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'completed'"
+          (click)="filterProjects('completed')"
+        >
+          --completed
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedFilter === 'in-progress'"
+          (click)="filterProjects('in-progress')"
+        >
+          --in-progress
+        </button>
+      </div>
+    </div>
+
+    <!-- Projects Grid (Directory Listing) -->
+    <div class="projects-grid" *ngIf="!isLoading">
+      <div
+        class="project-item"
+        *ngFor="let project of filteredProjects; let i = index"
+        (click)="openProjectDetails(project)"
+      >
+        <!-- File Icon and Status -->
+        <div class="project-header">
+          <span class="permissions">drwxr-xr-x</span>
+          <span class="owner">user</span>
+          <span class="group">dev</span>
+          <span class="size">{{ project.technologies.length }} deps</span>
+          <span class="date">{{ formatDate(project.startDate) }}</span>
+          <span class="status-badge" [class]="getStatusColor(project.status)">
+            {{ getStatusIcon(project.status) }} {{ project.status }}
+          </span>
+        </div>
+
+        <!-- Project Name -->
+        <div class="project-name">
+          <span class="folder-icon">📁</span>
+          <span class="name">{{ project.title }}/</span>
+          <span class="featured-star" *ngIf="project.featured">⭐</span>
+        </div>
+
+        <!-- Description -->
+        <div class="project-description">
+          <span class="comment">#</span> {{ project.description }}
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack">
+          <span class="label">├── dependencies:</span>
+          <span class="tech-tag" *ngFor="let tech of project.technologies">{{
+            tech
+          }}</span>
+        </div>
+
+        <!-- Links -->
+        <div class="project-links">
+          <span class="label">└── links:</span>
+          <a
+            *ngIf="project.githubUrl"
+            [href]="project.githubUrl"
+            target="_blank"
+            class="link-item"
+            (click)="$event.stopPropagation()"
+          >
+            <span class="icon">🔗</span> GitHub
+          </a>
+          <a
+            *ngIf="project.liveUrl"
+            [href]="project.liveUrl"
+            target="_blank"
+            class="link-item"
+            (click)="$event.stopPropagation()"
+          >
+            <span class="icon">🌐</span> Live Demo
+          </a>
+          <span class="view-details">
+            <span class="icon">👁</span> Click to view details
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div
+      class="empty-state"
+      *ngIf="!isLoading && filteredProjects.length === 0"
+    >
+      <p>ls: cannot access '{{ selectedFilter }}': No such file or directory</p>
+    </div>
+
+    <!-- Command Footer -->
+    <div class="command-footer" *ngIf="!isLoading">
+      <p class="summary">
+        total {{ filteredProjects.length }} director{{
+          filteredProjects.length !== 1 ? "ies" : "y"
+        }}
+      </p>
+      <div class="prompt-line">
+        <span class="prompt">user&#64;portfolio</span>
+        <span class="path">:~/projects$</span>
+        <span class="cursor">_</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project Details Modal -->
+<div
+  class="modal-overlay"
+  *ngIf="selectedProject"
+  (click)="closeProjectDetails()"
+>
+  <div class="modal-content terminal-window" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="btn-close" (click)="closeProjectDetails()"></span>
+        <span class="btn-minimize"></span>
+        <span class="btn-maximize"></span>
+      </div>
+      <div class="terminal-title">
+        user&#64;portfolio:~/projects/{{ selectedProject.title }}
+      </div>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- Command Line -->
+      <div class="command-line">
+        <span class="prompt">user&#64;portfolio</span>
+        <span class="path">:~/projects/{{ selectedProject.title }}$</span>
+        <span class="command">cat README.md</span>
+      </div>
+
+      <!-- Project Details -->
+      <div class="project-details">
+        <!-- Title & Status -->
+        <div class="detail-header">
+          <h2 class="detail-title">
+            <span class="hash">#</span> {{ selectedProject.title }}
+          </h2>
+          <span
+            class="status-badge large"
+            [class]="getStatusColor(selectedProject.status)"
+          >
+            {{ getStatusIcon(selectedProject.status) }}
+            {{ selectedProject.status }}
+          </span>
+        </div>
+
+        <!-- Long Description -->
+        <div class="detail-section">
+          <h3 class="section-title">
+            <span class="hash">##</span> Description
+          </h3>
+          <p class="description-text">{{ selectedProject.longDescription }}</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="detail-section">
+          <h3 class="section-title"><span class="hash">##</span> Timeline</h3>
+          <div class="timeline-info">
+            <div class="timeline-item">
+              <span class="label">Started:</span>
+              <span class="value">{{
+                formatDate(selectedProject.startDate)
+              }}</span>
+            </div>
+            <div class="timeline-item" *ngIf="selectedProject.endDate">
+              <span class="label">Completed:</span>
+              <span class="value">{{
+                formatDate(selectedProject.endDate)
+              }}</span>
+            </div>
+            <div class="timeline-item">
+              <span class="label">Duration:</span>
+              <span class="value">{{
+                calculateDuration(
+                  selectedProject.startDate,
+                  selectedProject.endDate
+                )
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technologies -->
+        <div class="detail-section">
+          <h3 class="section-title">
+            <span class="hash">##</span> Technologies
+          </h3>
+          <div class="tech-list">
+            <span
+              class="tech-item"
+              *ngFor="let tech of selectedProject.technologies"
+            >
+              <span class="bullet">▸</span> {{ tech }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div
+          class="detail-section"
+          *ngIf="
+            selectedProject.highlights && selectedProject.highlights.length > 0
+          "
+        >
+          <h3 class="section-title">
+            <span class="hash">##</span> Key Highlights
+          </h3>
+          <ul class="highlights-list">
+            <li *ngFor="let highlight of selectedProject.highlights">
+              <span class="check">✓</span> {{ highlight }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="detail-section">
+          <h3 class="section-title"><span class="hash">##</span> Links</h3>
+          <div class="detail-links">
+            <a
+              *ngIf="selectedProject.githubUrl"
+              [href]="selectedProject.githubUrl"
+              target="_blank"
+              class="detail-link"
+            >
+              <span class="icon">🔗</span> View on GitHub
+            </a>
+            <a
+              *ngIf="selectedProject.liveUrl"
+              [href]="selectedProject.liveUrl"
+              target="_blank"
+              class="detail-link"
+            >
+              <span class="icon">🌐</span> View Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <div class="modal-footer">
+        <button class="close-btn" (click)="closeProjectDetails()">
+          <span class="prompt">$</span> exit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

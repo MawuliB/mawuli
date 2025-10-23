@@ -56,7 +56,7 @@ export interface Project {
   imageUrl?: string;
   githubUrl?: string;
   liveUrl?: string;
-  startDate?: string;
+  startDate: string;
   endDate?: string;
   status: 'completed' | 'in-progress' | 'planned';
   featured?: boolean;
