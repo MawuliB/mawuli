@@ -41,6 +41,8 @@ export interface Education {
   startDate: string;
   endDate: string;
   gpa?: string;
+  honors?: string[];
+  relevantCourses?: string[];
   achievements?: string[];
   coursework?: string[];
 }

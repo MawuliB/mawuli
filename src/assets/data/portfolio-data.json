@@ -223,6 +223,22 @@
       "startDate": "2016-09",
       "endDate": "2020-06",
       "gpa": "3.7/4.0",
+      "honors": [
+        "Dean's List - All semesters",
+        "Best Final Year Project Award",
+        "President of Computer Science Students Association",
+        "Outstanding Achievement in Software Development"
+      ],
+      "relevantCourses": [
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Web Technologies",
+        "Software Engineering",
+        "Operating Systems",
+        "Computer Networks",
+        "Mobile Application Development",
+        "Artificial Intelligence"
+      ],
       "achievements": [
         "Dean's List - All semesters",
         "Best Final Year Project Award",
@@ -246,6 +262,18 @@
       "startDate": "2014-09",
       "endDate": "2016-06",
       "gpa": "3.9/4.0",
+      "honors": [
+        "Valedictorian",
+        "Outstanding Student in Programming",
+        "Perfect Attendance Award"
+      ],
+      "relevantCourses": [
+        "Programming Fundamentals",
+        "Web Design",
+        "Database Basics",
+        "Computer Hardware",
+        "Network Administration"
+      ],
       "achievements": [
         "Valedictorian",
         "Outstanding Student in Programming"

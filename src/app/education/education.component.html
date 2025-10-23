@@ -1,1 +1,185 @@
-<p>education works!</p>
+<div class="education-container terminal-window">
+  <!-- Terminal Header -->
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;portfolio:~/education</div>
+  </div>
+
+  <!-- Terminal Body -->
+  <div class="terminal-body">
+    <!-- Command Prompt -->
+    <div class="command-line">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/education$</span>
+      <span class="command">tree -L 2 --dirsfirst</span>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-line" *ngIf="isLoading">
+      <span class="loading-spinner">▓</span> Scanning directory structure...
+    </div>
+
+    <!-- Education Tree -->
+    <div class="tree-structure" *ngIf="!isLoading">
+      <div class="tree-root">
+        <span class="folder-icon">📁</span>
+        <span class="folder-name">education/</span>
+      </div>
+
+      <!-- Education Items -->
+      <div
+        class="education-item"
+        *ngFor="let edu of educationList; let i = index; let isLast = last"
+      >
+        <!-- Tree Branch -->
+        <div class="tree-branch">
+          <span class="branch-line" [class.last]="isLast">{{
+            isLast ? "└──" : "├──"
+          }}</span>
+          <span class="folder-icon">📂</span>
+          <span class="institution-name">{{ edu.institution }}/</span>
+        </div>
+
+        <!-- Education Card -->
+        <div class="education-card" [class.last]="isLast">
+          <!-- Degree Info -->
+          <div class="degree-info">
+            <div class="file-line">
+              <span class="indent" [class.last]="isLast">{{
+                isLast ? "    " : "│   "
+              }}</span>
+              <span class="sub-branch">├──</span>
+              <span class="file-icon">🎓</span>
+              <span class="degree">{{ edu.degree }} in {{ edu.field }}</span>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="location-line">
+            <span class="indent" [class.last]="isLast">{{
+              isLast ? "    " : "│   "
+            }}</span>
+            <span class="sub-branch">├──</span>
+            <span class="file-icon">📍</span>
+            <span class="location">{{ edu.location }}</span>
+          </div>
+
+          <!-- Date Range -->
+          <div class="date-line">
+            <span class="indent" [class.last]="isLast">{{
+              isLast ? "    " : "│   "
+            }}</span>
+            <span class="sub-branch">├──</span>
+            <span class="file-icon">📅</span>
+            <span class="dates"
+              >{{ formatDate(edu.startDate) }} -
+              {{ formatDate(edu.endDate) }}</span
+            >
+            <span class="duration"
+              >({{ calculateDuration(edu.startDate, edu.endDate) }})</span
+            >
+          </div>
+
+          <!-- GPA -->
+          <div class="gpa-line" *ngIf="edu.gpa">
+            <span class="indent" [class.last]="isLast">{{
+              isLast ? "    " : "│   "
+            }}</span>
+            <span class="sub-branch">├──</span>
+            <span class="file-icon">⭐</span>
+            <span class="label">GPA:</span>
+            <span class="gpa-value">{{ edu.gpa }}</span>
+          </div>
+
+          <!-- Honors -->
+          <div
+            class="honors-section"
+            *ngIf="edu.honors && edu.honors.length > 0"
+          >
+            <div class="honors-header">
+              <span class="indent" [class.last]="isLast">{{
+                isLast ? "    " : "│   "
+              }}</span>
+              <span class="sub-branch">├──</span>
+              <span class="folder-icon">🏆</span>
+              <span class="section-name">honors/</span>
+            </div>
+            <div
+              class="honor-item"
+              *ngFor="
+                let honor of edu.honors;
+                let j = index;
+                let isLastHonor = last
+              "
+            >
+              <span class="indent" [class.last]="isLast">{{
+                isLast ? "    " : "│   "
+              }}</span>
+              <span class="sub-indent">│ </span>
+              <span class="sub-sub-branch">{{
+                isLastHonor ? "└──" : "├──"
+              }}</span>
+              <span class="file-icon">✓</span>
+              <span class="honor-text">{{ honor }}</span>
+            </div>
+          </div>
+
+          <!-- Relevant Courses -->
+          <div
+            class="courses-section"
+            *ngIf="edu.relevantCourses && edu.relevantCourses.length > 0"
+          >
+            <div class="courses-header">
+              <span class="indent" [class.last]="isLast">{{
+                isLast ? "    " : "│   "
+              }}</span>
+              <span class="sub-branch">└──</span>
+              <span class="folder-icon">📚</span>
+              <span class="section-name">courses/</span>
+            </div>
+            <div class="course-grid">
+              <div
+                class="course-item"
+                *ngFor="
+                  let course of edu.relevantCourses;
+                  let j = index;
+                  let isLastCourse = last
+                "
+              >
+                <span class="indent" [class.last]="isLast">{{
+                  isLast ? "    " : "│   "
+                }}</span>
+                <span class="sub-indent"> </span>
+                <span class="sub-sub-branch">{{
+                  isLastCourse ? "└──" : "├──"
+                }}</span>
+                <span class="file-icon">📄</span>
+                <span class="course-text">{{ course }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tree Footer -->
+      <div class="tree-footer">
+        <p class="summary">
+          {{ educationList.length }} director{{
+            educationList.length !== 1 ? "ies" : "y"
+          }}, {{ getTotalItems() }} files
+        </p>
+      </div>
+    </div>
+
+    <!-- Command Footer -->
+    <div class="command-footer" *ngIf="!isLoading">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/education$</span>
+      <span class="cursor">_</span>
+    </div>
+  </div>
+</div>

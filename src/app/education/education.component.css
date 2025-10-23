@@ -1,0 +1,395 @@
+/* ============================================
+   EDUCATION - FILE TREE THEME
+   ============================================ */
+
+.education-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+/* ============================================
+   COMMAND LINE
+   ============================================ */
+
+.command-line {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: rgba(0, 255, 0, 0.05);
+  border-left: 3px solid var(--terminal-primary);
+  border-radius: var(--border-radius);
+}
+
+.prompt {
+  color: var(--terminal-primary);
+  font-weight: bold;
+}
+
+.path {
+  color: var(--terminal-accent);
+  margin-left: var(--spacing-xs);
+}
+
+.command {
+  color: var(--terminal-text);
+  margin-left: var(--spacing-sm);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading-line {
+  color: var(--terminal-text-muted);
+  padding: var(--spacing-lg);
+  text-align: center;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-spinner {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ============================================
+   TREE STRUCTURE
+   ============================================ */
+
+.tree-structure {
+  font-family: var(--font-mono);
+  line-height: 1.8;
+}
+
+.tree-root {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.folder-icon {
+  font-size: var(--font-size-lg);
+  margin-right: var(--spacing-xs);
+}
+
+.folder-name {
+  color: var(--terminal-primary);
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   EDUCATION ITEM
+   ============================================ */
+
+.education-item {
+  margin-bottom: var(--spacing-xxl);
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.education-item:nth-child(1) { animation-delay: 0.1s; }
+.education-item:nth-child(2) { animation-delay: 0.3s; }
+.education-item:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   TREE BRANCH
+   ============================================ */
+
+.tree-branch {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--terminal-bg-alt);
+  border: var(--border-width) solid var(--terminal-border);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-sm);
+  transition: all var(--transition-base);
+}
+
+.tree-branch:hover {
+  border-color: var(--terminal-primary);
+  box-shadow: 0 0 15px var(--terminal-shadow);
+}
+
+.branch-line {
+  color: var(--terminal-primary-dim);
+  margin-right: var(--spacing-sm);
+  font-weight: bold;
+}
+
+.branch-line.last {
+  color: var(--terminal-primary);
+}
+
+.institution-name {
+  color: var(--terminal-primary-bright);
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   EDUCATION CARD
+   ============================================ */
+
+.education-card {
+  padding-left: var(--spacing-xl);
+  border-left: 2px solid var(--terminal-border);
+  margin-left: 12px;
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-lg);
+}
+
+.education-card.last {
+  border-left-color: transparent;
+}
+
+/* ============================================
+   FILE LINES
+   ============================================ */
+
+.file-line,
+.location-line,
+.date-line,
+.gpa-line {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--terminal-text);
+  transition: all var(--transition-base);
+}
+
+.file-line:hover,
+.location-line:hover,
+.date-line:hover,
+.gpa-line:hover {
+  background-color: rgba(0, 255, 0, 0.05);
+  padding-left: var(--spacing-sm);
+  border-radius: var(--border-radius);
+}
+
+.indent {
+  color: var(--terminal-border);
+  margin-right: var(--spacing-xs);
+}
+
+.indent.last {
+  color: transparent;
+}
+
+.sub-branch {
+  color: var(--terminal-primary-dim);
+  margin-right: var(--spacing-sm);
+}
+
+.file-icon {
+  margin-right: var(--spacing-sm);
+  font-size: var(--font-size-base);
+}
+
+.degree {
+  color: var(--terminal-text);
+  font-weight: bold;
+}
+
+.location {
+  color: var(--terminal-text-muted);
+}
+
+.dates {
+  color: var(--terminal-text);
+}
+
+.duration {
+  color: var(--terminal-text-muted);
+  margin-left: var(--spacing-sm);
+  font-style: italic;
+}
+
+.label {
+  color: var(--terminal-text-muted);
+  margin-right: var(--spacing-xs);
+}
+
+.gpa-value {
+  color: var(--terminal-accent);
+  font-weight: bold;
+}
+
+/* ============================================
+   SECTIONS (Honors & Courses)
+   ============================================ */
+
+.honors-section,
+.courses-section {
+  margin-top: var(--spacing-md);
+}
+
+.honors-header,
+.courses-header {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  margin-bottom: var(--spacing-xs);
+}
+
+.section-name {
+  color: var(--terminal-primary);
+  font-weight: bold;
+}
+
+.sub-indent {
+  color: var(--terminal-border);
+  margin-right: var(--spacing-xs);
+}
+
+.sub-sub-branch {
+  color: var(--terminal-primary-dim);
+  margin-right: var(--spacing-sm);
+}
+
+/* ============================================
+   HONOR & COURSE ITEMS
+   ============================================ */
+
+.honor-item,
+.course-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  transition: all var(--transition-base);
+}
+
+.honor-item:hover,
+.course-item:hover {
+  background-color: rgba(0, 255, 0, 0.05);
+  padding-left: var(--spacing-sm);
+  border-radius: var(--border-radius);
+}
+
+.honor-text,
+.course-text {
+  color: var(--terminal-text);
+}
+
+.course-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   TREE FOOTER
+   ============================================ */
+
+.tree-footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--terminal-border);
+}
+
+.summary {
+  color: var(--terminal-text-muted);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* ============================================
+   COMMAND FOOTER
+   ============================================ */
+
+.command-footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--terminal-border);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  color: var(--terminal-primary);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .education-container {
+    padding: var(--spacing-lg);
+  }
+
+  .education-card {
+    padding-left: var(--spacing-md);
+    margin-left: 8px;
+  }
+
+  .institution-name {
+    font-size: var(--font-size-base);
+  }
+
+  .tree-branch {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .education-container {
+    padding: var(--spacing-md);
+  }
+
+  .education-card {
+    padding-left: var(--spacing-sm);
+    margin-left: 6px;
+  }
+
+  .file-line,
+  .location-line,
+  .date-line,
+  .gpa-line,
+  .honor-item,
+  .course-item {
+    font-size: var(--font-size-sm);
+    flex-wrap: wrap;
+  }
+
+  .indent,
+  .sub-indent {
+    display: inline;
+    margin-right: 2px;
+  }
+
+  .dates,
+  .duration {
+    flex-wrap: wrap;
+  }
+
+  .command-line,
+  .command-footer {
+    font-size: 0.75rem;
+  }
+
+  .folder-icon,
+  .file-icon {
+    font-size: var(--font-size-sm);
+  }
+}

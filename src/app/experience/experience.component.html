@@ -1,1 +1,129 @@
-<p>experience works!</p>
+<div class="experience-container terminal-window">
+  <!-- Terminal Header -->
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;portfolio:~/experience</div>
+  </div>
+
+  <!-- Terminal Body -->
+  <div class="terminal-body">
+    <!-- Command Prompt -->
+    <div class="command-line">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/experience$</span>
+      <span class="command">cat work_history.log | grep -A 10 "Job"</span>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-line" *ngIf="isLoading">
+      <span class="loading-spinner">▓</span> Loading work history...
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="timeline" *ngIf="!isLoading">
+      <div
+        class="timeline-item"
+        *ngFor="let exp of experiences; let i = index"
+        [class.current-job]="isCurrentJob(exp.endDate)"
+      >
+        <!-- Timeline Node -->
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+          <div class="node-line" *ngIf="i < experiences.length - 1"></div>
+        </div>
+
+        <!-- Experience Card -->
+        <div class="experience-card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <div class="job-info">
+              <h3 class="position">
+                <span class="bracket">[</span>
+                <span class="status" [class.active]="isCurrentJob(exp.endDate)">
+                  {{ isCurrentJob(exp.endDate) ? "ACTIVE" : "COMPLETED" }}
+                </span>
+                <span class="bracket">]</span>
+                {{ exp.position }}
+              </h3>
+              <div class="company-line">
+                <span class="arrow">└──></span>
+                <span class="company">{{ exp.company }}</span>
+                <span class="separator">|</span>
+                <span class="location">📍 {{ exp.location }}</span>
+              </div>
+            </div>
+            <div class="date-info">
+              <div class="date-range">
+                {{ formatDate(exp.startDate) }} - {{ formatDate(exp.endDate) }}
+              </div>
+              <div class="duration">
+                {{ calculateDuration(exp.startDate, exp.endDate) }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="description">
+            <span class="comment-symbol">#</span> {{ exp.description }}
+          </div>
+
+          <!-- Responsibilities -->
+          <div
+            class="responsibilities"
+            *ngIf="exp.responsibilities && exp.responsibilities.length > 0"
+          >
+            <div class="section-title">
+              <span class="icon">$</span> Key Responsibilities:
+            </div>
+            <ul class="responsibility-list">
+              <li *ngFor="let responsibility of exp.responsibilities">
+                <span class="bullet">▸</span> {{ responsibility }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Technologies -->
+          <div
+            class="technologies"
+            *ngIf="exp.technologies && exp.technologies.length > 0"
+          >
+            <div class="section-title">
+              <span class="icon">⚙</span> Tech Stack:
+            </div>
+            <div class="tech-tags">
+              <span class="tech-tag" *ngFor="let tech of exp.technologies">{{
+                tech
+              }}</span>
+            </div>
+          </div>
+
+          <!-- Achievements -->
+          <div
+            class="achievements"
+            *ngIf="exp.achievements && exp.achievements.length > 0"
+          >
+            <div class="section-title">
+              <span class="icon">★</span> Achievements:
+            </div>
+            <ul class="achievement-list">
+              <li *ngFor="let achievement of exp.achievements">
+                <span class="bullet">✓</span> {{ achievement }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Footer -->
+    <div class="command-footer" *ngIf="!isLoading">
+      <span class="prompt">user&#64;portfolio</span>
+      <span class="path">:~/experience$</span>
+      <span class="cursor">_</span>
+    </div>
+  </div>
+</div>
