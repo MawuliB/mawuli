@@ -1,110 +1,75 @@
 {
   "profile": {
     "name": "Mawuli Badassou",
-    "title": "Full Stack Developer",
-    "bio": "Passionate software developer with expertise in building scalable web applications. Specialized in modern JavaScript frameworks and cloud technologies. Always eager to learn and tackle new challenges.",
+    "title": "DevOps Engineer | AWS Certified Solutions Architect",
+    "bio": "Highly skilled and proactive DevOps Engineer with 2 years of experience and a strong background in backend development. Proficient in Infrastructure as Code (IaC) using Terraform and CloudFormation, with a proven track record of automating infrastructure provisioning and management on AWS. Expertise includes CI/CD pipeline implementation, configuration management, and monitoring & observability. AWS Certified Solutions Architect – Associate.",
     "avatar": "assets/mine.png",
-    "tagline": "Code. Create. Innovate.",
+    "tagline": "Automate. Deploy. Optimize.",
     "location": "Accra, Ghana",
-    "email": "mawuli.dev@example.com",
-    "phone": "+233 XX XXX XXXX"
+    "email": "mawulibadassou5@gmail.com",
+    "phone": "+233 244 065 972"
   },
   "skills": [
     {
-      "name": "Angular",
-      "category": "frontend",
-      "level": 90,
-      "yearsOfExperience": 3,
-      "icon": "🅰️"
-    },
-    {
-      "name": "TypeScript",
-      "category": "frontend",
+      "name": "AWS",
+      "category": "devops",
       "level": 85,
-      "yearsOfExperience": 3,
-      "icon": "📘"
-    },
-    {
-      "name": "JavaScript",
-      "category": "frontend",
-      "level": 90,
-      "yearsOfExperience": 4,
-      "icon": "📜"
-    },
-    {
-      "name": "HTML5",
-      "category": "frontend",
-      "level": 95,
-      "yearsOfExperience": 5,
-      "icon": "🌐"
-    },
-    {
-      "name": "CSS3/SCSS",
-      "category": "frontend",
-      "level": 90,
-      "yearsOfExperience": 5,
-      "icon": "🎨"
-    },
-    {
-      "name": "React",
-      "category": "frontend",
-      "level": 75,
       "yearsOfExperience": 2,
-      "icon": "⚛️"
+      "icon": "☁️"
     },
     {
-      "name": "Spring Boot",
-      "category": "backend",
-      "level": 80,
-      "yearsOfExperience": 3,
-      "icon": "🍃"
-    },
-    {
-      "name": "Node.js",
-      "category": "backend",
-      "level": 75,
-      "yearsOfExperience": 2,
-      "icon": "🟢"
-    },
-    {
-      "name": "Python",
-      "category": "backend",
-      "level": 70,
-      "yearsOfExperience": 2,
-      "icon": "🐍"
-    },
-    {
-      "name": "Django",
-      "category": "backend",
-      "level": 65,
+      "name": "Terraform",
+      "category": "devops",
+      "level": 85,
       "yearsOfExperience": 1,
-      "icon": "🎸"
+      "icon": "🏗️"
     },
     {
-      "name": "PostgreSQL",
-      "category": "database",
+      "name": "CloudFormation",
+      "category": "devops",
       "level": 80,
-      "yearsOfExperience": 3,
-      "icon": "🐘"
+      "yearsOfExperience": 1,
+      "icon": "📋"
     },
     {
-      "name": "MongoDB",
-      "category": "database",
+      "name": "GitHub Actions",
+      "category": "devops",
+      "level": 85,
+      "yearsOfExperience": 1,
+      "icon": "⚙️"
+    },
+    {
+      "name": "Jenkins",
+      "category": "devops",
       "level": 75,
-      "yearsOfExperience": 2,
-      "icon": "🍃"
+      "yearsOfExperience": 1,
+      "icon": "🔧"
     },
     {
-      "name": "MySQL",
-      "category": "database",
+      "name": "Ansible",
+      "category": "devops",
       "level": 80,
-      "yearsOfExperience": 3,
-      "icon": "🐬"
+      "yearsOfExperience": 1,
+      "icon": "🔴"
+    },
+    {
+      "name": "Prometheus",
+      "category": "devops",
+      "level": 80,
+      "yearsOfExperience": 1,
+      "icon": "📊"
+    },
+    {
+      "name": "Grafana",
+      "category": "devops",
+      "level": 80,
+      "yearsOfExperience": 1,
+      "icon": "📈"
     },
     {
       "name": "Docker",
       "category": "devops",
-      "level": 75,
+      "level": 80,
       "yearsOfExperience": 2,
       "icon": "🐳"
     },
@@ -116,100 +81,140 @@
       "icon": "📦"
     },
     {
-      "name": "AWS",
-      "category": "devops",
-      "level": 65,
-      "yearsOfExperience": 1,
-      "icon": "☁️"
-    },
-    {
       "name": "Linux",
       "category": "devops",
-      "level": 80,
+      "level": 85,
       "yearsOfExperience": 3,
       "icon": "🐧"
     },
     {
-      "name": "VS Code",
-      "category": "tools",
-      "level": 95,
-      "yearsOfExperience": 5,
+      "name": "Bash Scripting",
+      "category": "devops",
+      "level": 80,
+      "yearsOfExperience": 2,
       "icon": "💻"
     },
     {
-      "name": "Figma",
-      "category": "tools",
-      "level": 70,
+      "name": "Python",
+      "category": "backend",
+      "level": 80,
       "yearsOfExperience": 2,
-      "icon": "🎨"
+      "icon": "🐍"
     },
     {
-      "name": "Postman",
-      "category": "tools",
+      "name": "FastAPI",
+      "category": "backend",
+      "level": 75,
+      "yearsOfExperience": 1,
+      "icon": "⚡"
+    },
+    {
+      "name": "Java Spring Boot",
+      "category": "backend",
+      "level": 70,
+      "yearsOfExperience": 1,
+      "icon": "🍃"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "database",
+      "level": 80,
+      "yearsOfExperience": 2,
+      "icon": "🐘"
+    },
+    {
+      "name": "DynamoDB",
+      "category": "database",
+      "level": 70,
+      "yearsOfExperience": 1,
+      "icon": "⚡"
+    },
+    {
+      "name": "SQL",
+      "category": "database",
       "level": 85,
       "yearsOfExperience": 3,
-      "icon": "📮"
+      "icon": "🗄️"
+    },
+    {
+      "name": "Angular",
+      "category": "frontend",
+      "level": 65,
+      "yearsOfExperience": 1,
+      "icon": "🅰️"
+    },
+    {
+      "name": "TypeScript",
+      "category": "frontend",
+      "level": 70,
+      "yearsOfExperience": 1,
+      "icon": "📘"
     }
   ],
   "experience": [
     {
       "id": 1,
-      "company": "TechCorp Solutions",
-      "position": "Senior Full Stack Developer",
+      "company": "AmaliTech",
+      "position": "DevOps Engineer",
       "location": "Accra, Ghana",
-      "startDate": "2023-01",
+      "startDate": "2025-01",
       "endDate": "Present",
-      "description": "Leading development of enterprise web applications using modern tech stack.",
+      "description": "Engineering and implementing scalable AWS infrastructure with IaC, CI/CD pipelines, and monitoring solutions.",
       "responsibilities": [
-        "Architected and developed scalable microservices using Spring Boot and Angular",
-        "Led a team of 5 developers in agile sprint planning and code reviews",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
-        "Mentored junior developers on best practices and design patterns"
+        "Engineered and implemented scalable, multi-environment AWS infrastructure using Terraform, importing over a dozen manually created resources into IaC",
+        "Automated post-provisioning configurations and environment variable management with Ansible, reducing manual effort and errors",
+        "Introduced and configured Prometheus and Grafana for production monitoring, enabling proactive resolution of a critical memory leak",
+        "Designed and deployed CI/CD pipelines with GitHub Actions and CloudFormation templates for AWS-based backup solution",
+        "Contributed to high-stakes sprint building secure full-stack e-commerce infrastructure on AWS with focus on CI/CD pipelines and database security",
+        "Improved cost efficiency by extending automation scripts to schedule development/staging environment shutdowns"
       ],
-      "technologies": ["Angular", "Spring Boot", "PostgreSQL", "Docker", "Kubernetes", "AWS"],
+      "technologies": ["AWS", "Terraform", "CloudFormation", "Ansible", "GitHub Actions", "Prometheus", "Grafana", "Docker", "Python", "Bash"],
       "achievements": [
-        "Reduced application load time by 40% through optimization",
-        "Successfully delivered 3 major projects ahead of schedule"
+        "Successfully migrated 12+ manually created AWS resources to Infrastructure as Code",
+        "Enabled proactive monitoring that identified and resolved critical memory leak",
+        "Reduced compute costs through automated environment scheduling"
       ]
     },
     {
       "id": 2,
-      "company": "Digital Innovations Ltd",
-      "position": "Full Stack Developer",
+      "company": "AmaliTech",
+      "position": "Software Developer",
       "location": "Accra, Ghana",
-      "startDate": "2021-06",
-      "endDate": "2022-12",
-      "description": "Developed and maintained multiple client-facing web applications.",
+      "startDate": "2024-10",
+      "endDate": "2024-12",
+      "description": "Developed backend services and full-stack applications using Python, Java Spring Boot, and Angular.",
       "responsibilities": [
-        "Built responsive web applications using Angular and Node.js",
-        "Integrated third-party APIs and payment gateways",
-        "Collaborated with UX designers to implement pixel-perfect designs",
-        "Wrote comprehensive unit and integration tests"
+        "Developed backend services using Python and FastAPI, supporting application logic and troubleshooting",
+        "Collaborated on full-stack project with Java Spring Boot and Angular",
+        "Deployed applications on AWS EC2 and Vercel, gaining cloud deployment experience",
+        "Integrated external services including Google Maps API, Paystack, Amazon S3, and Holiday API"
       ],
-      "technologies": ["Angular", "Node.js", "MongoDB", "Express", "TypeScript"],
+      "technologies": ["Python", "FastAPI", "Java", "Spring Boot", "Angular", "AWS EC2", "Vercel", "PostgreSQL"],
       "achievements": [
-        "Developed e-commerce platform handling 10k+ daily users",
-        "Improved code coverage from 45% to 85%"
+        "Delivered full-stack project with multiple third-party integrations",
+        "Improved collaboration skills through Agile methodology (Scrum)"
       ]
     },
     {
       "id": 3,
-      "company": "StartupHub Ghana",
-      "position": "Junior Web Developer",
-      "location": "Kumasi, Ghana",
-      "startDate": "2020-01",
-      "endDate": "2021-05",
-      "description": "Entry-level position focusing on frontend development and learning backend technologies.",
+      "company": "AmaliTech",
+      "position": "National Service Personnel",
+      "location": "Accra, Ghana",
+      "startDate": "2023-10",
+      "endDate": "2024-09",
+      "description": "Completed AWS re/Start program and developed personal and group projects while earning AWS certifications.",
       "responsibilities": [
-        "Developed responsive landing pages and web interfaces",
-        "Fixed bugs and implemented feature requests",
-        "Participated in daily standups and sprint retrospectives",
-        "Assisted in database design and optimization"
+        "Enrolled in and completed AWS re/Start program",
+        "Earned AWS Cloud Practitioner certification",
+        "Developed personal project using Java Spring Boot, Angular, GraphQL, and WebSockets",
+        "Deployed personal project using IaaS (AWS EC2) and PaaS (Vercel)",
+        "Collaborated on group project utilizing Agile methodology (Scrum)"
       ],
-      "technologies": ["HTML", "CSS", "JavaScript", "React", "Python", "Django"],
+      "technologies": ["AWS", "Java", "Spring Boot", "Angular", "GraphQL", "WebSockets", "AWS EC2", "Vercel"],
       "achievements": [
-        "Redesigned company website increasing traffic by 30%",
-        "Completed 50+ tickets in first 6 months"
+        "AWS Cloud Practitioner certification earned",
+        "Successfully deployed full-stack application to AWS and Vercel",
+        "Completed AWS re/Start graduate program"
       ]
     }
   ],
@@ -220,69 +225,32 @@
       "degree": "Bachelor of Science",
       "field": "Computer Science",
       "location": "Legon, Accra",
-      "startDate": "2016-09",
-      "endDate": "2020-06",
-      "gpa": "3.7/4.0",
+      "startDate": "2019-09",
+      "endDate": "2023-06",
+      "gpa": "",
       "honors": [
-        "Dean's List - All semesters",
-        "Best Final Year Project Award",
-        "President of Computer Science Students Association",
-        "Outstanding Achievement in Software Development"
+        "AWS Certified Solutions Architect – Associate",
+        "AWS Certified Cloud Practitioner",
+        "AWS re/Start Graduate"
       ],
       "relevantCourses": [
         "Data Structures & Algorithms",
         "Database Management Systems",
-        "Web Technologies",
-        "Software Engineering",
         "Operating Systems",
         "Computer Networks",
-        "Mobile Application Development",
-        "Artificial Intelligence"
+        "Software Engineering",
+        "Cloud Computing"
       ],
       "achievements": [
-        "Dean's List - All semesters",
-        "Best Final Year Project Award",
-        "President of Computer Science Students Association"
+        "Completed degree with focus on Computer Science fundamentals",
+        "AWS Certified Solutions Architect – Associate",
+        "AWS Certified Cloud Practitioner"
       ],
       "coursework": [
         "Data Structures & Algorithms",
         "Database Management Systems",
-        "Web Technologies",
-        "Software Engineering",
         "Operating Systems",
         "Computer Networks"
-      ]
-    },
-    {
-      "id": 2,
-      "institution": "Accra Technical Institute",
-      "degree": "Diploma",
-      "field": "Information Technology",
-      "location": "Accra, Ghana",
-      "startDate": "2014-09",
-      "endDate": "2016-06",
-      "gpa": "3.9/4.0",
-      "honors": [
-        "Valedictorian",
-        "Outstanding Student in Programming",
-        "Perfect Attendance Award"
-      ],
-      "relevantCourses": [
-        "Programming Fundamentals",
-        "Web Design",
-        "Database Basics",
-        "Computer Hardware",
-        "Network Administration"
-      ],
-      "achievements": [
-        "Valedictorian",
-        "Outstanding Student in Programming"
-      ],
-      "coursework": [
-        "Programming Fundamentals",
-        "Web Design",
-        "Database Basics",
-        "Computer Hardware"
       ]
     }
   ],
@@ -408,7 +376,7 @@
   ],
   "contact": {
     "email": "mawulibadassou5@gmail.com",
-    "phone": "+233 24 406 5972",
+    "phone": "+233 244 065 972",
     "location": "Accra, Ghana",
     "socials": [
       {
@@ -419,25 +387,13 @@
       },
       {
         "name": "LinkedIn",
-        "url": "https://linkedin.com/in/mawuli-badassou",
+        "url": "https://linkedin.com/in/mawulibadassou-8a3021225",
         "icon": "linkedin",
         "username": "Mawuli Badassou"
-      },
-      {
-        "name": "Twitter",
-        "url": "https://twitter.com/mawulib",
-        "icon": "twitter",
-        "username": "@mawulib"
-      },
-      {
-        "name": "Dev.to",
-        "url": "https://dev.to/mawulib",
-        "icon": "dev",
-        "username": "@mawulib"
       }
     ],
     "availableForWork": true,
     "preferredContactMethod": "email"
   },
-  "lastUpdated": "2025-10-23"
+  "lastUpdated": "2025-10-24"
 }
