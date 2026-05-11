@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header *ngIf="!chromeless"></app-header>
 <main class="main-content">
   <app-carousel></app-carousel>
 </main>
-<app-footer></app-footer>
+<app-footer *ngIf="!chromeless"></app-footer>
 <div class="custom-cursor"></div>
 <div class="cursor-trail"></div>

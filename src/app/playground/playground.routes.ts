@@ -22,5 +22,6 @@ export const PLAYGROUND_ROUTES: Routes = [
         (m) => m.TheTrialComponent
       ),
     title: 'a small matter before the court',
+    data: { chromeless: true },
   },
 ];

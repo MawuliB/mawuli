@@ -1,4 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
+import { Subscription, filter } from 'rxjs';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -6,14 +9,36 @@ import { CarouselComponent } from './carousel/carousel.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CarouselComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent, CarouselComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'mawuli';
+  chromeless = false;
+
   private trail: Array<{ x: number; y: number; timestamp: number }> = [];
   private maxTrailLength = 20;
+  private routerSub: Subscription;
+
+  constructor(private router: Router) {
+    this.chromeless = this.deepestData()['chromeless'] === true;
+    this.routerSub = this.router.events
+      .pipe(filter((e) => e instanceof NavigationEnd))
+      .subscribe(() => {
+        this.chromeless = this.deepestData()['chromeless'] === true;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.routerSub.unsubscribe();
+  }
+
+  private deepestData(): Record<string, unknown> {
+    let route: ActivatedRouteSnapshot = this.router.routerState.snapshot.root;
+    while (route.firstChild) route = route.firstChild;
+    return route.data;
+  }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {

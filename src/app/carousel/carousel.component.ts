@@ -47,6 +47,12 @@ export class CarouselComponent {
     // Don't hijack browser/system shortcuts (Alt+arrow = back/forward, etc.)
     if (event.altKey || event.ctrlKey || event.metaKey) return;
 
+    // Only paginate when the current URL is one of the carousel-paged routes
+    // (don't blindly navigate from /playground/* or /404 to a portfolio page).
+    const url = this.router.url.split('?')[0].split('#')[0];
+    const path = url === '/' ? '/' : url.slice(1);
+    if (!this.pages.includes(path)) return;
+
     if (event.key === 'ArrowRight') {
       this.nextPage();
     } else if (event.key === 'ArrowLeft') {
