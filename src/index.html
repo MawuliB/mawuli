@@ -5,6 +5,20 @@
   <title>Mawuli Badassou — DevOps Engineer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Pre-paint route flag for chromeless playground experiments.
+       Runs before any CSS so the body's CRT background/scanlines/cursor
+       don't flash before Angular bootstraps and the component sets its class.
+       Add new chromeless routes to the array below; keep it tiny. -->
+  <script>
+    (function () {
+      var chromeless = ['/playground/the-trial'];
+      var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+      if (chromeless.indexOf(path) !== -1) {
+        document.documentElement.classList.add('chromeless');
+      }
+    })();
+  </script>
   <meta name="description" content="Mawuli Badassou — DevOps Engineer at AmaliTech and AWS Certified Solutions Architect. Terraform, CI/CD, observability, and backend-aware infrastructure on AWS.">
   <meta name="theme-color" content="#0c0c0c">
   <meta name="author" content="Mawuli Badassou">

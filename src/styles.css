@@ -65,35 +65,43 @@
 
 /* ============================================
    PER-ROUTE ESCAPE HATCH
-   When a route component sets `body.on-trial` (or similar), strip
-   the portfolio-wide terminal effects so the page can carry its
-   own aesthetic.
+   Chromeless routes (playground experiments with their own theme)
+   carry `html.chromeless` — set pre-paint by an inline script in
+   index.html for direct URLs, and by the route component in
+   ngOnInit/ngOnDestroy for SPA navigation. These rules strip the
+   portfolio-wide terminal effects so the page can carry its own look.
    ============================================ */
 
-body.on-trial {
+html.chromeless body {
   background: transparent !important;
+  background-color: transparent !important;
   color: inherit;
   font-family: inherit;
 }
 
-body.on-trial::before,
-body.on-trial::after {
+html.chromeless body::before,
+html.chromeless body::after {
   display: none !important;
 }
 
-body.on-trial .custom-cursor,
-body.on-trial .cursor-trail {
+html.chromeless .custom-cursor,
+html.chromeless .cursor-trail {
   display: none !important;
 }
 
-body.on-trial,
-body.on-trial a,
-body.on-trial button,
-body.on-trial input,
-body.on-trial textarea,
-body.on-trial select {
+html.chromeless,
+html.chromeless body,
+html.chromeless a,
+html.chromeless button,
+html.chromeless input,
+html.chromeless textarea,
+html.chromeless select {
   cursor: auto !important;
 }
+
+/* Back-compat alias — old `body.on-trial` selectors still resolve. */
+body.on-trial { background: transparent !important; }
+body.on-trial::before, body.on-trial::after { display: none !important; }
 
 /* ============================================
    THEME VARIANTS

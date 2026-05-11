@@ -49,33 +49,24 @@ For each new experiment with slug `<slug>`:
    private injectedNodes: HTMLElement[] = [];
    ngOnInit(): void {
      if (typeof document === 'undefined') return;
-     document.body.classList.add('on-<slug>');
+     // Strip portfolio CRT effects. The same class is set pre-paint by the
+     // inline script in src/index.html for direct URLs; this handles SPA
+     // navigation into the route.
+     document.documentElement.classList.add('chromeless');
      // optional: inject Google Fonts link + push into this.injectedNodes
      // optional: inject custom favicon link
      // optional: inject noindex meta if private/personal
    }
    ngOnDestroy(): void {
      if (typeof document === 'undefined') return;
-     document.body.classList.remove('on-<slug>');
+     document.documentElement.classList.remove('chromeless');
      this.injectedNodes.forEach((n) => n.parentNode?.removeChild(n));
      this.injectedNodes = [];
    }
    ```
-6. **In [src/styles.css](src/styles.css)** under the "PER-ROUTE ESCAPE HATCH" section, add:
-   ```css
-   body.on-<slug>::before,
-   body.on-<slug>::after { display: none !important; }
-   body.on-<slug> .custom-cursor,
-   body.on-<slug> .cursor-trail { display: none !important; }
-   body.on-<slug>,
-   body.on-<slug> a,
-   body.on-<slug> button,
-   body.on-<slug> input,
-   body.on-<slug> textarea,
-   body.on-<slug> select { cursor: auto !important; }
-   body.on-<slug> { background: transparent !important; }
-   ```
-   (Or — if a future similar group emerges — generalise to a single selector. For now, one-per-experiment is fine.)
+6. **Register for pre-paint FOUC prevention**: open [src/index.html](src/index.html) and add `/playground/<slug>` to the `chromeless` array in the inline script in `<head>`. Without this, direct URLs to your route will flash the portfolio's green/scanline body before Angular bootstraps.
+
+   The `html.chromeless` CSS rules that strip the CRT effects already exist in [src/styles.css](src/styles.css) — you don't need to add per-slug rules. Your component's own scoped CSS handles the actual theme.
 7. **Build check**: `npx ng build --configuration development`. Confirm the new chunk is lazy-loaded.
 
 ## Follow-up questions to ask before scaffolding
