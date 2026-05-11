@@ -1,7 +1,4 @@
-import { Component, HostListener, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { Component, HostListener } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -9,48 +6,14 @@ import { CarouselComponent } from './carousel/carousel.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, CarouselComponent],
+  imports: [HeaderComponent, FooterComponent, CarouselComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
   title = 'mawuli';
-  chromeless = false;
-
   private trail: Array<{ x: number; y: number; timestamp: number }> = [];
   private maxTrailLength = 20;
-  private routerSub: Subscription;
-
-  constructor(private router: Router) {
-    // At construct time the router hasn't resolved a route yet, so reading
-    // route.data returns empty for direct URL loads — that's what caused
-    // the header/footer to flash on /playground/the-trial. Instead, trust
-    // the `html.chromeless` class which the inline pre-paint script in
-    // index.html already set if this URL is in the chromeless allowlist.
-    this.chromeless =
-      typeof document !== 'undefined' &&
-      document.documentElement.classList.contains('chromeless');
-
-    this.routerSub = this.router.events
-      .pipe(filter((e) => e instanceof NavigationEnd))
-      .subscribe(() => {
-        // After SPA navigation completes, route data is the source of truth.
-        // (The chromeless component itself adds/removes the class in
-        // ngOnInit/ngOnDestroy, so the inline-script flag and route data
-        // converge correctly.)
-        this.chromeless = this.deepestData()['chromeless'] === true;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.routerSub.unsubscribe();
-  }
-
-  private deepestData(): Record<string, unknown> {
-    let route: ActivatedRouteSnapshot = this.router.routerState.snapshot.root;
-    while (route.firstChild) route = route.firstChild;
-    return route.data;
-  }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
@@ -62,23 +25,19 @@ export class AppComponent implements OnDestroy {
       cursor.style.top = `${event.clientY}px`;
     }
 
-    // Add to trail
     this.trail.push({
       x: event.clientX,
       y: event.clientY,
       timestamp: Date.now(),
     });
 
-    // Remove old trail points
     const now = Date.now();
     this.trail = this.trail.filter((point) => now - point.timestamp < 300);
 
-    // Keep trail length manageable
     if (this.trail.length > this.maxTrailLength) {
       this.trail = this.trail.slice(-this.maxTrailLength);
     }
 
-    // Update trail visualization
     if (cursorTrail) {
       this.updateTrail(cursorTrail);
     }
@@ -101,8 +60,7 @@ export class AppComponent implements OnDestroy {
   }
 
   private updateTrail(trailElement: HTMLElement) {
-    // Build trail dots as real nodes (avoid innerHTML — defensive against
-    // future changes that could feed untrusted values into the markup).
+    // Build trail dots as real nodes (avoid innerHTML).
     const dots = this.trail.map((point, index) => {
       const opacity = ((index + 1) / this.trail.length) * 0.6;
       const size = 4 + (index / this.trail.length) * 8;

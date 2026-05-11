@@ -26,18 +26,4 @@ describe('AppComponent', () => {
     const skip = (fixture.nativeElement as HTMLElement).querySelector('.skip-to-content');
     expect(skip?.textContent).toContain('Skip to content');
   });
-
-  it('starts with chromeless=false when html.chromeless is not present', () => {
-    document.documentElement.classList.remove('chromeless');
-    const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance.chromeless).toBe(false);
-  });
-
-  it('starts with chromeless=true when html.chromeless is present', () => {
-    document.documentElement.classList.add('chromeless');
-    const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance.chromeless).toBe(true);
-    // cleanup so it doesn't leak into other tests
-    document.documentElement.classList.remove('chromeless');
-  });
 });

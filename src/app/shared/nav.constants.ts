@@ -4,8 +4,8 @@
  * the carousel (arrow-key pagination) so adding/removing a route
  * is a one-line change.
  *
- * Playground / 404 / chromeless routes are intentionally NOT here —
- * the carousel skips arrow navigation on any URL not in this list.
+ * The 404 route is intentionally NOT here — the carousel skips arrow
+ * navigation on any URL not in this list.
  */
 
 export interface NavItem {

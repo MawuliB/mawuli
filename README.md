@@ -252,4 +252,4 @@ Visit the contact page in the application or check out the Contact component for
 
 ---
 
-**Note**: This README is a high-level overview. The living audit and improvement plan live in [REVIEW.md](REVIEW.md). Runbooks for routine updates and new playground experiments live in [UPDATE.md](UPDATE.md) and [PLAYGROUND.md](PLAYGROUND.md).
+**Note**: This README is a high-level overview. The living audit and improvement plan live in [REVIEW.md](REVIEW.md). Routine update runbook is [UPDATE.md](UPDATE.md). The **playground** (experiments, dummy flows, private pages) lives in its own sibling repo at [github.com/MawuliB/playground](https://github.com/MawuliB/playground).

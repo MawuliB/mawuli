@@ -64,56 +64,6 @@
 }
 
 /* ============================================
-   PER-ROUTE ESCAPE HATCH
-   Chromeless routes (playground experiments with their own theme)
-   carry `html.chromeless` — set pre-paint by an inline script in
-   index.html for direct URLs, and by the route component in
-   ngOnInit/ngOnDestroy for SPA navigation. These rules strip the
-   portfolio-wide terminal effects so the page can carry its own look.
-   ============================================ */
-
-html.chromeless body {
-  background: transparent !important;
-  background-color: transparent !important;
-  color: inherit;
-  font-family: inherit;
-}
-
-html.chromeless body::before,
-html.chromeless body::after {
-  display: none !important;
-}
-
-html.chromeless .custom-cursor,
-html.chromeless .cursor-trail {
-  display: none !important;
-}
-
-html.chromeless,
-html.chromeless body,
-html.chromeless a,
-html.chromeless button,
-html.chromeless input,
-html.chromeless textarea,
-html.chromeless select {
-  cursor: auto !important;
-}
-
-/* Back-compat alias — old `body.on-trial` selectors still resolve. */
-body.on-trial { background: transparent !important; }
-body.on-trial::before, body.on-trial::after { display: none !important; }
-
-/* Per-route pre-paint background.
-   Painted before the lazy chunk loads so the user sees the route's theme
-   immediately, not a white flash between (chromeless body) and (component
-   render). Each chromeless experiment gets its own class via the inline
-   script's routeClass map in index.html. */
-html.chromeless-trial body {
-  background: linear-gradient(135deg, #fff1f2 0%, #fef3c7 50%, #fce7f3 100%) !important;
-  background-color: #fff1f2 !important;
-}
-
-/* ============================================
    THEME VARIANTS
    ============================================ */
 

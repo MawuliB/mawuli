@@ -11,7 +11,7 @@
        live in vercel.json. The rest is here so it works on any host. -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://js.hcaptcha.com https://newassets.hcaptcha.com https://*.hcaptcha.com https://va.vercel-scripts.com;
+    script-src 'self' https://js.hcaptcha.com https://newassets.hcaptcha.com https://*.hcaptcha.com https://va.vercel-scripts.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.hcaptcha.com;
     font-src 'self' data: https://fonts.gstatic.com https://*.hcaptcha.com;
     img-src 'self' data: https: blob:;
@@ -22,23 +22,6 @@
     object-src 'none';
   ">
 
-  <!-- Pre-paint route flag for chromeless playground experiments.
-       Runs before any CSS so the body's CRT background/scanlines/cursor
-       don't flash before Angular bootstraps. The optional second class
-       lets each experiment paint its OWN background during the lazy-load
-       window (so the page doesn't go white between body-style override
-       and the component rendering). -->
-  <script>
-    (function () {
-      var routeClass = {
-        '/playground/the-trial': 'chromeless-trial'
-      };
-      var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
-      if (Object.prototype.hasOwnProperty.call(routeClass, path)) {
-        document.documentElement.classList.add('chromeless', routeClass[path]);
-      }
-    })();
-  </script>
   <meta name="description" content="Mawuli Badassou — DevOps Engineer at AmaliTech and AWS Certified Solutions Architect. Terraform, CI/CD, observability, and backend-aware infrastructure on AWS.">
   <meta name="theme-color" content="#0c0c0c">
   <meta name="author" content="Mawuli Badassou">
@@ -77,7 +60,6 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.svg">
 </head>
 <body>

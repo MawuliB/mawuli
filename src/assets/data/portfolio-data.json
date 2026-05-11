@@ -269,7 +269,7 @@
       "id": 8,
       "title": "Personal Portfolio",
       "description": "This site — an Angular 17 terminal-themed portfolio, data-driven from a single JSON.",
-      "longDescription": "The site you're looking at. Built with Angular 17 standalone components; everything is data-driven from a single JSON file consumed via a typed service. Linux/terminal aesthetic with custom cursor, keyboard navigation, and per-section terminal chrome. Includes a /playground sub-area for ad-hoc demos that don't belong in the main portfolio narrative.",
+      "longDescription": "The site you're looking at. Built with Angular 17 standalone components; everything is data-driven from a single JSON file consumed via a typed service. Linux/terminal aesthetic with custom cursor, keyboard navigation, and per-section terminal chrome.",
       "technologies": ["Angular 17", "TypeScript", "RxJS", "CSS", "Vercel"],
       "githubUrl": "https://github.com/MawuliB/mawuli",
       "liveUrl": "https://mawuli-vert.vercel.app",
@@ -280,7 +280,7 @@
         "Standalone components, no NgModules",
         "Data-driven from a single JSON",
         "Terminal / CRT aesthetic with custom cursor",
-        "/playground sub-area for experiments"
+        "Theme switcher (green / amber / blue) with localStorage persistence"
       ]
     }
   ],

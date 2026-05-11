@@ -22,7 +22,6 @@ import { RouterLink } from '@angular/router';
         <p class="muted"># exit code 404</p>
         <p>
           <a routerLink="/" class="cta">[ go home ]</a>
-          <a routerLink="/playground" class="cta">[ try playground ]</a>
         </p>
       </div>
     </div>

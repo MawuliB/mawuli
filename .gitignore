@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+pnpm-debug.log
 
 # IDEs and editors
 .idea/
@@ -28,18 +29,27 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# Angular cache
 /.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
-testem.log
 /typings
+
+# Test artifacts
+/coverage
+testem.log
 
 # System files
 .DS_Store
 Thumbs.db
+desktop.ini
+*~
 
-# Environment variables
+# Environment variables — never commit secrets
 .env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel

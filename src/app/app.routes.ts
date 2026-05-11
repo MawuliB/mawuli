@@ -38,11 +38,6 @@ export const routes: Routes = [
     title: 'Skills · Mawuli Badassou',
   },
   {
-    path: 'playground',
-    loadChildren: () =>
-      import('./playground/playground.routes').then((m) => m.PLAYGROUND_ROUTES),
-  },
-  {
     path: '**',
     loadComponent: () =>
       import('./not-found/not-found.component').then((m) => m.NotFoundComponent),
