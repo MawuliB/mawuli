@@ -115,34 +115,25 @@
       "field": "Computer Science",
       "location": "Legon, Accra",
       "startDate": "2019-09",
-      "endDate": "2023-06",
-      "gpa": "",
-      "honors": [
-        "AWS Certified Solutions Architect – Associate",
-        "AWS Certified Developer – Associate",
-        "AWS Certified Cloud Practitioner",
-        "AWS re/Start Graduate"
-      ],
-      "relevantCourses": [
-        "Data Structures & Algorithms",
-        "Database Management Systems",
-        "Operating Systems",
-        "Computer Networks",
-        "Software Engineering",
-        "Cloud Computing"
-      ],
-      "achievements": [
-        "BSc Computer Science, University of Ghana (2019–2023)",
-        "AWS Certified Solutions Architect – Associate",
-        "AWS Certified Developer – Associate",
-        "AWS Certified Cloud Practitioner"
-      ],
-      "coursework": [
-        "Data Structures & Algorithms",
-        "Database Management Systems",
-        "Operating Systems",
-        "Computer Networks"
-      ]
+      "endDate": "2023-06"
+    },
+    {
+      "id": 2,
+      "institution": "West Africa Senior High School (WASS)",
+      "degree": "Senior High School",
+      "field": "WASSCE",
+      "location": "Adenta Barrier, Accra",
+      "startDate": "2015-09",
+      "endDate": "2018-06"
+    },
+    {
+      "id": 3,
+      "institution": "Holy Rosary RC Basic School",
+      "degree": "Junior High School",
+      "field": "BECE",
+      "location": "Adenta, Accra",
+      "startDate": "2012-09",
+      "endDate": "2015-06"
     }
   ],
   "projects": [
@@ -392,5 +383,5 @@
       "category": "training"
     }
   ],
-  "lastUpdated": "2026-05-11"
+  "lastUpdated": "2026-05-12"
 }
