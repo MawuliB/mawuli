@@ -145,6 +145,19 @@ There are usually three project sources:
 
 ---
 
+## 6.5. Sub-runbook: Resume PDF
+
+The "Download Resume" button on the home + contact pages points at `assets/Mawuli-Badassou-Resume.pdf` (copied at build time from `src/assets/`).
+
+When the resume changes:
+1. The authoritative source is still `C:\Users\MawuliBadassou\OneDrive - AmaliTech gGmbH\Documents\mawuli\Mawuli Badassou - Resume 2026.pdf`.
+2. Overwrite `src/assets/Mawuli-Badassou-Resume.pdf` with the new file (keep that filename — the download attribute references it).
+3. Run `npx ng build --configuration development` to verify the asset still ships.
+
+The PDF currently contains Mawuli's real email and phone (taken from the resume). If those need to differ from what shows on the live site, maintain a "portfolio-public" copy of the PDF with redactions and use that instead.
+
+---
+
 ## 7. Sub-runbook: Profile / contact / socials
 
 These change rarely. When asked:

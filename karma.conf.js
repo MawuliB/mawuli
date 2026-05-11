@@ -48,10 +48,15 @@ module.exports = function (config) {
           '--disable-dev-shm-usage',
           '--disable-translate',
           '--disable-extensions',
-          '--remote-debugging-port=9222',
-          // OneDrive-synced folders sometimes lock Chrome's default profile
-          // dir; force a temp dir so launches always succeed.
-          '--user-data-dir=' + path.join(os.tmpdir(), 'karma-chrome-' + process.pid),
+          '--disable-features=Translate,InterestCohort',
+          // Each test run gets a unique profile dir — avoids locks from
+          // any leftover Chrome process and keeps OneDrive out of it.
+          // No hardcoded --remote-debugging-port (causes collisions across runs).
+          '--user-data-dir=' +
+            path.join(
+              os.tmpdir(),
+              'karma-chrome-' + process.pid + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8)
+            ),
         ],
       },
       // Use this when you want to see what's happening in a real Chrome window:

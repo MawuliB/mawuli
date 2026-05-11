@@ -88,6 +88,50 @@
   font-size: var(--font-size-sm);
 }
 
+.kbd-hint {
+  margin-left: var(--spacing-sm);
+  padding: 2px 8px;
+  border: 1px solid var(--terminal-text-muted);
+  border-radius: var(--border-radius);
+  color: var(--terminal-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 1px;
+}
+
+.resume-section {
+  margin: var(--spacing-lg) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border: 2px solid var(--terminal-primary);
+  border-radius: var(--border-radius);
+  color: var(--terminal-primary);
+  background: rgba(0, 255, 0, 0.05);
+  text-decoration: none !important;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  letter-spacing: 0.5px;
+  transition: all var(--transition-base);
+  min-height: 44px;
+}
+
+.resume-btn:hover {
+  background-color: var(--terminal-primary);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 16px var(--terminal-glow);
+  transform: translateY(-1px);
+}
+
+.resume-btn .resume-icon {
+  font-size: var(--font-size-lg);
+}
+
 /* ============================================
    COMMAND LINE
    ============================================ */

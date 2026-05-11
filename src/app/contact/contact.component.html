@@ -91,6 +91,20 @@
         </div>
       </div>
 
+      <!-- Resume download -->
+      <div class="resume-section">
+        <a
+          class="resume-btn"
+          href="assets/Mawuli-Badassou-Resume.pdf"
+          download="Mawuli-Badassou-Resume.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="prompt">$</span> wget resume.pdf
+          <span class="resume-icon">📄</span>
+        </a>
+      </div>
+
       <!-- Divider -->
       <div class="divider"></div>
 
@@ -162,13 +176,16 @@
             </label>
             <textarea
               [(ngModel)]="formData.message.value"
+              (keydown.control.enter)="submitField('message')"
+              (keydown.meta.enter)="submitField('message')"
               class="field-textarea"
-              placeholder="Hello! I'd like to discuss..."
+              placeholder="Hello! I'd like to discuss... (Ctrl + Enter to continue)"
               rows="5"
               autofocus
             ></textarea>
             <button (click)="submitField('message')" class="continue-btn">
               <span class="prompt">$</span> Continue
+              <span class="kbd-hint">⌃ + ↵</span>
             </button>
           </div>
 
