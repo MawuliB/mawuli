@@ -199,11 +199,34 @@
             </div>
 
             <!-- hCaptcha widget — rendered programmatically when scene enters -->
-            <div class="captcha-wrap">
+            <div class="captcha-wrap" [class.has-error]="captchaError" aria-live="polite">
               <label class="field-label">
                 <span class="prompt">$</span> verify --human:
               </label>
               <div id="hcaptcha-container" class="hcaptcha-host"></div>
+
+              <!-- Loading: script downloading or widget not yet rendered -->
+              <p class="captcha-status loading" *ngIf="captchaStatus === 'loading'">
+                <span class="loading-spinner">▓</span> Loading captcha&hellip;
+              </p>
+
+              <!-- Solved: visual confirmation; hCaptcha shows its own check but echo here too -->
+              <p class="captcha-status solved" *ngIf="captchaStatus === 'solved' && !captchaError">
+                ✓ Captcha verified.
+              </p>
+
+              <!-- Failed: load timeout, script blocked, or render error -->
+              <p class="captcha-status failed" *ngIf="captchaStatus === 'failed'">
+                ⚠ Captcha couldn't load.
+                <button type="button" class="reload-captcha" (click)="reloadCaptcha()">
+                  ↻ reload
+                </button>
+              </p>
+
+              <!-- Inline error: user clicked Send without solving, or expired -->
+              <p class="captcha-error" *ngIf="captchaError" role="alert">
+                {{ captchaError }}
+              </p>
             </div>
 
             <div class="action-buttons">

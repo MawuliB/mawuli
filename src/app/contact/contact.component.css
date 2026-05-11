@@ -12,6 +12,15 @@
    reaches the submit scene. Styled to feel terminal-native. */
 .captcha-wrap {
   margin: var(--spacing-lg) 0 var(--spacing-md);
+  padding: var(--spacing-sm);
+  border: 1px dashed transparent;
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-base);
+}
+
+.captcha-wrap.has-error {
+  border-color: #ff7777;
+  background-color: rgba(255, 119, 119, 0.05);
 }
 
 .hcaptcha-host {
@@ -23,6 +32,60 @@
 
 .hcaptcha-host iframe {
   border-radius: var(--border-radius);
+}
+
+.captcha-status {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.captcha-status.loading {
+  color: var(--terminal-text-muted);
+}
+
+.captcha-status.loading .loading-spinner {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+.captcha-status.solved {
+  color: var(--terminal-primary-bright);
+  text-shadow: 0 0 6px var(--terminal-glow);
+}
+
+.captcha-status.failed {
+  color: #ffb000;
+}
+
+.reload-captcha {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+  padding: 2px 10px;
+  border-radius: var(--border-radius);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  margin-left: var(--spacing-sm);
+  transition: all var(--transition-fast);
+}
+
+.reload-captcha:hover {
+  background-color: currentColor;
+  color: var(--terminal-bg);
+}
+
+.captcha-error {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 119, 119, 0.1);
+  border-left: 3px solid #ff7777;
+  border-radius: var(--border-radius);
+  color: #ff9999;
+  font-size: var(--font-size-sm);
 }
 
 /* ============================================

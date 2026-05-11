@@ -25,10 +25,21 @@ const HCAPTCHA_SITEKEY = 'c950b9bc-d3d2-478e-be36-d2e4a88edc3e';
 const HCAPTCHA_SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js';
 
 interface HCaptchaApi {
-  render(container: string | HTMLElement, params: { sitekey: string; theme?: string }): unknown;
+  render(
+    container: string | HTMLElement,
+    params: {
+      sitekey: string;
+      theme?: string;
+      callback?: (token: string) => void;
+      'error-callback'?: () => void;
+      'expired-callback'?: () => void;
+    }
+  ): unknown;
   getResponse(widgetId?: unknown): string;
   reset(widgetId?: unknown): void;
 }
+
+type CaptchaStatus = 'idle' | 'loading' | 'ready' | 'solved' | 'failed';
 
 @Component({
   selector: 'app-contact',
@@ -40,7 +51,12 @@ interface HCaptchaApi {
 export class ContactComponent implements OnInit, OnDestroy {
   contactInfo: Contact | null = null;
   isLoading = true;
+  /** Drives the inline captcha messages shown next to the widget. */
+  captchaStatus: CaptchaStatus = 'idle';
+  /** Inline error displayed under the captcha widget (e.g. "please solve"). */
+  captchaError = '';
   private hcaptchaWidgetId: unknown = null;
+  private captchaLoadTimer: ReturnType<typeof setTimeout> | null = null;
 
   // Form state
   currentField:
@@ -78,6 +94,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     // The script stays cached on the document; reset our widget ref so
     // re-navigating to the form renders a fresh widget.
     this.hcaptchaWidgetId = null;
+    if (this.captchaLoadTimer) clearTimeout(this.captchaLoadTimer);
   }
 
   private getHcaptcha(): HCaptchaApi | undefined {
@@ -87,33 +104,90 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   private loadHcaptchaScript(): void {
     if (typeof document === 'undefined') return;
-    if (document.getElementById('hcaptcha-script')) return;
+    if (document.getElementById('hcaptcha-script')) {
+      // already loaded from a previous visit
+      this.captchaStatus = this.getHcaptcha() ? 'ready' : 'loading';
+      return;
+    }
+    this.captchaStatus = 'loading';
     const script = document.createElement('script');
     script.id = 'hcaptcha-script';
     script.src = HCAPTCHA_SCRIPT_SRC;
     script.async = true;
     script.defer = true;
     script.onload = () => {
+      this.captchaStatus = 'ready';
+      if (this.captchaLoadTimer) clearTimeout(this.captchaLoadTimer);
       if (this.currentField === 'submit') this.tryRenderHcaptcha();
     };
+    script.onerror = () => {
+      this.captchaStatus = 'failed';
+      if (this.captchaLoadTimer) clearTimeout(this.captchaLoadTimer);
+    };
     document.head.appendChild(script);
+
+    // Fallback if the script silently never finishes (network blocked, etc.)
+    this.captchaLoadTimer = setTimeout(() => {
+      if (this.captchaStatus === 'loading') this.captchaStatus = 'failed';
+    }, 10000);
   }
 
   private tryRenderHcaptcha(): void {
     if (typeof document === 'undefined') return;
     const api = this.getHcaptcha();
-    if (!api) return;
+    if (!api) {
+      // Script not ready yet — will retry from onload above.
+      return;
+    }
     const container = document.getElementById('hcaptcha-container');
     if (!container) return;
     if (container.childElementCount > 0 && this.hcaptchaWidgetId !== null) {
       api.reset(this.hcaptchaWidgetId);
+      this.captchaStatus = 'ready';
       return;
     }
     container.innerHTML = '';
-    this.hcaptchaWidgetId = api.render(container, {
-      sitekey: HCAPTCHA_SITEKEY,
-      theme: 'dark',
-    });
+    try {
+      this.hcaptchaWidgetId = api.render(container, {
+        sitekey: HCAPTCHA_SITEKEY,
+        theme: 'dark',
+        callback: () => {
+          // Solved successfully — clear any "please solve" hint.
+          this.captchaStatus = 'solved';
+          this.captchaError = '';
+        },
+        'expired-callback': () => {
+          this.captchaStatus = 'ready';
+          this.captchaError = 'Captcha expired — please solve it again.';
+        },
+        'error-callback': () => {
+          this.captchaStatus = 'failed';
+          this.captchaError = 'Captcha hit an error. Try reloading.';
+        },
+      });
+      this.captchaStatus = 'ready';
+    } catch {
+      this.captchaStatus = 'failed';
+    }
+  }
+
+  /** User-facing: reload the captcha if it didn't render or failed. */
+  reloadCaptcha(): void {
+    if (typeof document === 'undefined') return;
+    this.captchaError = '';
+    this.hcaptchaWidgetId = null;
+    const existing = document.getElementById('hcaptcha-script');
+    const api = this.getHcaptcha();
+    if (existing && api) {
+      // Script is there + API loaded — just re-render in the container.
+      this.tryRenderHcaptcha();
+      return;
+    }
+    // Script missing or broken — remove and reload from scratch.
+    if (existing) existing.remove();
+    this.captchaStatus = 'loading';
+    this.loadHcaptchaScript();
+    setTimeout(() => this.tryRenderHcaptcha(), 150);
   }
 
   loadContactInfo(): void {
@@ -216,9 +290,21 @@ export class ContactComponent implements OnInit, OnDestroy {
           setTimeout(() => this.tryRenderHcaptcha(), 0);
           break;
       }
+
+      // Focus the newly-visible input (browser `autofocus` only fires on
+      // initial page load, not when *ngIf swaps the element in).
+      setTimeout(() => this.focusActiveInput(), 0);
     } else {
       this.addCommandToHistory(this.formData[fieldName].errorMessage);
     }
+  }
+
+  private focusActiveInput(): void {
+    if (typeof document === 'undefined') return;
+    const el = document.querySelector<HTMLElement>(
+      '.interactive-form input.field-input, .interactive-form textarea.field-textarea'
+    );
+    el?.focus();
   }
 
   submitForm(): void {
@@ -246,9 +332,20 @@ export class ContactComponent implements OnInit, OnDestroy {
     const api = this.getHcaptcha();
     const captchaToken = api ? api.getResponse(this.hcaptchaWidgetId) : '';
     if (!captchaToken) {
-      this.addCommandToHistory('⚠ Please complete the captcha verification first.');
+      this.captchaError =
+        this.captchaStatus === 'failed'
+          ? 'Captcha couldn\'t load. Reload it below, or use the mailto link instead.'
+          : 'Please complete the captcha verification first.';
+      this.addCommandToHistory('⚠ ' + this.captchaError);
+      // Focus the captcha so screen readers + sighted users see it.
+      setTimeout(() => {
+        document
+          .querySelector<HTMLElement>('.captcha-wrap')
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 0);
       return;
     }
+    this.captchaError = '';
 
     this.isSubmitting = true;
     this.addCommandToHistory('$ submit --confirm');
@@ -313,7 +410,9 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.currentField = 'name';
     this.isSubmitted = false;
     this.commandHistory = [];
+    this.captchaError = '';
     this.hcaptchaWidgetId = null;
+    this.captchaStatus = this.getHcaptcha() ? 'ready' : this.captchaStatus;
     this.getHcaptcha()?.reset(this.hcaptchaWidgetId);
     this.addCommandToHistory('$ contact --reset');
     this.addCommandToHistory('Form reset. Starting over...');
