@@ -32,7 +32,8 @@
     { "name": "DynamoDB", "category": "database", "level": 75, "yearsOfExperience": 1, "icon": "🗃️" },
     { "name": "SQL", "category": "database", "level": 85, "yearsOfExperience": 3, "icon": "🗄️" },
     { "name": "Angular", "category": "frontend", "level": 65, "yearsOfExperience": 1, "icon": "🅰️" },
-    { "name": "TypeScript", "category": "frontend", "level": 70, "yearsOfExperience": 1, "icon": "📘" }
+    { "name": "TypeScript", "category": "frontend", "level": 70, "yearsOfExperience": 1, "icon": "📘" },
+    { "name": "Kubernetes", "category": "devops", "level": 60, "yearsOfExperience": 1, "icon": "☸️" }
   ],
   "experience": [
     {
@@ -118,6 +119,7 @@
       "gpa": "",
       "honors": [
         "AWS Certified Solutions Architect – Associate",
+        "AWS Certified Developer – Associate",
         "AWS Certified Cloud Practitioner",
         "AWS re/Start Graduate"
       ],
@@ -132,6 +134,7 @@
       "achievements": [
         "BSc Computer Science, University of Ghana (2019–2023)",
         "AWS Certified Solutions Architect – Associate",
+        "AWS Certified Developer – Associate",
         "AWS Certified Cloud Practitioner"
       ],
       "coursework": [
@@ -312,5 +315,82 @@
     "availableForWork": true,
     "preferredContactMethod": "email"
   },
+  "certifications": [
+    {
+      "id": "5b802809-ae41-44a7-aa47-954150ab3ffc",
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2025-04-08",
+      "expiresDate": "2028-04-08",
+      "imageUrl": "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+      "verifyUrl": "https://www.credly.com/badges/5b802809-ae41-44a7-aa47-954150ab3ffc/public_url",
+      "category": "aws-certification"
+    },
+    {
+      "id": "8ac7b431-6f6b-4695-8d52-f28676cb2e71",
+      "name": "AWS Certified Developer – Associate",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2026-04-13",
+      "expiresDate": "2029-04-13",
+      "imageUrl": "https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png",
+      "verifyUrl": "https://www.credly.com/badges/8ac7b431-6f6b-4695-8d52-f28676cb2e71/public_url",
+      "category": "aws-certification"
+    },
+    {
+      "id": "f018f17f-8723-4f72-9d69-66cae5dedf3e",
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2024-02-29",
+      "expiresDate": "2029-04-13",
+      "imageUrl": "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+      "verifyUrl": "https://www.credly.com/badges/f018f17f-8723-4f72-9d69-66cae5dedf3e/public_url",
+      "category": "aws-certification"
+    },
+    {
+      "id": "9dec41cf-e8d4-48a3-a1c1-b9fb1eb3ce64",
+      "name": "LFS250: Kubernetes and Cloud Native Essentials",
+      "issuer": "The Linux Foundation",
+      "issuedDate": "2026-04-26",
+      "imageUrl": "https://images.credly.com/images/7404ca0d-98e1-48b6-a2a3-de8d7dcd85b5/blob",
+      "verifyUrl": "https://www.credly.com/badges/9dec41cf-e8d4-48a3-a1c1-b9fb1eb3ce64/public_url",
+      "category": "kubernetes"
+    },
+    {
+      "id": "b3c2deef-1ae5-4a46-8485-02f56059321b",
+      "name": "AWS re/Start Graduate",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2024-03-09",
+      "imageUrl": "https://images.credly.com/images/44e2c252-5d19-4574-9646-005f7225bf53/image.png",
+      "verifyUrl": "https://www.credly.com/badges/b3c2deef-1ae5-4a46-8485-02f56059321b/public_url",
+      "category": "training"
+    },
+    {
+      "id": "d1516472-b3f7-4fcc-9163-6396452ed7c0",
+      "name": "AWS Partner: Technical Accredited",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2026-01-15",
+      "imageUrl": "https://images.credly.com/images/8f006312-3154-45bf-a845-4a043641e83c/blob",
+      "verifyUrl": "https://www.credly.com/badges/d1516472-b3f7-4fcc-9163-6396452ed7c0/public_url",
+      "category": "training"
+    },
+    {
+      "id": "f231d85f-f1fd-4e2d-b3d1-a430be6e91dd",
+      "name": "AWS Partner: Sales Accreditation",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2026-01-26",
+      "imageUrl": "https://images.credly.com/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob",
+      "verifyUrl": "https://www.credly.com/badges/f231d85f-f1fd-4e2d-b3d1-a430be6e91dd/public_url",
+      "category": "training"
+    },
+    {
+      "id": "90cae685-a505-48a9-9e74-03325529b5eb",
+      "name": "AWS Knowledge: Cloud Essentials",
+      "issuer": "Amazon Web Services (AWS)",
+      "issuedDate": "2024-02-21",
+      "imageUrl": "https://images.credly.com/images/7cf036b0-c609-4378-a7be-9969e1dea7ab/blob",
+      "verifyUrl": "https://www.credly.com/badges/90cae685-a505-48a9-9e74-03325529b5eb/public_url",
+      "category": "training"
+    }
+  ],
   "lastUpdated": "2026-05-11"
 }

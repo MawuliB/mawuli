@@ -80,6 +80,17 @@ export interface Contact {
   preferredContactMethod?: string;
 }
 
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  issuedDate: string;
+  expiresDate?: string;
+  imageUrl: string;
+  verifyUrl: string;
+  category: 'aws-certification' | 'kubernetes' | 'training' | 'other';
+}
+
 export interface PortfolioData {
   profile: Profile;
   skills: Skill[];
@@ -87,5 +98,6 @@ export interface PortfolioData {
   education: Education[];
   projects: Project[];
   contact: Contact;
+  certifications?: Certification[];
   lastUpdated: string;
 }

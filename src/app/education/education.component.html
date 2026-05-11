@@ -165,12 +165,55 @@
         </div>
       </div>
 
+      <!-- Certifications -->
+      <div class="certifications-section" *ngIf="certifications.length > 0">
+        <div class="tree-branch">
+          <span class="branch-line last">└──</span>
+          <span class="folder-icon">📂</span>
+          <span class="institution-name">certifications/</span>
+        </div>
+
+        <div class="cert-grid">
+          <a
+            *ngFor="let cert of certifications"
+            class="cert-card"
+            [href]="cert.verifyUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            [title]="'Verify on Credly · ' + cert.name"
+          >
+            <img
+              class="cert-badge"
+              [src]="cert.imageUrl"
+              [alt]="cert.name + ' badge'"
+              loading="lazy"
+              width="80"
+              height="80"
+            />
+            <div class="cert-meta">
+              <div class="cert-name">{{ cert.name }}</div>
+              <div class="cert-issuer">{{ cert.issuer }}</div>
+              <div class="cert-dates">
+                <span class="label">issued:</span>
+                <span>{{ formatDate(cert.issuedDate) }}</span>
+                <span *ngIf="cert.expiresDate" class="expires" [class.expired]="isExpired(cert)">
+                  · expires {{ formatDate(cert.expiresDate) }}
+                </span>
+              </div>
+              <div class="cert-verify">
+                <span class="prompt">$</span> verify on Credly →
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
       <!-- Tree Footer -->
       <div class="tree-footer">
         <p class="summary">
           {{ educationList.length }} director{{
             educationList.length !== 1 ? "ies" : "y"
-          }}, {{ getTotalItems() }} files
+          }}, {{ getTotalItems() }} files, {{ certifications.length }} certs
         </p>
       </div>
     </div>

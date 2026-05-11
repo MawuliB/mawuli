@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioDataService } from '../services/portfolio-data.service';
-import { Education } from '../models/portfolio.model';
+import { Education, Certification } from '../models/portfolio.model';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-education',
@@ -12,6 +13,7 @@ import { Education } from '../models/portfolio.model';
 })
 export class EducationComponent implements OnInit {
   educationList: Education[] = [];
+  certifications: Certification[] = [];
   isLoading = true;
 
   constructor(private portfolioService: PortfolioDataService) {}
@@ -21,12 +23,14 @@ export class EducationComponent implements OnInit {
   }
 
   loadEducation(): void {
-    setTimeout(() => {
-      this.portfolioService.getAllEducation().subscribe((data: Education[]) => {
-        this.educationList = data;
-        this.isLoading = false;
-      });
-    }, 500);
+    forkJoin({
+      edu: this.portfolioService.getAllEducation(),
+      certs: this.portfolioService.getCertifications(),
+    }).subscribe(({ edu, certs }) => {
+      this.educationList = edu;
+      this.certifications = certs;
+      this.isLoading = false;
+    });
   }
 
   formatDate(date: string): string {
@@ -48,6 +52,12 @@ export class EducationComponent implements OnInit {
       if (edu.honors) total += edu.honors.length;
       if (edu.relevantCourses) total += edu.relevantCourses.length;
     }
+    total += this.certifications.length;
     return total;
+  }
+
+  isExpired(cert: Certification): boolean {
+    if (!cert.expiresDate) return false;
+    return new Date(cert.expiresDate).getTime() < Date.now();
   }
 }

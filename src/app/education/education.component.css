@@ -9,6 +9,105 @@
 }
 
 /* ============================================
+   CERTIFICATIONS GRID
+   ============================================ */
+
+.certifications-section {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px dashed var(--terminal-border);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+.cert-card {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--terminal-border);
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 255, 0, 0.02);
+  text-decoration: none !important;
+  color: inherit;
+  transition: all var(--transition-base);
+}
+
+.cert-card:hover {
+  background-color: rgba(0, 255, 0, 0.08);
+  box-shadow: 0 0 12px var(--terminal-shadow);
+  transform: translateY(-2px);
+}
+
+.cert-badge {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px var(--terminal-glow));
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cert-name {
+  color: var(--terminal-primary-bright);
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  color: var(--terminal-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.cert-dates {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  font-size: var(--font-size-xs);
+  color: var(--terminal-text);
+}
+
+.cert-dates .label {
+  color: var(--terminal-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cert-dates .expires.expired {
+  color: #ff7777;
+}
+
+.cert-verify {
+  font-size: var(--font-size-xs);
+  color: var(--terminal-primary);
+  margin-top: var(--spacing-xs);
+}
+
+.cert-verify .prompt {
+  color: var(--terminal-primary-bright);
+  margin-right: var(--spacing-xs);
+}
+
+@media (max-width: 480px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+  }
+}
+
+/* ============================================
    COMMAND LINE
    ============================================ */
 

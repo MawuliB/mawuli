@@ -8,6 +8,7 @@ import {
   Education,
   Project,
   Contact,
+  Certification,
 } from '../models/portfolio.model';
 import portfolioData from '../../assets/data/portfolio-data.json';
 
@@ -93,6 +94,11 @@ export class PortfolioDataService {
   // Contact
   getContact(): Observable<Contact> {
     return of(this.data.contact);
+  }
+
+  // Certifications
+  getCertifications(): Observable<Certification[]> {
+    return of(this.data.certifications ?? []);
   }
 
   // Utility
