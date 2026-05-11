@@ -1,38 +1,47 @@
-<div class="trial terminal-window">
-  <div class="terminal-header">
-    <div class="terminal-buttons">
-      <span class="btn-close"></span>
-      <span class="btn-minimize"></span>
-      <span class="btn-maximize"></span>
-    </div>
-    <div class="terminal-title">user&#64;court:~/tribunal/case-001</div>
+<div class="trial-stage">
+  <!-- Floating hearts in the background -->
+  <div class="floaters" aria-hidden="true">
+    <span class="float f1">💕</span>
+    <span class="float f2">🌸</span>
+    <span class="float f3">✨</span>
+    <span class="float f4">💖</span>
+    <span class="float f5">🌷</span>
+    <span class="float f6">💗</span>
+    <span class="float f7">✨</span>
+    <span class="float f8">🌹</span>
   </div>
 
-  <div class="terminal-body">
+  <main class="trial">
 
     <!-- ============ SCENE: CALL TO ORDER ============ -->
     <section class="scene" *ngIf="scene === 'call-to-order'">
-      <div class="banner">
-        <div class="banner-line">THE COURT OF MY HEART</div>
-        <div class="banner-sub">case #001 · sitting in Accra</div>
-      </div>
+      <div class="header-emoji">👑 ⚖️ 💌</div>
+      <h1 class="title">Her Honor's Court</h1>
+      <p class="subtitle">a small matter before you</p>
 
-      <div class="block">
-        <p class="hush">All rise.</p>
-        <p>
-          <span class="key">Presiding:</span> Her Honor, My Allowed Disturbance
-        </p>
-        <p>
-          <span class="key">Defendant:</span> Mawuli Badassou
-        </p>
-        <p>
-          <span class="key">Charge:</span> speaking out of pocket
-        </p>
-        <p>
-          <span class="key">Plea:</span> (forthcoming)
-        </p>
+      <div class="card">
+        <p class="hand soft">All rise. 🌷</p>
 
-        <p class="hush">Court is now in session. The defendant will be brought in.</p>
+        <div class="docket">
+          <div class="docket-row">
+            <span class="docket-key">Presiding</span>
+            <span class="docket-val">Her Honor, My Allowed Disturbance</span>
+          </div>
+          <div class="docket-row">
+            <span class="docket-key">Defendant</span>
+            <span class="docket-val">Mawuli Badassou</span>
+          </div>
+          <div class="docket-row">
+            <span class="docket-key">Charge</span>
+            <span class="docket-val">speaking out of pocket</span>
+          </div>
+          <div class="docket-row">
+            <span class="docket-key">Plea</span>
+            <span class="docket-val muted">(forthcoming)</span>
+          </div>
+        </div>
+
+        <p class="muted center">Court is now in session. The defendant will be brought in. 💗</p>
       </div>
 
       <div class="controls">
@@ -42,14 +51,17 @@
 
     <!-- ============ SCENE: CHARGES ============ -->
     <section class="scene" *ngIf="scene === 'charges'">
-      <div class="command-line"><span class="prompt">$</span> cat /case/charges.md</div>
+      <div class="header-emoji">📜</div>
+      <h1 class="title">The Charges</h1>
 
-      <div class="block">
-        <p><span class="hash">#</span> Count 1 — Spoke harsh words.</p>
-        <p><span class="hash">#</span> Count 2 — Implied she is <em>"not smart."</em></p>
-        <p><span class="hash">#</span> Count 3 — Implied she is <em>"not good enough."</em></p>
+      <div class="card">
+        <ul class="charges">
+          <li><span class="count">Count 1</span> — Spoke harsh words.</li>
+          <li><span class="count">Count 2</span> — Implied she is <em>"not smart."</em></li>
+          <li><span class="count">Count 3</span> — Implied she is <em>"not good enough."</em></li>
+        </ul>
 
-        <p class="hush">All counts are admitted. The defense will not contest the facts.</p>
+        <p class="muted center small">All counts are admitted. The defense will not contest the facts.</p>
       </div>
 
       <div class="controls">
@@ -60,19 +72,21 @@
 
     <!-- ============ SCENE: PLEA ============ -->
     <section class="scene" *ngIf="scene === 'plea'">
-      <div class="command-line"><span class="prompt">$</span> defendant.plea()</div>
+      <div class="header-emoji">🙏</div>
+      <h1 class="title">The Plea</h1>
 
-      <div class="block">
-        <p class="quote">
-          Mawuli Badassou stands and addresses the bench:
-        </p>
-        <p class="quote indent">
-          "Your Honor — guilty. On every count. I have no defense to mount.<br /><br />
-          I only ask that the court hear my case before sentencing. Not so I can be excused.
-          So that you know <em>that I know</em> what I did."
-        </p>
+      <div class="card">
+        <p>Mawuli Badassou stands and addresses the bench:</p>
 
-        <p class="hush">Plea recorded: <span class="bad">GUILTY</span>.</p>
+        <blockquote class="letter">
+          "Your Honor — guilty. On every count. I have no defense to mount.
+          <br /><br />
+          I only ask that the court hear my case before sentencing.
+          Not so I can be excused. So that you know <em>that I know</em>
+          what I did."
+        </blockquote>
+
+        <p class="center stamp">plea recorded: <span class="guilty">guilty</span> 🙏</p>
       </div>
 
       <div class="controls">
@@ -83,18 +97,21 @@
 
     <!-- ============ SCENE: STATEMENT OF FACTS ============ -->
     <section class="scene" *ngIf="scene === 'statement'">
-      <div class="command-line"><span class="prompt">$</span> defendant.statement()</div>
+      <div class="header-emoji">💭</div>
+      <h1 class="title">Statement of Facts</h1>
 
-      <div class="block">
+      <div class="card">
         <p>I said things I shouldn't have said.</p>
         <p>I knew them as soon as they left my mouth.</p>
         <p>I said them anyway, and that part is the problem.</p>
         <br />
-        <p>I'm not here to argue I didn't hurt you. I did.</p>
+        <p>I'm not here to argue I didn't hurt you.</p>
+        <p class="strong">I did.</p>
         <br />
         <p>
           I'm here because the things I said about you are demonstrably,
-          factually, on-the-record wrong — and I want this court to hear the evidence.
+          factually, on-the-record wrong — and I want this court to hear
+          the evidence. 💌
         </p>
       </div>
 
@@ -106,17 +123,24 @@
 
     <!-- ============ EXHIBITS ============ -->
     <section class="scene" *ngIf="scene === 'exhibit-a'">
-      <div class="exhibit-tag">EXHIBIT A — on the matter of being "not smart"</div>
-      <div class="block">
-        <p><span class="key">Submitted:</span> the shop she works at.</p>
+      <div class="header-emoji">🔑</div>
+      <h2 class="exhibit-eyebrow">Exhibit A</h2>
+      <h1 class="title small">on the matter of being "not smart"</h1>
+
+      <div class="card">
+        <p class="key-line"><span class="key">Submitted</span> the shop she works at.</p>
         <p>
           Her Madam taught her, and within a short window she was running
           the shop herself. Madams do not hand the keys to people who are
-          <em>"not smart."</em> This court takes judicial notice that the
-          prosecution has, in fact, the brain.
+          <em>"not smart."</em>
         </p>
-        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+        <p>
+          This court takes judicial notice that the prosecution has, in
+          fact, the brain. 🧠✨
+        </p>
+        <p class="ruling">verdict on the charge: <span class="not-true">not true</span> 💕</p>
       </div>
+
       <div class="controls">
         <button class="btn ghost" (click)="go('statement')">← back</button>
         <button class="btn primary" (click)="go('exhibit-b')">next exhibit →</button>
@@ -124,20 +148,24 @@
     </section>
 
     <section class="scene" *ngIf="scene === 'exhibit-b'">
-      <div class="exhibit-tag">EXHIBIT B — on the matter of being "not enough"</div>
-      <div class="block">
-        <p><span class="key">Submitted:</span> birthdays.</p>
+      <div class="header-emoji">🎂</div>
+      <h2 class="exhibit-eyebrow">Exhibit B</h2>
+      <h1 class="title small">on the matter of being "not enough"</h1>
+
+      <div class="card">
+        <p class="key-line"><span class="key">Submitted</span> birthdays.</p>
         <p>
-          She remembers them all. Birthdays, anniversaries, the day my cousin's
-          baby came home. I have a calendar app and still forget. She has a
-          brain and remembers without it.
+          She remembers them all. Birthdays, anniversaries, the day my
+          cousin's baby came home. I have a calendar app and still forget.
+          She has a brain and remembers without it.
         </p>
         <p>
           This is not the memory of someone who is <em>"not enough."</em>
-          This is the memory of someone who notices people. Including me.
+          This is the memory of someone who notices people. Including me. 💗
         </p>
-        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+        <p class="ruling">verdict on the charge: <span class="not-true">not true</span> 💕</p>
       </div>
+
       <div class="controls">
         <button class="btn ghost" (click)="go('exhibit-a')">← back</button>
         <button class="btn primary" (click)="go('exhibit-c')">next exhibit →</button>
@@ -145,18 +173,21 @@
     </section>
 
     <section class="scene" *ngIf="scene === 'exhibit-c'">
-      <div class="exhibit-tag">EXHIBIT C — on the matter of growth</div>
-      <div class="block">
-        <p><span class="key">Submitted:</span> she is teaching herself importation.</p>
+      <div class="header-emoji">📦 ✈️</div>
+      <h2 class="exhibit-eyebrow">Exhibit C</h2>
+      <h1 class="title small">on the matter of growth</h1>
+
+      <div class="card">
+        <p class="key-line"><span class="key">Submitted</span> she is teaching herself importation.</p>
+        <p>Nobody asked her to. She decided. She is doing it.</p>
         <p>
-          Nobody asked her to. She decided. She is doing it.
+          Someone "not smart" does not pick up a new trade. Someone
+          "not enough" does not look at the world and decide to add one
+          more skill to themselves. ✨
         </p>
-        <p>
-          Someone "not smart" does not pick up a new trade. Someone "not enough"
-          does not look at the world and decide to add one more skill to themselves.
-        </p>
-        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+        <p class="ruling">verdict on the charge: <span class="not-true">not true</span> 💕</p>
       </div>
+
       <div class="controls">
         <button class="btn ghost" (click)="go('exhibit-b')">← back</button>
         <button class="btn primary" (click)="go('exhibit-d')">next exhibit →</button>
@@ -164,20 +195,24 @@
     </section>
 
     <section class="scene" *ngIf="scene === 'exhibit-d'">
-      <div class="exhibit-tag">EXHIBIT D — on the matter of taste</div>
-      <div class="block">
-        <p><span class="key">Submitted:</span> how she dresses.</p>
+      <div class="header-emoji">👗 ✨</div>
+      <h2 class="exhibit-eyebrow">Exhibit D</h2>
+      <h1 class="title small">on the matter of taste</h1>
+
+      <div class="card">
+        <p class="key-line"><span class="key">Submitted</span> how she dresses.</p>
         <p>
           Her fashion sense is its own argument. When she walks in somewhere,
           the room recalibrates. The defendant has, on several occasions,
-          just looked.
+          just looked. 👀
         </p>
         <p>
           The court will accept good taste as a sign of intelligence.
-          The court has read books.
+          The court has read books. 📚
         </p>
-        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+        <p class="ruling">verdict on the charge: <span class="not-true">not true</span> 💕</p>
       </div>
+
       <div class="controls">
         <button class="btn ghost" (click)="go('exhibit-c')">← back</button>
         <button class="btn primary" (click)="go('exhibit-e')">next exhibit →</button>
@@ -185,18 +220,23 @@
     </section>
 
     <section class="scene" *ngIf="scene === 'exhibit-e'">
-      <div class="exhibit-tag">EXHIBIT E — on the matter of her hands</div>
-      <div class="block">
-        <p><span class="key">Submitted:</span> she cooked for me once.</p>
+      <div class="header-emoji">🍲</div>
+      <h2 class="exhibit-eyebrow">Exhibit E</h2>
+      <h1 class="title small">on the matter of her hands</h1>
+
+      <div class="card">
+        <p class="key-line"><span class="key">Submitted</span> she cooked for me once.</p>
         <p>
-          Once was enough. I have not enjoyed a restaurant the same way since.
-          The defendant offers this in evidence not to flatter, but to factually
-          establish that she is good at what she puts her hands on.
+          Once was enough. I have not enjoyed a restaurant the same way
+          since. The defendant offers this in evidence not to flatter,
+          but to factually establish that she is good at what she puts
+          her hands on. 🤲
         </p>
-        <p class="side-note">
-          (side note from the defendant: medɔfo, please cook again. for the record.)
+        <p class="side-note hand">
+          (side note from the defendant: medɔfo, please cook again. for the record. 🥺)
         </p>
       </div>
+
       <div class="controls">
         <button class="btn ghost" (click)="go('exhibit-d')">← back</button>
         <button class="btn primary" (click)="go('closing')">closing argument →</button>
@@ -205,12 +245,14 @@
 
     <!-- ============ SCENE: CLOSING ============ -->
     <section class="scene" *ngIf="scene === 'closing'">
-      <div class="command-line"><span class="prompt">$</span> defendant.closing()</div>
+      <div class="header-emoji">💌</div>
+      <h1 class="title">Closing Argument</h1>
 
-      <div class="block">
+      <div class="card letter-card">
         <p>Your Honor —</p>
         <br />
-        <p><em>Wo nkutoo.</em> You alone. The only one.</p>
+        <p class="twi">Wo nkutoo.</p>
+        <p class="twi-translation">you alone. the only one.</p>
         <br />
         <p>
           The things I said were wrong because they were not true.
@@ -219,12 +261,10 @@
         </p>
         <br />
         <p>I only ask one thing:</p>
-        <p class="twi-line">
-          medɔfo, mepa wo kyɛw.<br />
-          <span class="translation">( my love, please forgive me. )</span>
-        </p>
+        <p class="twi big">medɔfo, mepa wo kyɛw.</p>
+        <p class="twi-translation">my love, please forgive me.</p>
         <br />
-        <p>That is the whole defense.</p>
+        <p class="hand center">that is the whole defense. 💗</p>
       </div>
 
       <div class="controls">
@@ -234,118 +274,131 @@
     </section>
 
     <!-- ============ SCENE: VERDICT ============ -->
-    <section class="scene" *ngIf="scene === 'verdict'">
-      <div class="banner small">
-        <div class="banner-line">THE VERDICT</div>
-      </div>
+    <section class="scene verdict-scene" *ngIf="scene === 'verdict'">
+      <div class="header-emoji">⚖️ ✨</div>
+      <h1 class="title">The Verdict</h1>
 
-      <div class="block">
-        <p>The court will now hear the verdict.</p>
-        <p class="prompt-question">Your Honor — how do you find?</p>
+      <div class="card center-card">
+        <p class="big-prompt">Your Honor — how do you find?</p>
       </div>
 
       <div class="controls verdict-controls">
         <button class="btn ghost" (click)="go('closing')">↺ re-read closing</button>
-        <button class="btn warn" (click)="go('verdict-loop-1')">✗ not yet, do better</button>
-        <button class="btn primary big" (click)="go('sentencing')">✓ forgiven</button>
+        <button class="btn warn" (click)="go('verdict-loop-1')">not yet 💔</button>
+        <button class="btn primary big sparkle" (click)="go('sentencing')">forgiven 💕</button>
       </div>
     </section>
 
     <section class="scene" *ngIf="scene === 'verdict-loop-1'">
-      <div class="block">
-        <p class="hush">The court will hear additional argument.</p>
-        <p class="quote indent">
-          The defendant kneels.<br /><br />
+      <div class="header-emoji">🥺</div>
+      <h1 class="title small">the court will hear more</h1>
+
+      <div class="card">
+        <p class="hand center small">the defendant kneels.</p>
+        <blockquote class="letter">
           "I hear you. I'm not asking to skip ahead. Take all the time you need.
-          I'll be here when you're ready. medɔfo, take the time."
-        </p>
+          I'll be here when you're ready. <em>medɔfo</em>, take the time."
+        </blockquote>
       </div>
+
       <div class="controls verdict-controls">
-        <button class="btn warn" (click)="go('verdict-loop-2')">↺ I still need more time</button>
-        <button class="btn primary big" (click)="go('sentencing')">✓ okay, forgiven</button>
+        <button class="btn warn" (click)="go('verdict-loop-2')">↺ I need more time</button>
+        <button class="btn primary big sparkle" (click)="go('sentencing')">okay, forgiven 💕</button>
       </div>
     </section>
 
     <section class="scene" *ngIf="scene === 'verdict-loop-2'">
-      <div class="block">
-        <p class="quote indent">
-          "Stay angry as long as you need to stay angry. I'm not going anywhere.<br /><br />
+      <div class="header-emoji">💗</div>
+      <h1 class="title small">no rush. just this.</h1>
+
+      <div class="card">
+        <blockquote class="letter">
+          "Stay angry as long as you need to stay angry. I'm not going anywhere.
+          <br /><br />
           When you come back, I'll be here. With food. And you'll do the cooking —
-          court order."
-        </p>
-        <p class="hush">no more buttons. no rush. just this:</p>
-        <p class="twi-line center">
-          medɔfo — meda wo ase.<br />
-          <span class="translation">( my love — I thank you. )</span>
-        </p>
+          court order." 🍲
+        </blockquote>
+        <p class="twi center">medɔfo — meda wo ase.</p>
+        <p class="twi-translation center">my love — I thank you.</p>
       </div>
+
       <div class="controls verdict-controls">
-        <button class="btn primary big" (click)="go('sentencing')">✓ alright. forgiven.</button>
+        <button class="btn primary big sparkle" (click)="go('sentencing')">alright. forgiven. 💕</button>
       </div>
     </section>
 
     <!-- ============ SCENE: SENTENCING ============ -->
     <section class="scene" *ngIf="scene === 'sentencing'">
-      <div class="command-line"><span class="prompt">$</span> court.sentence_phase()</div>
+      <div class="header-emoji">📋 💕</div>
+      <h1 class="title">Sentencing</h1>
 
-      <div class="block">
-        <p>The defendant is <span class="good">forgiven</span>.</p>
-        <p>The court will now pass sentence.</p>
-        <p class="hush">
+      <div class="card">
+        <p class="center">
+          The defendant is <span class="forgiven">forgiven</span>. 💖
+        </p>
+        <p class="muted center small">
           Pick one — or pick all. The defendant will serve them concurrently.
         </p>
 
         <div class="picks">
-          <label class="pick">
+          <label class="pick" [class.checked]="sentence.cook">
             <input type="checkbox" [(ngModel)]="sentence.cook" name="cook" />
+            <span class="pick-emoji">🍲</span>
             <span class="pick-label">Cook with me — and you're teaching this time.</span>
           </label>
-          <label class="pick">
+          <label class="pick" [class.checked]="sentence.takeOut">
             <input type="checkbox" [(ngModel)]="sentence.takeOut" name="takeOut" />
+            <span class="pick-emoji">🍽️</span>
             <span class="pick-label">Pick anywhere. I'm taking you.</span>
           </label>
-          <label class="pick">
+          <label class="pick" [class.checked]="sentence.buyTheThing">
             <input type="checkbox" [(ngModel)]="sentence.buyTheThing" name="buyTheThing" />
+            <span class="pick-emoji">🛍️</span>
             <span class="pick-label">Buy me the thing I've been eyeing.</span>
           </label>
-          <label class="pick">
+          <label class="pick" [class.checked]="sentence.justHold">
             <input type="checkbox" [(ngModel)]="sentence.justHold" name="justHold" />
+            <span class="pick-emoji">🤗</span>
             <span class="pick-label">Just hold me. I'll think about the rest.</span>
           </label>
         </div>
       </div>
 
       <div class="controls">
-        <button class="btn primary" [disabled]="!hasPickedSentence()" (click)="go('adjourned')">
+        <button class="btn primary big" [disabled]="!hasPickedSentence()" (click)="go('adjourned')">
           pass sentence →
         </button>
       </div>
     </section>
 
     <!-- ============ SCENE: ADJOURNED ============ -->
-    <section class="scene" *ngIf="scene === 'adjourned'">
-      <div class="command-line"><span class="prompt">$</span> court.adjourned()</div>
+    <section class="scene final-scene" *ngIf="scene === 'adjourned'">
+      <div class="header-emoji big">💖</div>
+      <h1 class="title">Court Adjourned</h1>
 
-      <div class="block">
-        <p>Sentence recorded. Awaiting execution.</p>
+      <div class="card final-card">
+        <p class="center">Sentence recorded. Awaiting execution. 💌</p>
         <br />
-        <p>
-          The defendant is grateful for the court's patience — and for the privilege
-          of being the only disturbance you allow in your life.
+        <p class="center">
+          The defendant is grateful for the court's patience — and for the
+          privilege of being the only disturbance you allow in your life.
         </p>
-        <p class="twi-line center">
-          medɔfo — meda wo ase.<br />
-          <span class="translation">( my love — I thank you. )</span>
-        </p>
+
+        <div class="finale-twi">
+          <p class="twi big">medɔfo — meda wo ase.</p>
+          <p class="twi-translation">my love — I thank you.</p>
+        </div>
+
+        <div class="signature hand">— yours, mawuli 🤍</div>
       </div>
 
       <div class="controls verdict-controls">
-        <a class="btn primary big" [href]="whatsappUrl()" target="_blank" rel="noopener">
-          tell him on WhatsApp →
+        <a class="btn primary big sparkle" [href]="whatsappUrl()" target="_blank" rel="noopener">
+          tell him on WhatsApp 💬
         </a>
         <button class="btn ghost" (click)="go('call-to-order')">↺ start over</button>
       </div>
     </section>
 
-  </div>
+  </main>
 </div>
