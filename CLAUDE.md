@@ -4,6 +4,7 @@ This is **Mawuli Badassou's personal portfolio** (Angular 17, terminal-themed, d
 
 ## Trigger phrases
 
+### Updating portfolio content
 When the user says any of:
 
 - `update`
@@ -13,6 +14,19 @@ When the user says any of:
 - `add my new cert(s)`
 
 …follow the runbook in **[UPDATE.md](UPDATE.md)**. Don't try to remember the steps — read the file each time so you stay in sync with whatever conventions are there now.
+
+### Scaffolding a playground experiment
+When the user says any of:
+
+- `scaffold something in the playground`
+- `add a playground experiment`
+- `make me a quick playground for X`
+- `build a playground page for X`
+- `new playground page`
+- `quick page to send to <someone>`
+- anything that implies a one-off interactive page outside the portfolio narrative
+
+…follow the runbook in **[PLAYGROUND.md](PLAYGROUND.md)**. **Critical rule**: every playground experiment uses its own theme — never the portfolio's terminal/green-phosphor look. The runbook covers chromeless routing, body-class management for stripping global CRT effects, font injection, and the questions to ask before writing any code.
 
 ### Posture for updates
 

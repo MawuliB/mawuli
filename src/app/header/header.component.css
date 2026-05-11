@@ -129,7 +129,9 @@
   border: none;
   padding: var(--spacing-sm);
   cursor: pointer;
-  z-index: 101;
+  /* relative + z-index so the X reliably floats above the slide-out nav */
+  position: relative;
+  z-index: 102;
 }
 
 .hamburger span {
@@ -392,10 +394,13 @@ nav ul li a.active .nav-label {
     width: 280px;
     background-color: var(--terminal-bg);
     border-left: var(--border-width) solid var(--terminal-border);
-    padding: var(--spacing-2xl) var(--spacing-lg);
+    /* top padding (5.5rem) clears the sticky header so the first nav item
+       isn't covered by the hamburger/X. Sides + bottom use the normal rhythm. */
+    padding: 5.5rem var(--spacing-lg) var(--spacing-xl);
     transition: right var(--transition-base);
     z-index: 100;
     box-shadow: -5px 0 20px var(--terminal-shadow);
+    overflow-y: auto;
   }
 
   nav.open {
