@@ -102,7 +102,7 @@ export class TheTrialComponent implements OnInit, OnDestroy {
     if (this.sentence.buyTheThing) picks.push('buy the thing she has been eyeing');
     if (this.sentence.justHold) picks.push('hold her, think about the rest later');
     const sentenceLine = picks.length ? `sentence: ${picks.join(' + ')}` : 'sentence: pending';
-    const msg = `verdict: forgiven 💕\n${sentenceLine}\n— from your one allowed disturbance`;
+    const msg = `verdict: forgiven 💕\n${sentenceLine}\n— from Akua, your one allowed disturbance`;
     return `https://wa.me/233263633751?text=${encodeURIComponent(msg)}`;
   }
 
