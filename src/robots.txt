@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /playground
+
+Sitemap: https://mawuli-vert.vercel.app/sitemap.xml

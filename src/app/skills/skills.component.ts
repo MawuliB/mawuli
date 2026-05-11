@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PortfolioDataService } from '../services/portfolio-data.service';
 import { Skill } from '../models/portfolio.model';
 import { Subscription } from 'rxjs';
+import { getSkillIconUrl } from '../services/skill-icons';
 
 @Component({
   selector: 'app-skills',
@@ -67,5 +68,9 @@ export class SkillsComponent implements OnInit, OnDestroy {
       other: '📦',
     };
     return icons[category] || '📁';
+  }
+
+  iconUrl(skill: Skill): string | null {
+    return getSkillIconUrl(skill.name);
   }
 }

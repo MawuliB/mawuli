@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioDataService } from '../services/portfolio-data.service';
 import { Project } from '../models/portfolio.model';
@@ -24,44 +24,29 @@ export class ProjectsComponent implements OnInit {
   }
 
   loadProjects(): void {
-    setTimeout(() => {
-      this.portfolioService.getAllProjects().subscribe((data: Project[]) => {
-        this.projects = data;
-        this.filteredProjects = data;
-        this.isLoading = false;
-      });
-    }, 500);
+    this.portfolioService.getAllProjects().subscribe((data: Project[]) => {
+      this.projects = data;
+      this.filteredProjects = data;
+      this.isLoading = false;
+    });
   }
 
   filterProjects(
     filter: 'all' | 'featured' | 'completed' | 'in-progress'
   ): void {
     this.selectedFilter = filter;
-
     switch (filter) {
       case 'all':
         this.filteredProjects = this.projects;
         break;
       case 'featured':
-        this.portfolioService
-          .getFeaturedProjects()
-          .subscribe((data: Project[]) => {
-            this.filteredProjects = data;
-          });
+        this.filteredProjects = this.projects.filter((p) => p.featured);
         break;
       case 'completed':
-        this.portfolioService
-          .getProjectsByStatus('completed')
-          .subscribe((data: Project[]) => {
-            this.filteredProjects = data;
-          });
+        this.filteredProjects = this.projects.filter((p) => p.status === 'completed');
         break;
       case 'in-progress':
-        this.portfolioService
-          .getProjectsByStatus('in-progress')
-          .subscribe((data: Project[]) => {
-            this.filteredProjects = data;
-          });
+        this.filteredProjects = this.projects.filter((p) => p.status === 'in-progress');
         break;
     }
   }
@@ -72,6 +57,11 @@ export class ProjectsComponent implements OnInit {
 
   closeProjectDetails(): void {
     this.selectedProject = null;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.selectedProject) this.closeProjectDetails();
   }
 
   formatDate(date: string): string {

@@ -11,6 +11,13 @@ interface FormField {
   errorMessage: string;
 }
 
+// To enable real form submissions, create a free Formspree form at
+// https://formspree.io and replace the `your-form-id` below with the one
+// they give you (looks like https://formspree.io/f/abcd1234).
+// If left as 'your-form-id', the form falls back to opening the user's
+// email client via a mailto: link.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkoykvpg';
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -54,16 +61,14 @@ export class ContactComponent implements OnInit {
   }
 
   loadContactInfo(): void {
-    setTimeout(() => {
-      this.portfolioService.getContact().subscribe((data: Contact) => {
-        this.contactInfo = data;
-        this.isLoading = false;
-        this.addCommandToHistory('$ contact --help');
-        this.addCommandToHistory(
-          'Contact form initialized. Type your responses and press Enter.'
-        );
-      });
-    }, 500);
+    this.portfolioService.getContact().subscribe((data: Contact) => {
+      this.contactInfo = data;
+      this.isLoading = false;
+      this.addCommandToHistory('$ contact --help');
+      this.addCommandToHistory(
+        'Contact form initialized. Type your responses and press Enter.'
+      );
+    });
   }
 
   addCommandToHistory(command: string): void {
@@ -158,29 +163,69 @@ export class ContactComponent implements OnInit {
   }
 
   submitForm(): void {
-    // Validate all fields
     const allValid =
       this.validateField('name') &&
       this.validateField('email') &&
       this.validateField('subject') &&
       this.validateField('message');
 
-    if (allValid) {
-      this.isSubmitting = true;
-      this.addCommandToHistory('$ submit --confirm');
-      this.addCommandToHistory('Sending message...');
+    if (!allValid) return;
 
-      // Simulate form submission
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.isSubmitted = true;
-        this.currentField = 'complete';
-        this.addCommandToHistory('✓ Message sent successfully!');
-        this.addCommandToHistory(
-          `Thank you, ${this.formData.name.value}! I'll get back to you soon.`
-        );
-      }, 2000);
+    this.isSubmitting = true;
+    this.addCommandToHistory('$ submit --confirm');
+    this.addCommandToHistory('Sending message...');
+
+    // If Formspree isn't configured yet, fall back to a mailto link.
+    if (FORMSPREE_ENDPOINT.endsWith('your-form-id')) {
+      this.addCommandToHistory(
+        'ℹ Formspree endpoint not configured; opening email client instead.'
+      );
+      window.location.href = this.buildMailtoFallback();
+      this.completeSubmission();
+      return;
     }
+
+    const payload = {
+      name: this.formData.name.value,
+      email: this.formData.email.value,
+      subject: this.formData.subject.value,
+      message: this.formData.message.value,
+      _replyto: this.formData.email.value,
+    };
+
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Formspree responded with ${res.status}`);
+        this.completeSubmission();
+      })
+      .catch((err) => {
+        this.isSubmitting = false;
+        this.addCommandToHistory(`✗ Send failed: ${err.message}`);
+        this.addCommandToHistory('Tip: use the mailto fallback link below.');
+      });
+  }
+
+  private completeSubmission(): void {
+    this.isSubmitting = false;
+    this.isSubmitted = true;
+    this.currentField = 'complete';
+    this.addCommandToHistory('✓ Message sent successfully!');
+    this.addCommandToHistory(
+      `Thank you, ${this.formData.name.value}! I'll get back to you soon.`
+    );
+  }
+
+  buildMailtoFallback(): string {
+    const to = this.contactInfo?.email || 'mawulibadassou5@gmail.com';
+    const subject = encodeURIComponent(this.formData.subject.value || 'Hello from your portfolio');
+    const body = encodeURIComponent(
+      `From: ${this.formData.name.value} <${this.formData.email.value}>\n\n${this.formData.message.value}`
+    );
+    return `mailto:${to}?subject=${subject}&body=${body}`;
   }
 
   resetForm(): void {

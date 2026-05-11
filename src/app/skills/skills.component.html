@@ -60,7 +60,12 @@
             [attr.data-level]="skill.level"
           >
             <div class="skill-header">
-              <span class="skill-icon">{{ skill.icon }}</span>
+              <ng-container *ngIf="iconUrl(skill) as url; else emojiIcon">
+                <img class="skill-icon-img" [src]="url" [alt]="skill.name + ' logo'" loading="lazy" width="24" height="24" />
+              </ng-container>
+              <ng-template #emojiIcon>
+                <span class="skill-icon">{{ skill.icon }}</span>
+              </ng-template>
               <span class="skill-name">{{ skill.name }}</span>
             </div>
 

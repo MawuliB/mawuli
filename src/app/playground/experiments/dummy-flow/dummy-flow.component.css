@@ -1,0 +1,133 @@
+.flow-container {
+  max-width: 700px;
+  margin: var(--spacing-xl) auto;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.btn-close,
+.btn-minimize,
+.btn-maximize {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-close { background-color: #ff5f56; }
+.btn-minimize { background-color: #ffbd2e; }
+.btn-maximize { background-color: #27c93f; }
+
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  color: var(--terminal-text);
+  text-decoration: none;
+}
+
+.back-link:hover { color: var(--terminal-primary-bright); }
+
+.stepper {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--terminal-text-muted);
+  border-radius: var(--border-radius);
+  color: var(--terminal-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.step.active {
+  color: var(--terminal-primary-bright);
+  border-color: var(--terminal-primary-bright);
+  box-shadow: 0 0 8px var(--terminal-shadow);
+}
+
+.step.done {
+  color: var(--terminal-primary);
+  border-color: var(--terminal-primary);
+}
+
+.step-id {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+}
+
+.step-body {
+  margin-bottom: var(--spacing-lg);
+}
+
+.step-body h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+label.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+label.checkbox input {
+  width: auto;
+}
+
+.review {
+  list-style: none;
+  padding-left: 0;
+}
+
+.review li {
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px dashed var(--terminal-border);
+}
+
+.review .key {
+  color: var(--terminal-text-muted);
+  margin-right: var(--spacing-sm);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.btn.ghost {
+  background-color: transparent;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .controls {
+    flex-direction: column-reverse;
+  }
+  .controls .btn { width: 100%; }
+}

@@ -8,6 +8,15 @@
     </div>
     <div class="terminal-title">mawuli&#64;portfolio:~$</div>
     <button
+      class="theme-btn"
+      (click)="cycleTheme()"
+      [title]="'Theme: ' + theme + ' — click to cycle'"
+      [attr.aria-label]="'Cycle theme (current: ' + theme + ')'"
+    >
+      <span class="theme-icon">●</span>
+      <span class="theme-label">{{ theme }}</span>
+    </button>
+    <button
       class="shortcuts-btn"
       (click)="toggleShortcuts()"
       title="Show keyboard shortcuts (?)"

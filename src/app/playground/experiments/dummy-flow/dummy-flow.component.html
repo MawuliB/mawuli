@@ -1,0 +1,82 @@
+<div class="flow-container terminal-window">
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;portfolio:~/playground/dummy-flow</div>
+  </div>
+
+  <div class="terminal-body">
+    <a class="back-link" routerLink="/playground">
+      <span class="prompt">$</span> cd ..
+    </a>
+
+    <div class="stepper">
+      <div
+        *ngFor="let s of steps"
+        class="step"
+        [class.active]="s.id === currentStep"
+        [class.done]="s.id < currentStep"
+      >
+        <span class="step-id">{{ s.id }}</span>
+        <span class="step-label">{{ s.label }}</span>
+      </div>
+    </div>
+
+    <div class="step-body" *ngIf="currentStep === 1">
+      <h3>Details</h3>
+      <label>Name
+        <input type="text" [(ngModel)]="form.name" name="name" placeholder="Jane Doe" />
+      </label>
+      <label>Email
+        <input type="email" [(ngModel)]="form.email" name="email" placeholder="jane@example.com" />
+      </label>
+      <label>Role
+        <input type="text" [(ngModel)]="form.role" name="role" placeholder="Engineer / PM / Other" />
+      </label>
+    </div>
+
+    <div class="step-body" *ngIf="currentStep === 2">
+      <h3>Preferences</h3>
+      <label>Plan
+        <select [(ngModel)]="form.plan" name="plan">
+          <option value="free">Free</option>
+          <option value="pro">Pro</option>
+          <option value="team">Team</option>
+        </select>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" [(ngModel)]="form.notify" name="notify" />
+        Email me product updates
+      </label>
+    </div>
+
+    <div class="step-body" *ngIf="currentStep === 3">
+      <h3>Review</h3>
+      <ul class="review">
+        <li><span class="key">name:</span> {{ form.name || '—' }}</li>
+        <li><span class="key">email:</span> {{ form.email || '—' }}</li>
+        <li><span class="key">role:</span> {{ form.role || '—' }}</li>
+        <li><span class="key">plan:</span> {{ form.plan }}</li>
+        <li><span class="key">notify:</span> {{ form.notify ? 'yes' : 'no' }}</li>
+      </ul>
+    </div>
+
+    <div class="step-body" *ngIf="currentStep === 4">
+      <h3>Done ✓</h3>
+      <p>This is a dummy flow — nothing was submitted. Wire it up to wherever you want.</p>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="btn ghost" (click)="back()" [disabled]="currentStep === 1">
+        ← back
+      </button>
+      <button type="button" class="btn ghost" (click)="reset()">reset</button>
+      <button type="button" class="btn" (click)="next()" [disabled]="currentStep === steps.length">
+        next →
+      </button>
+    </div>
+  </div>
+</div>

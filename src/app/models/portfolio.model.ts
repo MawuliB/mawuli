@@ -61,6 +61,7 @@ export interface Project {
   status: 'completed' | 'in-progress' | 'planned';
   featured?: boolean;
   highlights?: string[];
+  organization?: string;
 }
 
 export interface Social {

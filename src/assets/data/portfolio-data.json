@@ -2,7 +2,7 @@
   "profile": {
     "name": "Mawuli Badassou",
     "title": "DevOps Engineer | AWS Certified Solutions Architect",
-    "bio": "Highly skilled and proactive DevOps Engineer with 2 years of experience and a strong background in backend development. Proficient in Infrastructure as Code (IaC) using Terraform and CloudFormation, with a proven track record of automating infrastructure provisioning and management on AWS. Expertise includes CI/CD pipeline implementation, configuration management, and monitoring & observability. AWS Certified Solutions Architect – Associate.",
+    "bio": "DevOps Engineer with 2+ years of experience designing and automating cloud infrastructure on AWS, with a background in backend development that enables direct collaboration across engineering teams. Proficient in Infrastructure as Code (Terraform, CloudFormation), CI/CD pipelines, and production observability. AWS Certified Solutions Architect – Associate.",
     "avatar": "assets/mine.png",
     "tagline": "Automate. Deploy. Optimize.",
     "location": "Accra, Ghana",
@@ -10,146 +10,29 @@
     "phone": "+233 244 065 972"
   },
   "skills": [
-    {
-      "name": "AWS",
-      "category": "devops",
-      "level": 85,
-      "yearsOfExperience": 2,
-      "icon": "☁️"
-    },
-    {
-      "name": "Terraform",
-      "category": "devops",
-      "level": 85,
-      "yearsOfExperience": 1,
-      "icon": "🏗️"
-    },
-    {
-      "name": "CloudFormation",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 1,
-      "icon": "📋"
-    },
-    {
-      "name": "GitHub Actions",
-      "category": "devops",
-      "level": 85,
-      "yearsOfExperience": 1,
-      "icon": "⚙️"
-    },
-    {
-      "name": "Jenkins",
-      "category": "devops",
-      "level": 75,
-      "yearsOfExperience": 1,
-      "icon": "🔧"
-    },
-    {
-      "name": "Ansible",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 1,
-      "icon": "🔴"
-    },
-    {
-      "name": "Prometheus",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 1,
-      "icon": "📊"
-    },
-    {
-      "name": "Grafana",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 1,
-      "icon": "📈"
-    },
-    {
-      "name": "Docker",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 2,
-      "icon": "🐳"
-    },
-    {
-      "name": "Git",
-      "category": "devops",
-      "level": 90,
-      "yearsOfExperience": 4,
-      "icon": "📦"
-    },
-    {
-      "name": "Linux",
-      "category": "devops",
-      "level": 85,
-      "yearsOfExperience": 3,
-      "icon": "🐧"
-    },
-    {
-      "name": "Bash Scripting",
-      "category": "devops",
-      "level": 80,
-      "yearsOfExperience": 2,
-      "icon": "💻"
-    },
-    {
-      "name": "Python",
-      "category": "backend",
-      "level": 80,
-      "yearsOfExperience": 2,
-      "icon": "🐍"
-    },
-    {
-      "name": "FastAPI",
-      "category": "backend",
-      "level": 75,
-      "yearsOfExperience": 1,
-      "icon": "⚡"
-    },
-    {
-      "name": "Java Spring Boot",
-      "category": "backend",
-      "level": 70,
-      "yearsOfExperience": 1,
-      "icon": "🍃"
-    },
-    {
-      "name": "PostgreSQL",
-      "category": "database",
-      "level": 80,
-      "yearsOfExperience": 2,
-      "icon": "🐘"
-    },
-    {
-      "name": "DynamoDB",
-      "category": "database",
-      "level": 70,
-      "yearsOfExperience": 1,
-      "icon": "⚡"
-    },
-    {
-      "name": "SQL",
-      "category": "database",
-      "level": 85,
-      "yearsOfExperience": 3,
-      "icon": "🗄️"
-    },
-    {
-      "name": "Angular",
-      "category": "frontend",
-      "level": 65,
-      "yearsOfExperience": 1,
-      "icon": "🅰️"
-    },
-    {
-      "name": "TypeScript",
-      "category": "frontend",
-      "level": 70,
-      "yearsOfExperience": 1,
-      "icon": "📘"
-    }
+    { "name": "AWS", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "☁️" },
+    { "name": "Terraform", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "🏗️" },
+    { "name": "CloudFormation", "category": "devops", "level": 80, "yearsOfExperience": 1, "icon": "📋" },
+    { "name": "GitHub Actions", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "⚙️" },
+    { "name": "GitLab CI/CD", "category": "devops", "level": 75, "yearsOfExperience": 1, "icon": "🦊" },
+    { "name": "Jenkins", "category": "devops", "level": 70, "yearsOfExperience": 1, "icon": "🔧" },
+    { "name": "Ansible", "category": "devops", "level": 80, "yearsOfExperience": 1, "icon": "📕" },
+    { "name": "Prometheus", "category": "devops", "level": 80, "yearsOfExperience": 1, "icon": "📊" },
+    { "name": "Grafana", "category": "devops", "level": 80, "yearsOfExperience": 1, "icon": "📈" },
+    { "name": "Jaeger", "category": "devops", "level": 70, "yearsOfExperience": 1, "icon": "🔍" },
+    { "name": "Docker", "category": "devops", "level": 80, "yearsOfExperience": 2, "icon": "🐳" },
+    { "name": "Kafka", "category": "devops", "level": 65, "yearsOfExperience": 1, "icon": "📨" },
+    { "name": "Git", "category": "devops", "level": 90, "yearsOfExperience": 4, "icon": "📦" },
+    { "name": "Linux", "category": "devops", "level": 85, "yearsOfExperience": 3, "icon": "🐧" },
+    { "name": "Bash Scripting", "category": "devops", "level": 80, "yearsOfExperience": 2, "icon": "💻" },
+    { "name": "Python", "category": "backend", "level": 80, "yearsOfExperience": 2, "icon": "🐍" },
+    { "name": "FastAPI", "category": "backend", "level": 75, "yearsOfExperience": 1, "icon": "⚡" },
+    { "name": "Java Spring Boot", "category": "backend", "level": 70, "yearsOfExperience": 1, "icon": "🍃" },
+    { "name": "PostgreSQL", "category": "database", "level": 80, "yearsOfExperience": 2, "icon": "🐘" },
+    { "name": "DynamoDB", "category": "database", "level": 75, "yearsOfExperience": 1, "icon": "🗃️" },
+    { "name": "SQL", "category": "database", "level": 85, "yearsOfExperience": 3, "icon": "🗄️" },
+    { "name": "Angular", "category": "frontend", "level": 65, "yearsOfExperience": 1, "icon": "🅰️" },
+    { "name": "TypeScript", "category": "frontend", "level": 70, "yearsOfExperience": 1, "icon": "📘" }
   ],
   "experience": [
     {
@@ -159,20 +42,26 @@
       "location": "Accra, Ghana",
       "startDate": "2025-01",
       "endDate": "Present",
-      "description": "Engineering and implementing scalable AWS infrastructure with IaC, CI/CD pipelines, and monitoring solutions.",
+      "description": "Designing and automating multi-environment AWS infrastructure, CI/CD pipelines, and production observability.",
       "responsibilities": [
-        "Engineered and implemented scalable, multi-environment AWS infrastructure using Terraform, importing over a dozen manually created resources into IaC",
-        "Automated post-provisioning configurations and environment variable management with Ansible, reducing manual effort and errors",
-        "Introduced and configured Prometheus and Grafana for production monitoring, enabling proactive resolution of a critical memory leak",
-        "Designed and deployed CI/CD pipelines with GitHub Actions and CloudFormation templates for AWS-based backup solution",
-        "Contributed to high-stakes sprint building secure full-stack e-commerce infrastructure on AWS with focus on CI/CD pipelines and database security",
-        "Improved cost efficiency by extending automation scripts to schedule development/staging environment shutdowns"
+        "Restructured and fully imported a multi-environment (dev/staging/prod) AWS infrastructure into Terraform; built a reusable modules library to standardize and accelerate infrastructure provisioning across all cloud accounts",
+        "Set up Prometheus and Grafana for production monitoring; diagnosed a critical outage by tracing a memory leak through metrics and logs, coordinated the fix with the backend team, and added service-level CPU/memory limits and alerting to prevent recurrence",
+        "Built custom Grafana dashboards tracking API Gateway metrics — request rate, response time, response size, and rate-limit violations — with threshold-based alerting to surface performance issues early",
+        "Deployed Jaeger for distributed tracing, providing end-to-end visibility into request flows across services and making latency bottlenecks and failure points traceable",
+        "Designed and validated a disaster recovery strategy: configured deletion protection, DynamoDB backups, and AWS Backup; ran a full DR simulation achieving RTO of 16 min (target: 20 min) with RPO of 24 hours",
+        "Cleared a storage crisis on production instances — from 90–93% down to 53–55% — by purging stale deployment artifacts and tightening revision retention, preventing future deployment failures",
+        "Introduced Ansible for post-provisioning configuration, automating Nginx/SSL setup, package installs, and environment variable management across environments and eliminating manual SSH access",
+        "Integrated database migration execution into the CI/CD build phase, ensuring schema changes are applied before application startup and preventing environment drift",
+        "Migrated the production email system to AWS SES and refactored the sending layer with connection pooling and parallel processing, improving throughput and removing reliability bottlenecks",
+        "Automated dev/staging environment shutdowns outside business hours, cutting compute costs by ~45–50%"
       ],
-      "technologies": ["AWS", "Terraform", "CloudFormation", "Ansible", "GitHub Actions", "Prometheus", "Grafana", "Docker", "Python", "Bash"],
+      "technologies": ["AWS", "Terraform", "CloudFormation", "Ansible", "GitHub Actions", "GitLab CI/CD", "Prometheus", "Grafana", "Jaeger", "Docker", "Kafka", "Python", "Bash", "DynamoDB", "PostgreSQL"],
       "achievements": [
-        "Successfully migrated 12+ manually created AWS resources to Infrastructure as Code",
-        "Enabled proactive monitoring that identified and resolved critical memory leak",
-        "Reduced compute costs through automated environment scheduling"
+        "Achieved RTO of 16 min (vs. 20 min target) in full DR simulation with 24h RPO",
+        "Migrated 12+ manually created AWS resources into reusable Terraform modules across dev/staging/prod",
+        "Cut compute costs by ~45–50% through scheduled non-production shutdowns",
+        "Cleared production storage from 90–93% to 53–55% utilization, preventing deployment failures",
+        "Diagnosed and resolved a critical production memory leak through Prometheus/Grafana observability"
       ]
     },
     {
@@ -182,17 +71,17 @@
       "location": "Accra, Ghana",
       "startDate": "2024-10",
       "endDate": "2024-12",
-      "description": "Developed backend services and full-stack applications using Python, Java Spring Boot, and Angular.",
+      "description": "Built backend services and contributed to full-stack delivery before transitioning into DevOps.",
       "responsibilities": [
-        "Developed backend services using Python and FastAPI, supporting application logic and troubleshooting",
-        "Collaborated on full-stack project with Java Spring Boot and Angular",
-        "Deployed applications on AWS EC2 and Vercel, gaining cloud deployment experience",
-        "Integrated external services including Google Maps API, Paystack, Amazon S3, and Holiday API"
+        "Built backend services with Python and FastAPI; supported application logic and production troubleshooting",
+        "Contributed to a full-stack Java Spring Boot and Angular project deployed on AWS",
+        "Integrated external services including Google Maps API, Paystack, Amazon S3, and Holiday API",
+        "Collaborated in an Agile/Scrum team across backend, frontend, and DevOps responsibilities"
       ],
       "technologies": ["Python", "FastAPI", "Java", "Spring Boot", "Angular", "AWS EC2", "Vercel", "PostgreSQL"],
       "achievements": [
         "Delivered full-stack project with multiple third-party integrations",
-        "Improved collaboration skills through Agile methodology (Scrum)"
+        "Gained hands-on experience across the stack before moving into DevOps"
       ]
     },
     {
@@ -202,19 +91,18 @@
       "location": "Accra, Ghana",
       "startDate": "2023-10",
       "endDate": "2024-09",
-      "description": "Completed AWS re/Start program and developed personal and group projects while earning AWS certifications.",
+      "description": "Completed AWS re/Start and earned the AWS Cloud Practitioner certification while building personal and group projects.",
       "responsibilities": [
-        "Enrolled in and completed AWS re/Start program",
-        "Earned AWS Cloud Practitioner certification",
-        "Developed personal project using Java Spring Boot, Angular, GraphQL, and WebSockets",
-        "Deployed personal project using IaaS (AWS EC2) and PaaS (Vercel)",
-        "Collaborated on group project utilizing Agile methodology (Scrum)"
+        "Enrolled in and completed the AWS re/Start program",
+        "Earned the AWS Certified Cloud Practitioner certification",
+        "Developed a personal project using Java Spring Boot, Angular, GraphQL, and WebSockets, deployed to AWS EC2 and Vercel",
+        "Collaborated on a group project using Agile (Scrum)"
       ],
       "technologies": ["AWS", "Java", "Spring Boot", "Angular", "GraphQL", "WebSockets", "AWS EC2", "Vercel"],
       "achievements": [
-        "AWS Cloud Practitioner certification earned",
-        "Successfully deployed full-stack application to AWS and Vercel",
-        "Completed AWS re/Start graduate program"
+        "AWS Certified Cloud Practitioner earned",
+        "AWS re/Start graduate",
+        "Shipped full-stack personal project end-to-end"
       ]
     }
   ],
@@ -242,7 +130,7 @@
         "Cloud Computing"
       ],
       "achievements": [
-        "Completed degree with focus on Computer Science fundamentals",
+        "BSc Computer Science, University of Ghana (2019–2023)",
         "AWS Certified Solutions Architect – Associate",
         "AWS Certified Cloud Practitioner"
       ],
@@ -257,120 +145,149 @@
   "projects": [
     {
       "id": 1,
-      "title": "E-Commerce Platform",
-      "description": "Full-featured online shopping platform with payment integration",
-      "longDescription": "Built a comprehensive e-commerce solution with user authentication, product catalog, shopping cart, order management, and payment processing. Implemented admin dashboard for inventory management.",
-      "technologies": ["Angular", "Spring Boot", "PostgreSQL", "Stripe API", "AWS S3"],
-      "imageUrl": "assets/project1.jpg",
-      "githubUrl": "https://github.com/yourusername/ecommerce-platform",
-      "liveUrl": "https://demo-ecommerce.example.com",
-      "startDate": "2023-06",
-      "endDate": "2023-12",
+      "title": "AWS Disaster Recovery Strategy",
+      "organization": "AmaliTech",
+      "description": "Designed and validated a multi-region AWS disaster-recovery posture; ran a full DR simulation hitting RTO 16 min (target 20) with RPO 24h.",
+      "longDescription": "Designed AmaliTech's production disaster-recovery strategy on AWS. Configured deletion protection on critical resources, DynamoDB point-in-time recovery, and AWS Backup plans. Ran an end-to-end DR simulation against the target RTO/RPO and validated recovery procedures with the engineering team, then folded the learnings back into runbooks.",
+      "technologies": ["AWS", "AWS Backup", "DynamoDB", "Terraform", "CloudFormation", "Bash"],
+      "startDate": "2025-04",
+      "endDate": "2025-06",
       "status": "completed",
       "featured": true,
       "highlights": [
-        "Handles 10,000+ daily active users",
-        "99.9% uptime",
-        "Mobile-responsive design",
-        "Secure payment processing"
+        "🔒 Private — AmaliTech production work",
+        "RTO of 16 min in full DR simulation (target: 20 min)",
+        "RPO of 24 hours",
+        "Deletion protection + DynamoDB PITR + AWS Backup plans",
+        "Runbook updated from simulation findings"
       ]
     },
     {
       "id": 2,
-      "title": "Task Management System",
-      "description": "Collaborative project management tool with real-time updates",
-      "longDescription": "Developed a Trello-like task management application with drag-and-drop functionality, real-time collaboration using WebSockets, and team management features.",
-      "technologies": ["React", "Node.js", "MongoDB", "Socket.io", "Redis"],
-      "imageUrl": "assets/project2.jpg",
-      "githubUrl": "https://github.com/yourusername/task-manager",
-      "liveUrl": "https://tasks.example.com",
-      "startDate": "2023-01",
-      "endDate": "2023-05",
+      "title": "Multi-Environment Terraform Migration",
+      "organization": "AmaliTech",
+      "description": "Restructured and fully imported the AmaliTech AWS estate (dev/staging/prod) into Terraform, with a reusable modules library across cloud accounts.",
+      "longDescription": "Took a heterogeneous, manually-clicked AWS estate spanning dev, staging, and production and brought it under Infrastructure-as-Code in Terraform. Built a reusable modules library that standardizes how new infrastructure is provisioned across all cloud accounts, with imports of 12+ existing resources so the state matched reality before any refactors.",
+      "technologies": ["Terraform", "AWS", "HCL", "CloudFormation"],
+      "startDate": "2025-01",
+      "endDate": "2025-05",
       "status": "completed",
       "featured": true,
       "highlights": [
-        "Real-time collaboration",
-        "Drag-and-drop interface",
-        "Team management",
-        "File attachments"
+        "🔒 Private — AmaliTech production work",
+        "Multi-environment (dev / staging / prod) under one IaC pattern",
+        "12+ manually-created AWS resources imported into Terraform",
+        "Reusable modules library shared across all cloud accounts",
+        "Eliminated drift between environments"
       ]
     },
     {
       "id": 3,
-      "title": "Weather Dashboard",
-      "description": "Real-time weather application with forecasts and alerts",
-      "longDescription": "Created a weather dashboard that displays current weather, 7-day forecasts, and severe weather alerts. Integrated multiple weather APIs for accurate data.",
-      "technologies": ["Angular", "TypeScript", "OpenWeather API", "Chart.js"],
-      "imageUrl": "assets/project3.jpg",
-      "githubUrl": "https://github.com/yourusername/weather-dashboard",
-      "liveUrl": "https://weather.example.com",
-      "startDate": "2022-08",
-      "endDate": "2022-10",
-      "status": "completed",
-      "featured": false,
+      "title": "Production Observability Stack",
+      "organization": "AmaliTech",
+      "description": "Stood up Prometheus + Grafana + Jaeger for production; diagnosed a critical memory leak and added service-level limits and alerting to prevent recurrence.",
+      "longDescription": "Owned the production observability stack at AmaliTech. Set up Prometheus and Grafana for metrics-driven monitoring, then deployed Jaeger for distributed tracing across services. Used the new visibility to diagnose a critical production outage caused by a memory leak — traced through metrics and logs, coordinated the fix with the backend team, then added service-level CPU/memory limits plus alerting so the same class of failure surfaces earlier next time.",
+      "technologies": ["Prometheus", "Grafana", "Jaeger", "AWS", "Docker", "Python", "Bash"],
+      "startDate": "2025-02",
+      "endDate": "Present",
+      "status": "in-progress",
+      "featured": true,
       "highlights": [
-        "Location-based weather",
-        "Interactive charts",
-        "Severe weather alerts",
-        "7-day forecasts"
+        "🔒 Private — AmaliTech production work",
+        "Prometheus + Grafana + Jaeger end-to-end",
+        "Diagnosed and resolved a critical production memory leak",
+        "Service-level CPU / memory limits + alerting in place",
+        "Latency bottlenecks now traceable across services"
       ]
     },
     {
       "id": 4,
-      "title": "Portfolio CMS",
-      "description": "Content management system for portfolio websites",
-      "longDescription": "Building a headless CMS specifically designed for developers to manage their portfolio content with markdown support and API-first approach.",
-      "technologies": ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
-      "imageUrl": "assets/project4.jpg",
-      "githubUrl": "https://github.com/yourusername/portfolio-cms",
-      "startDate": "2024-09",
-      "status": "in-progress",
+      "title": "API Gateway Performance Dashboards",
+      "organization": "AmaliTech",
+      "description": "Custom Grafana dashboards tracking request rate, response time, response size, and rate-limit violations with threshold-based alerting.",
+      "longDescription": "Built a set of custom Grafana dashboards on top of API Gateway telemetry — request rate, response time, response size, and rate-limit violations — and wired threshold-based alerting so performance regressions are surfaced before they become incidents. Used in production to investigate spikes and validate releases.",
+      "technologies": ["Grafana", "Prometheus", "AWS API Gateway", "AWS CloudWatch"],
+      "startDate": "2025-03",
+      "endDate": "2025-04",
+      "status": "completed",
       "featured": false,
       "highlights": [
-        "Markdown support",
-        "RESTful API",
-        "Authentication & Authorization",
-        "Media management"
+        "🔒 Private — AmaliTech production work",
+        "Tracks request rate, response time, response size, rate-limit violations",
+        "Threshold-based alerting on regressions",
+        "Used during incident investigation and release validation"
       ]
     },
     {
       "id": 5,
-      "title": "Chat Application",
-      "description": "Real-time messaging app with group chat and file sharing",
-      "longDescription": "Developed a feature-rich chat application with private messaging, group chats, file sharing, and emoji support. Implemented end-to-end encryption for secure communication.",
-      "technologies": ["Vue.js", "Express", "Socket.io", "MongoDB", "AWS S3"],
-      "imageUrl": "assets/project5.jpg",
-      "githubUrl": "https://github.com/yourusername/chat-app",
-      "liveUrl": "https://chat.example.com",
-      "startDate": "2022-03",
-      "endDate": "2022-07",
+      "title": "AWS SES Email Migration",
+      "organization": "AmaliTech",
+      "description": "Migrated the production email system to AWS SES and refactored the sending layer with connection pooling and parallel processing.",
+      "longDescription": "Owned the migration of the production email system to AWS SES. Beyond the lift-and-shift, refactored the sending layer to use connection pooling and parallel processing, removing throughput bottlenecks and improving reliability of transactional and bulk email flows.",
+      "technologies": ["AWS SES", "Python", "AWS", "Bash"],
+      "startDate": "2025-06",
+      "endDate": "2025-08",
       "status": "completed",
       "featured": false,
       "highlights": [
-        "End-to-end encryption",
-        "Group chat support",
-        "File sharing",
-        "Real-time notifications"
+        "🔒 Private — AmaliTech production work",
+        "Migrated production email to AWS SES",
+        "Connection pooling + parallel processing in sending layer",
+        "Removed throughput bottlenecks; improved reliability"
       ]
     },
     {
       "id": 6,
-      "title": "Blog Platform",
-      "description": "Modern blogging platform with SEO optimization",
-      "longDescription": "Created a blogging platform with markdown editor, SEO optimization, commenting system, and social sharing. Implemented server-side rendering for better performance.",
-      "technologies": ["Next.js", "Django", "PostgreSQL", "Redis", "Nginx"],
-      "imageUrl": "assets/project6.jpg",
-      "githubUrl": "https://github.com/yourusername/blog-platform",
-      "liveUrl": "https://blog.example.com",
-      "startDate": "2021-11",
-      "endDate": "2022-02",
+      "title": "Non-Production Cost Reduction",
+      "organization": "AmaliTech",
+      "description": "Automated dev/staging environment shutdowns outside business hours, cutting compute costs by ~45–50%.",
+      "longDescription": "Wrote and operationalized automation that shuts down dev and staging environments outside business hours and brings them back up before the workday. Took compute spend down ~45–50% on non-production environments without affecting developer productivity.",
+      "technologies": ["AWS", "Python", "Bash", "AWS Lambda", "EventBridge"],
+      "startDate": "2025-02",
+      "endDate": "2025-03",
       "status": "completed",
       "featured": false,
       "highlights": [
-        "SEO optimized",
-        "Markdown editor",
-        "Commenting system",
-        "Social sharing"
+        "🔒 Private — AmaliTech production work",
+        "~45–50% compute cost reduction on non-production",
+        "Automated start/stop on a business-hours schedule",
+        "Zero impact on developer productivity"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "CI/CD-Integrated DB Migrations",
+      "organization": "AmaliTech",
+      "description": "Integrated database migration execution into the CI/CD build phase so schema changes are applied before application startup, preventing environment drift.",
+      "longDescription": "Reworked the deployment pipeline so database migrations are applied during the CI/CD build phase, before application startup. Closed a long-standing drift problem where schema changes could lag the application that depended on them, and gave teams a single, reliable contract for shipping schema + code together.",
+      "technologies": ["GitHub Actions", "GitLab CI/CD", "PostgreSQL", "Docker", "Bash"],
+      "startDate": "2025-04",
+      "endDate": "2025-05",
+      "status": "completed",
+      "featured": false,
+      "highlights": [
+        "🔒 Private — AmaliTech production work",
+        "Schema changes applied before application startup",
+        "Closed environment-drift gap",
+        "Single contract for shipping schema + code together"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Personal Portfolio",
+      "description": "This site — an Angular 17 terminal-themed portfolio, data-driven from a single JSON.",
+      "longDescription": "The site you're looking at. Built with Angular 17 standalone components; everything is data-driven from a single JSON file consumed via a typed service. Linux/terminal aesthetic with custom cursor, keyboard navigation, and per-section terminal chrome. Includes a /playground sub-area for ad-hoc demos that don't belong in the main portfolio narrative.",
+      "technologies": ["Angular 17", "TypeScript", "RxJS", "CSS", "Vercel"],
+      "githubUrl": "https://github.com/MawuliB/mawuli",
+      "liveUrl": "https://mawuli-vert.vercel.app",
+      "startDate": "2025-09",
+      "status": "in-progress",
+      "featured": false,
+      "highlights": [
+        "Standalone components, no NgModules",
+        "Data-driven from a single JSON",
+        "Terminal / CRT aesthetic with custom cursor",
+        "/playground sub-area for experiments"
       ]
     }
   ],
@@ -395,5 +312,5 @@
     "availableForWork": true,
     "preferredContactMethod": "email"
   },
-  "lastUpdated": "2025-10-24"
+  "lastUpdated": "2026-05-11"
 }

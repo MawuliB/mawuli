@@ -24,21 +24,29 @@ export class CarouselComponent {
   constructor(private router: Router) {}
 
   nextPage() {
-    console.log(this.currentIndex);
     this.currentIndex = (this.currentIndex + 1) % this.pages.length;
     this.router.navigate([this.pages[this.currentIndex]]);
   }
 
   previousPage() {
-    console.log(this.currentIndex);
     this.currentIndex =
       (this.currentIndex - 1 + this.pages.length) % this.pages.length;
     this.router.navigate([this.pages[this.currentIndex]]);
   }
 
-  // keyboard navigation
+  // keyboard navigation — skip when the user is typing into an input/textarea/select
   @HostListener('window:keydown', ['$event'])
   keyDown(event: KeyboardEvent) {
+    const target = event.target as HTMLElement | null;
+    if (target) {
+      const tag = target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable) {
+        return;
+      }
+    }
+    // Don't hijack browser/system shortcuts (Alt+arrow = back/forward, etc.)
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+
     if (event.key === 'ArrowRight') {
       this.nextPage();
     } else if (event.key === 'ArrowLeft') {

@@ -82,6 +82,7 @@
           <span class="folder-icon">📁</span>
           <span class="name">{{ project.title }}/</span>
           <span class="featured-star" *ngIf="project.featured">⭐</span>
+          <span class="org-tag" *ngIf="project.organization">&#64;{{ project.organization }}</span>
         </div>
 
         <!-- Description -->

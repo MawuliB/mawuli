@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription?: Subscription;
   private textIndex = 0;
   private taglineIndex = 0;
+  private nameIntervalId: ReturnType<typeof setInterval> | null = null;
+  private taglineIntervalId: ReturnType<typeof setInterval> | null = null;
+  private taglineTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   asciiArt = `
     ███╗   ███╗ █████╗ ██╗    ██╗██╗   ██╗██╗     ██╗
@@ -40,20 +43,23 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription?.unsubscribe();
+    if (this.nameIntervalId) clearInterval(this.nameIntervalId);
+    if (this.taglineIntervalId) clearInterval(this.taglineIntervalId);
+    if (this.taglineTimeoutId) clearTimeout(this.taglineTimeoutId);
   }
 
   private startTypingAnimation() {
     if (!this.profile) return;
 
-    // Type the name
-    const nameInterval = setInterval(() => {
-      if (this.textIndex < this.profile!.name.length) {
-        this.displayedText += this.profile!.name[this.textIndex];
+    this.nameIntervalId = setInterval(() => {
+      if (!this.profile) return;
+      if (this.textIndex < this.profile.name.length) {
+        this.displayedText += this.profile.name[this.textIndex];
         this.textIndex++;
       } else {
-        clearInterval(nameInterval);
-        // Start typing tagline after name is done
-        setTimeout(() => this.typeTagline(), 500);
+        if (this.nameIntervalId) clearInterval(this.nameIntervalId);
+        this.nameIntervalId = null;
+        this.taglineTimeoutId = setTimeout(() => this.typeTagline(), 500);
       }
     }, 100);
   }
@@ -61,12 +67,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   private typeTagline() {
     if (!this.profile) return;
 
-    const taglineInterval = setInterval(() => {
-      if (this.taglineIndex < this.profile!.tagline.length) {
-        this.displayedTagline += this.profile!.tagline[this.taglineIndex];
+    this.taglineIntervalId = setInterval(() => {
+      if (!this.profile) return;
+      if (this.taglineIndex < this.profile.tagline.length) {
+        this.displayedTagline += this.profile.tagline[this.taglineIndex];
         this.taglineIndex++;
       } else {
-        clearInterval(taglineInterval);
+        if (this.taglineIntervalId) clearInterval(this.taglineIntervalId);
+        this.taglineIntervalId = null;
       }
     }, 50);
   }

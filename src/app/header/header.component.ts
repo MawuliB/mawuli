@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { ThemeService, Theme } from '../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,7 @@ export class HeaderComponent {
     { path: '/contact', label: 'contact', shortcut: 'Alt+6' },
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private themeService: ThemeService) {
     // Track current route
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -36,6 +37,14 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  get theme(): Theme {
+    return this.themeService.get();
+  }
+
+  cycleTheme(): void {
+    this.themeService.cycle();
   }
 
   toggleShortcuts() {

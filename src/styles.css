@@ -12,7 +12,7 @@
   --terminal-primary-bright: #33ff33;
   --terminal-secondary: #00ff9f;
   --terminal-text: #00ff00;
-  --terminal-text-muted: #008800;
+  --terminal-text-muted: #00aa00;
   --terminal-border: #00ff00;
   --terminal-shadow: rgba(0, 255, 0, 0.3);
   --terminal-glow: rgba(0, 255, 0, 0.5);
@@ -60,6 +60,35 @@
   --z-modal: 1000;
   --z-header: 100;
   --z-dropdown: 50;
+  --z-scanlines: 2;
+}
+
+/* ============================================
+   THEME VARIANTS
+   ============================================ */
+
+html.theme-amber {
+  --terminal-primary: var(--terminal-amber);
+  --terminal-primary-dim: var(--terminal-amber-dim);
+  --terminal-primary-bright: var(--terminal-amber-bright);
+  --terminal-secondary: #ffcc66;
+  --terminal-text: var(--terminal-amber);
+  --terminal-text-muted: #aa7700;
+  --terminal-border: var(--terminal-amber);
+  --terminal-shadow: rgba(255, 176, 0, 0.3);
+  --terminal-glow: rgba(255, 176, 0, 0.5);
+}
+
+html.theme-blue {
+  --terminal-primary: var(--terminal-blue);
+  --terminal-primary-dim: var(--terminal-blue-dim);
+  --terminal-primary-bright: var(--terminal-blue-bright);
+  --terminal-secondary: #66e6ff;
+  --terminal-text: var(--terminal-blue);
+  --terminal-text-muted: #0099bb;
+  --terminal-border: var(--terminal-blue);
+  --terminal-shadow: rgba(0, 217, 255, 0.3);
+  --terminal-glow: rgba(0, 217, 255, 0.5);
 }
 
 /* ============================================
@@ -104,7 +133,7 @@ body::before {
     transparent 2px
   );
   pointer-events: none;
-  z-index: var(--z-cursor);
+  z-index: var(--z-scanlines);
   opacity: 0.1;
 }
 
