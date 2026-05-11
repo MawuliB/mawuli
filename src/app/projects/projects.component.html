@@ -1,4 +1,5 @@
 <div class="projects-container terminal-window">
+  <h1 class="sr-only">Projects</h1>
   <!-- Terminal Header -->
   <div class="terminal-header">
     <div class="terminal-buttons">
@@ -71,7 +72,7 @@
           <span class="owner">user</span>
           <span class="group">dev</span>
           <span class="size">{{ project.technologies.length }} deps</span>
-          <span class="date">{{ formatDate(project.startDate) }}</span>
+          <span class="date">{{ project.startDate | portfolioDate }}</span>
           <span class="status-badge" [class]="getStatusColor(project.status)">
             {{ getStatusIcon(project.status) }} {{ project.status }}
           </span>
@@ -208,24 +209,15 @@
           <div class="timeline-info">
             <div class="timeline-item">
               <span class="label">Started:</span>
-              <span class="value">{{
-                formatDate(selectedProject.startDate)
-              }}</span>
+              <span class="value">{{ selectedProject.startDate | portfolioDate }}</span>
             </div>
             <div class="timeline-item" *ngIf="selectedProject.endDate">
               <span class="label">Completed:</span>
-              <span class="value">{{
-                formatDate(selectedProject.endDate)
-              }}</span>
+              <span class="value">{{ selectedProject.endDate | portfolioDate }}</span>
             </div>
             <div class="timeline-item">
               <span class="label">Duration:</span>
-              <span class="value">{{
-                calculateDuration(
-                  selectedProject.startDate,
-                  selectedProject.endDate
-                )
-              }}</span>
+              <span class="value">{{ selectedProject.startDate | portfolioDuration: selectedProject.endDate }}</span>
             </div>
           </div>
         </div>

@@ -8,6 +8,23 @@
   padding: var(--spacing-xl);
 }
 
+/* hCaptcha widget container — rendered programmatically when the user
+   reaches the submit scene. Styled to feel terminal-native. */
+.captcha-wrap {
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.hcaptcha-host {
+  display: flex;
+  justify-content: flex-start;
+  min-height: 78px;
+  overflow-x: auto;
+}
+
+.hcaptcha-host iframe {
+  border-radius: var(--border-radius);
+}
+
 /* ============================================
    COMMAND LINE
    ============================================ */

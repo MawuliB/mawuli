@@ -69,8 +69,10 @@ export class TheTrialComponent implements OnInit, OnDestroy {
 
     const fontLink = document.createElement('link');
     fontLink.rel = 'stylesheet';
+    // display=optional — reduces layout shift; falls back to system fonts if
+    // the network is slow and only swaps in if loaded within ~100ms.
     fontLink.href =
-      'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;700&display=swap';
+      'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;700&display=optional';
     document.head.appendChild(fontLink);
     this.injectedNodes.push(fontLink);
 

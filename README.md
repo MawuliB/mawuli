@@ -13,8 +13,8 @@ A modern, interactive personal portfolio website built with Angular 17 showcasin
 This is a standalone Angular application featuring a single-page architecture with routing capabilities. The portfolio includes a custom cursor implementation and carousel component for an enhanced user experience.
 
 **Generated with**: [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6  
-**Branch**: `production`  
-**Last Updated**: October 23, 2025
+**Branch**: `production` (deployed to https://mawuli-vert.vercel.app)  
+**Status**: actively maintained — see [REVIEW.md](REVIEW.md) for the current audit + improvement plan
 
 ## ✨ Current Features
 
@@ -252,4 +252,4 @@ Visit the contact page in the application or check out the Contact component for
 
 ---
 
-**Note**: This README reflects the current state as of October 23, 2025. The project is in active development with major improvements planned. Stay tuned for updates! 🚀
+**Note**: This README is a high-level overview. The living audit and improvement plan live in [REVIEW.md](REVIEW.md). Runbooks for routine updates and new playground experiments live in [UPDATE.md](UPDATE.md) and [PLAYGROUND.md](PLAYGROUND.md).

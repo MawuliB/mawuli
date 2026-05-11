@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { ThemeService, Theme } from '../services/theme.service';
+import { NAV_ITEMS } from '../shared/nav.constants';
 
 @Component({
   selector: 'app-header',
@@ -16,20 +17,13 @@ export class HeaderComponent {
   showShortcuts = false;
   currentPath = '/';
 
-  routes = [
-    { path: '/', label: 'home', shortcut: 'Alt+1' },
-    { path: '/skills', label: 'skills', shortcut: 'Alt+2' },
-    { path: '/experience', label: 'experience', shortcut: 'Alt+3' },
-    { path: '/education', label: 'education', shortcut: 'Alt+4' },
-    { path: '/projects', label: 'projects', shortcut: 'Alt+5' },
-    { path: '/contact', label: 'contact', shortcut: 'Alt+6' },
-  ];
+  routes = NAV_ITEMS;
 
   constructor(private router: Router, private themeService: ThemeService) {
     // Track current route
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
         this.currentPath = event.urlAfterRedirects;
         this.menuOpen = false; // Close mobile menu on navigation
       });
@@ -41,6 +35,10 @@ export class HeaderComponent {
 
   get theme(): Theme {
     return this.themeService.get();
+  }
+
+  get showThemeHint(): boolean {
+    return this.themeService.showHint;
   }
 
   cycleTheme(): void {
@@ -61,20 +59,12 @@ export class HeaderComponent {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardShortcuts(event: KeyboardEvent) {
-    // Alt + Number shortcuts
+    // Alt + Number shortcuts — driven from NAV_ITEMS so they stay in sync.
     if (event.altKey && !event.shiftKey && !event.ctrlKey) {
-      const keyMap: { [key: string]: string } = {
-        '1': '/',
-        '2': '/skills',
-        '3': '/experience',
-        '4': '/education',
-        '5': '/projects',
-        '6': '/contact',
-      };
-
-      if (keyMap[event.key]) {
+      const item = this.routes.find((r) => r.shortcutKey === event.key);
+      if (item) {
         event.preventDefault();
-        this.router.navigate([keyMap[event.key]]);
+        this.router.navigate([item.path]);
       }
     }
 

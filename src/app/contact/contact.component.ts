@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortfolioDataService } from '../services/portfolio-data.service';
@@ -18,6 +18,18 @@ interface FormField {
 // email client via a mailto: link.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkoykvpg';
 
+// hCaptcha sitekey is public — safe to hardcode. The matching SECRET must
+// live on Formspree (enable hCaptcha in form settings) or on a Vercel
+// serverless function that proxies to Formspree. Never in Angular code.
+const HCAPTCHA_SITEKEY = 'c950b9bc-d3d2-478e-be36-d2e4a88edc3e';
+const HCAPTCHA_SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js';
+
+interface HCaptchaApi {
+  render(container: string | HTMLElement, params: { sitekey: string; theme?: string }): unknown;
+  getResponse(widgetId?: unknown): string;
+  reset(widgetId?: unknown): void;
+}
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -25,9 +37,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkoykvpg';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   contactInfo: Contact | null = null;
   isLoading = true;
+  private hcaptchaWidgetId: unknown = null;
 
   // Form state
   currentField:
@@ -58,6 +71,49 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadContactInfo();
+    this.loadHcaptchaScript();
+  }
+
+  ngOnDestroy(): void {
+    // The script stays cached on the document; reset our widget ref so
+    // re-navigating to the form renders a fresh widget.
+    this.hcaptchaWidgetId = null;
+  }
+
+  private getHcaptcha(): HCaptchaApi | undefined {
+    if (typeof window === 'undefined') return undefined;
+    return (window as unknown as { hcaptcha?: HCaptchaApi }).hcaptcha;
+  }
+
+  private loadHcaptchaScript(): void {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById('hcaptcha-script')) return;
+    const script = document.createElement('script');
+    script.id = 'hcaptcha-script';
+    script.src = HCAPTCHA_SCRIPT_SRC;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      if (this.currentField === 'submit') this.tryRenderHcaptcha();
+    };
+    document.head.appendChild(script);
+  }
+
+  private tryRenderHcaptcha(): void {
+    if (typeof document === 'undefined') return;
+    const api = this.getHcaptcha();
+    if (!api) return;
+    const container = document.getElementById('hcaptcha-container');
+    if (!container) return;
+    if (container.childElementCount > 0 && this.hcaptchaWidgetId !== null) {
+      api.reset(this.hcaptchaWidgetId);
+      return;
+    }
+    container.innerHTML = '';
+    this.hcaptchaWidgetId = api.render(container, {
+      sitekey: HCAPTCHA_SITEKEY,
+      theme: 'dark',
+    });
   }
 
   loadContactInfo(): void {
@@ -155,6 +211,9 @@ export class ContactComponent implements OnInit {
           break;
         case 'message':
           this.currentField = 'submit';
+          // After Angular renders the submit scene, render the hCaptcha widget.
+          this.hcaptchaWidgetId = null;
+          setTimeout(() => this.tryRenderHcaptcha(), 0);
           break;
       }
     } else {
@@ -171,12 +230,11 @@ export class ContactComponent implements OnInit {
 
     if (!allValid) return;
 
-    this.isSubmitting = true;
-    this.addCommandToHistory('$ submit --confirm');
-    this.addCommandToHistory('Sending message...');
-
-    // If Formspree isn't configured yet, fall back to a mailto link.
+    // If Formspree isn't configured yet, fall back to a mailto link
+    // (no captcha required — mailto opens the visitor's own mail client).
     if (FORMSPREE_ENDPOINT.endsWith('your-form-id')) {
+      this.isSubmitting = true;
+      this.addCommandToHistory('$ submit --confirm');
       this.addCommandToHistory(
         'ℹ Formspree endpoint not configured; opening email client instead.'
       );
@@ -185,12 +243,24 @@ export class ContactComponent implements OnInit {
       return;
     }
 
+    const api = this.getHcaptcha();
+    const captchaToken = api ? api.getResponse(this.hcaptchaWidgetId) : '';
+    if (!captchaToken) {
+      this.addCommandToHistory('⚠ Please complete the captcha verification first.');
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.addCommandToHistory('$ submit --confirm');
+    this.addCommandToHistory('Sending message...');
+
     const payload = {
       name: this.formData.name.value,
       email: this.formData.email.value,
       subject: this.formData.subject.value,
       message: this.formData.message.value,
       _replyto: this.formData.email.value,
+      'h-captcha-response': captchaToken,
     };
 
     fetch(FORMSPREE_ENDPOINT, {
@@ -204,6 +274,7 @@ export class ContactComponent implements OnInit {
       })
       .catch((err) => {
         this.isSubmitting = false;
+        api?.reset(this.hcaptchaWidgetId);
         this.addCommandToHistory(`✗ Send failed: ${err.message}`);
         this.addCommandToHistory('Tip: use the mailto fallback link below.');
       });
@@ -242,6 +313,8 @@ export class ContactComponent implements OnInit {
     this.currentField = 'name';
     this.isSubmitted = false;
     this.commandHistory = [];
+    this.hcaptchaWidgetId = null;
+    this.getHcaptcha()?.reset(this.hcaptchaWidgetId);
     this.addCommandToHistory('$ contact --reset');
     this.addCommandToHistory('Form reset. Starting over...');
   }

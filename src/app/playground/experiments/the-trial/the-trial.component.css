@@ -468,12 +468,17 @@
 }
 
 .pick input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   margin: 0;
   flex-shrink: 0;
   accent-color: var(--rose-deep);
   cursor: pointer;
+}
+
+/* Pick rows are the actual touch target — ensure they're ≥44px tall. */
+.pick {
+  min-height: 56px;
 }
 
 .pick-emoji {

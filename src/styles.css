@@ -113,7 +113,7 @@ html.theme-amber {
   --terminal-primary-bright: var(--terminal-amber-bright);
   --terminal-secondary: #ffcc66;
   --terminal-text: var(--terminal-amber);
-  --terminal-text-muted: #aa7700;
+  --terminal-text-muted: #d49b34;
   --terminal-border: var(--terminal-amber);
   --terminal-shadow: rgba(255, 176, 0, 0.3);
   --terminal-glow: rgba(255, 176, 0, 0.5);
@@ -592,6 +592,41 @@ label {
 ::-moz-selection {
   background-color: var(--terminal-primary);
   color: var(--terminal-bg);
+}
+
+/* ============================================
+   REDUCED MOTION
+   Honors prefers-reduced-motion users — vestibular sensitivity,
+   migraines, etc. Kills scanlines, blinking, typing, drift, etc.
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   MOBILE FORM INPUT — prevent iOS auto-zoom on focus
+   (browsers zoom in when input font-size < 16px)
+   ============================================ */
+
+@media (max-width: 480px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }
 
 /* ============================================

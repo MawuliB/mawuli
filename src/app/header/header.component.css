@@ -60,8 +60,8 @@
   background: transparent;
   border: 1px solid var(--terminal-border);
   color: var(--terminal-primary);
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -80,6 +80,60 @@
 .shortcut-icon {
   font-size: var(--font-size-lg);
   font-weight: bold;
+}
+
+.theme-btn {
+  background: transparent;
+  border: 1px solid var(--terminal-border);
+  color: var(--terminal-primary);
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--spacing-md);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  margin-right: var(--spacing-sm);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.theme-btn:hover {
+  background-color: var(--terminal-primary);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 10px var(--terminal-glow);
+  transform: none;
+}
+
+.theme-btn .theme-icon {
+  font-size: var(--font-size-base);
+}
+
+.theme-btn .theme-label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* First-visit pulse — pings 3 times in the first ~6s so a new visitor
+   notices the theme switcher exists. Dismissed forever once they click it. */
+.theme-btn.first-visit {
+  animation: theme-hint-pulse 2s ease-out 1s 3;
+}
+
+@keyframes theme-hint-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--terminal-glow); }
+  60%  { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 10px transparent; }
+}
+
+@media (max-width: 480px) {
+  .theme-btn .theme-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-btn.first-visit { animation: none; }
 }
 
 /* Header Content */

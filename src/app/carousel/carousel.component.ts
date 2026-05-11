@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { NAV_PATHS } from '../shared/nav.constants';
 
 @Component({
   selector: 'app-carousel',
@@ -9,14 +10,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './carousel.component.css',
 })
 export class CarouselComponent {
-  private pages = [
-    '/',
-    'skills',
-    'experience',
-    'education',
-    'projects',
-    'contact',
-  ];
+  private pages = NAV_PATHS;
   private currentIndex = 0;
 
   @ViewChild('carousel', { static: false }) carousel!: ElementRef;

@@ -89,15 +89,20 @@ export class AppComponent implements OnDestroy {
   }
 
   private updateTrail(trailElement: HTMLElement) {
-    // Create trail dots
-    const trailHTML = this.trail
-      .map((point, index) => {
-        const opacity = ((index + 1) / this.trail.length) * 0.6;
-        const size = 4 + (index / this.trail.length) * 8;
-        return `<div class="trail-dot" style="left: ${point.x}px; top: ${point.y}px; opacity: ${opacity}; width: ${size}px; height: ${size}px;"></div>`;
-      })
-      .join('');
-
-    trailElement.innerHTML = trailHTML;
+    // Build trail dots as real nodes (avoid innerHTML — defensive against
+    // future changes that could feed untrusted values into the markup).
+    const dots = this.trail.map((point, index) => {
+      const opacity = ((index + 1) / this.trail.length) * 0.6;
+      const size = 4 + (index / this.trail.length) * 8;
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      dot.style.left = `${point.x}px`;
+      dot.style.top = `${point.y}px`;
+      dot.style.opacity = String(opacity);
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
+      return dot;
+    });
+    trailElement.replaceChildren(...dots);
   }
 }

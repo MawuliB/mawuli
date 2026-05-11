@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PortfolioDataService } from '../services/portfolio-data.service';
 import { Education, Certification } from '../models/portfolio.model';
 import { forkJoin } from 'rxjs';
+import { PortfolioDatePipe } from '../shared/date-pipes';
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PortfolioDatePipe],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css',
 })
@@ -33,11 +34,6 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  formatDate(date: string): string {
-    const d = new Date(date);
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-  }
-
   calculateDuration(startDate: string, endDate: string): string {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -48,7 +44,7 @@ export class EducationComponent implements OnInit {
   getTotalItems(): number {
     let total = 0;
     for (const edu of this.educationList) {
-      total += 4; // degree, location, date, gpa
+      total += 4;
       if (edu.honors) total += edu.honors.length;
       if (edu.relevantCourses) total += edu.relevantCourses.length;
     }

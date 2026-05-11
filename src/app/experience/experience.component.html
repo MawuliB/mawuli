@@ -1,4 +1,5 @@
 <div class="experience-container terminal-window">
+  <h1 class="sr-only">Experience</h1>
   <!-- Terminal Header -->
   <div class="terminal-header">
     <div class="terminal-buttons">
@@ -58,10 +59,10 @@
             </div>
             <div class="date-info">
               <div class="date-range">
-                {{ formatDate(exp.startDate) }} - {{ formatDate(exp.endDate) }}
+                {{ exp.startDate | portfolioDate }} - {{ exp.endDate | portfolioDate }}
               </div>
               <div class="duration">
-                {{ calculateDuration(exp.startDate, exp.endDate) }}
+                {{ exp.startDate | portfolioDuration: exp.endDate }}
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 <div class="education-container terminal-window">
+  <h1 class="sr-only">Education &amp; Certifications</h1>
   <!-- Terminal Header -->
   <div class="terminal-header">
     <div class="terminal-buttons">
@@ -76,8 +77,8 @@
             <span class="sub-branch">├──</span>
             <span class="file-icon">📅</span>
             <span class="dates"
-              >{{ formatDate(edu.startDate) }} -
-              {{ formatDate(edu.endDate) }}</span
+              >{{ edu.startDate | portfolioDate }} -
+              {{ edu.endDate | portfolioDate }}</span
             >
             <span class="duration"
               >({{ calculateDuration(edu.startDate, edu.endDate) }})</span
@@ -195,9 +196,9 @@
               <div class="cert-issuer">{{ cert.issuer }}</div>
               <div class="cert-dates">
                 <span class="label">issued:</span>
-                <span>{{ formatDate(cert.issuedDate) }}</span>
+                <span>{{ cert.issuedDate | portfolioDate }}</span>
                 <span *ngIf="cert.expiresDate" class="expires" [class.expired]="isExpired(cert)">
-                  · expires {{ formatDate(cert.expiresDate) }}
+                  · expires {{ cert.expiresDate | portfolioDate }}
                 </span>
               </div>
               <div class="cert-verify">

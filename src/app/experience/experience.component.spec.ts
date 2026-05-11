@@ -8,16 +8,25 @@ describe('ExperienceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExperienceComponent]
-    })
-    .compileComponents();
-    
+      imports: [ExperienceComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ExperienceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('loads experience entries synchronously', () => {
+    expect(component.experiences.length).toBeGreaterThan(0);
+    expect(component.isLoading).toBe(false);
+  });
+
+  it('flags current job correctly', () => {
+    expect(component.isCurrentJob('Present')).toBe(true);
+    expect(component.isCurrentJob('2024-12')).toBe(false);
   });
 });

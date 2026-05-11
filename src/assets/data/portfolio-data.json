@@ -6,8 +6,7 @@
     "avatar": "assets/mine.png",
     "tagline": "Automate. Deploy. Optimize.",
     "location": "Accra, Ghana",
-    "email": "mawulibadassou5@gmail.com",
-    "phone": "+233 244 065 972"
+    "email": "mawulibadassou5@gmail.com"
   },
   "skills": [
     { "name": "AWS", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "☁️" },
@@ -287,7 +286,6 @@
   ],
   "contact": {
     "email": "mawulibadassou5@gmail.com",
-    "phone": "+233 244 065 972",
     "location": "Accra, Ghana",
     "socials": [
       {

@@ -9,6 +9,7 @@
     <div class="terminal-title">mawuli&#64;portfolio:~$</div>
     <button
       class="theme-btn"
+      [class.first-visit]="showThemeHint"
       (click)="cycleTheme()"
       [title]="'Theme: ' + theme + ' — click to cycle'"
       [attr.aria-label]="'Cycle theme (current: ' + theme + ')'"
