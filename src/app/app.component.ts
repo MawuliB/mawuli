@@ -22,10 +22,22 @@ export class AppComponent implements OnDestroy {
   private routerSub: Subscription;
 
   constructor(private router: Router) {
-    this.chromeless = this.deepestData()['chromeless'] === true;
+    // At construct time the router hasn't resolved a route yet, so reading
+    // route.data returns empty for direct URL loads — that's what caused
+    // the header/footer to flash on /playground/the-trial. Instead, trust
+    // the `html.chromeless` class which the inline pre-paint script in
+    // index.html already set if this URL is in the chromeless allowlist.
+    this.chromeless =
+      typeof document !== 'undefined' &&
+      document.documentElement.classList.contains('chromeless');
+
     this.routerSub = this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe(() => {
+        // After SPA navigation completes, route data is the source of truth.
+        // (The chromeless component itself adds/removes the class in
+        // ngOnInit/ngOnDestroy, so the inline-script flag and route data
+        // converge correctly.)
         this.chromeless = this.deepestData()['chromeless'] === true;
       });
   }

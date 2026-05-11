@@ -358,17 +358,35 @@ Three parallel deep audits: **security**, **UI/UX**, and **code-quality** — ea
 
 ---
 
-## 13. FOUC flash on /playground/the-trial — fixed
+## 13. FOUC flash on /playground/the-trial — fixed (in two passes)
 
 The user reported a brief flash of the green terminal background before the trial's pastel theme kicks in on direct URL loads (worse on slow networks).
 
-**Root cause**: the trial component only added `body.on-trial` in `ngOnInit`, which fires *after* Angular bootstraps + lazy-loads the chunk. The browser paints the body's terminal styling in between.
+### First pass — partial fix
+Killed the body's CRT styling pre-paint via an inline `<head>` script:
+- [index.html](src/index.html) — inline `<script>` runs before paint, checks the URL path, tags `<html class="chromeless">`.
+- [styles.css](src/styles.css) — `html.chromeless body` strips the green background, scanlines, glow, custom cursor.
+- [the-trial.component.ts](src/app/playground/experiments/the-trial/the-trial.component.ts) — `ngOnInit`/`ngOnDestroy` toggle the class on `document.documentElement` for SPA navigation.
 
-**Fix** (3 files):
-- [index.html](src/index.html) — inline `<script>` in `<head>` runs *before paint*, checks the URL path against a chromeless-routes allowlist, and tags `<html class="chromeless">`.
-- [styles.css](src/styles.css) — selectors moved from `body.on-trial` to `html.chromeless body`; kills the green background, scanlines, glow, custom cursor for chromeless routes.
-- [the-trial.component.ts](src/app/playground/experiments/the-trial/the-trial.component.ts) — `ngOnInit`/`ngOnDestroy` now toggle the class on `document.documentElement` (handles SPA navigation when the inline script didn't run).
-- [PLAYGROUND.md](PLAYGROUND.md) — runbook updated so future chromeless experiments register in the inline-script allowlist.
+### Second pass — what actually killed the flash
+The first pass killed the *body* flash but the **header and footer still flashed**. Cause: [app.component.ts](src/app/app.component.ts) initialised `this.chromeless = false` in its constructor (route data was empty because routing hadn't resolved yet), so `*ngIf="!chromeless"` rendered the header + footer with green terminal styling until `NavigationEnd` fired and flipped the flag.
+
+Fix: read the `html.chromeless` class the inline script already set, instead of waiting for the router:
+```ts
+this.chromeless =
+  typeof document !== 'undefined' &&
+  document.documentElement.classList.contains('chromeless');
+```
+The router subscription still updates `chromeless` for SPA navigation; the constructor check ensures the first render is correct for direct loads.
+
+### Third improvement — pre-paint background
+Even with no flash of green chrome, the body went *white* during the lazy-chunk download before the trial's own gradient could paint. Now the inline script also sets a per-route class (`html.chromeless-trial`) which paints the trial's pastel gradient on `body` immediately — so the loading state visually matches the destination, not a void.
+
+```js
+var routeClass = { '/playground/the-trial': 'chromeless-trial' };
+```
+
+[PLAYGROUND.md](PLAYGROUND.md) is updated so future chromeless experiments register *both* their `routeClass` entry and a matching `html.chromeless-<slug>` background rule in [styles.css](src/styles.css).
 
 ---
 

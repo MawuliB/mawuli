@@ -64,9 +64,24 @@ For each new experiment with slug `<slug>`:
      this.injectedNodes = [];
    }
    ```
-6. **Register for pre-paint FOUC prevention**: open [src/index.html](src/index.html) and add `/playground/<slug>` to the `chromeless` array in the inline script in `<head>`. Without this, direct URLs to your route will flash the portfolio's green/scanline body before Angular bootstraps.
+6. **Register for pre-paint FOUC prevention**: open [src/index.html](src/index.html) and add an entry to the `routeClass` map in the inline script in `<head>`:
+   ```js
+   var routeClass = {
+     '/playground/the-trial': 'chromeless-trial',
+     '/playground/<slug>': 'chromeless-<slug>',
+   };
+   ```
+   Without this, direct URLs to your route will flash the portfolio's green/scanline body before Angular bootstraps.
 
-   The `html.chromeless` CSS rules that strip the CRT effects already exist in [src/styles.css](src/styles.css) — you don't need to add per-slug rules. Your component's own scoped CSS handles the actual theme.
+   Then in [src/styles.css](src/styles.css) under "PER-ROUTE ESCAPE HATCH", add a rule that paints YOUR experiment's background before the lazy chunk loads:
+   ```css
+   html.chromeless-<slug> body {
+     background: <your-gradient-or-color> !important;
+   }
+   ```
+   This is what keeps the page from going white between "body terminal styling stripped" and "the component renders". The component's own scoped CSS takes over once the chunk arrives.
+
+   The shared `html.chromeless` rules (kill scanlines / glow / custom cursor) already cover everyone — you don't need to add those per-slug.
 7. **Build check**: `npx ng build --configuration development`. Confirm the new chunk is lazy-loaded.
 
 ## Follow-up questions to ask before scaffolding

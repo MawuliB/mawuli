@@ -42,9 +42,11 @@ export class TheTrialComponent implements OnInit, OnDestroy {
     if (typeof document === 'undefined') return;
 
     // Strip site-wide CRT effects (scanlines, green glow, custom cursor) for this route.
-    // We tag <html> instead of <body> because the same class is set pre-paint by an
-    // inline script in index.html (which runs before <body> exists) to prevent FOUC.
-    document.documentElement.classList.add('chromeless');
+    // Both classes are also set pre-paint by the inline script in index.html for
+    // direct URL loads; this handles SPA navigation INTO the route.
+    // - chromeless         → kill portfolio terminal styles
+    // - chromeless-trial   → paint the pastel gradient background pre-chunk
+    document.documentElement.classList.add('chromeless', 'chromeless-trial');
 
     // No-index even though /playground is already robots-disallowed.
     const noindex = document.createElement('meta');
@@ -89,7 +91,7 @@ export class TheTrialComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (typeof document === 'undefined') return;
-    document.documentElement.classList.remove('chromeless');
+    document.documentElement.classList.remove('chromeless', 'chromeless-trial');
     this.injectedNodes.forEach((n) => n.parentNode?.removeChild(n));
     this.injectedNodes = [];
   }

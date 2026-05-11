@@ -103,6 +103,16 @@ html.chromeless select {
 body.on-trial { background: transparent !important; }
 body.on-trial::before, body.on-trial::after { display: none !important; }
 
+/* Per-route pre-paint background.
+   Painted before the lazy chunk loads so the user sees the route's theme
+   immediately, not a white flash between (chromeless body) and (component
+   render). Each chromeless experiment gets its own class via the inline
+   script's routeClass map in index.html. */
+html.chromeless-trial body {
+  background: linear-gradient(135deg, #fff1f2 0%, #fef3c7 50%, #fce7f3 100%) !important;
+  background-color: #fff1f2 !important;
+}
+
 /* ============================================
    THEME VARIANTS
    ============================================ */

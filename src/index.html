@@ -24,14 +24,18 @@
 
   <!-- Pre-paint route flag for chromeless playground experiments.
        Runs before any CSS so the body's CRT background/scanlines/cursor
-       don't flash before Angular bootstraps and the component sets its class.
-       Add new chromeless routes to the array below; keep it tiny. -->
+       don't flash before Angular bootstraps. The optional second class
+       lets each experiment paint its OWN background during the lazy-load
+       window (so the page doesn't go white between body-style override
+       and the component rendering). -->
   <script>
     (function () {
-      var chromeless = ['/playground/the-trial'];
+      var routeClass = {
+        '/playground/the-trial': 'chromeless-trial'
+      };
       var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
-      if (chromeless.indexOf(path) !== -1) {
-        document.documentElement.classList.add('chromeless');
+      if (Object.prototype.hasOwnProperty.call(routeClass, path)) {
+        document.documentElement.classList.add('chromeless', routeClass[path]);
       }
     })();
   </script>
