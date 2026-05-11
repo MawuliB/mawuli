@@ -11,7 +11,7 @@ import { EXPERIMENTS, Experiment } from './experiments';
   styleUrl: './playground.component.css',
 })
 export class PlaygroundComponent {
-  experiments: Experiment[] = EXPERIMENTS;
+  experiments: Experiment[] = EXPERIMENTS.filter((e) => !e.hidden);
 
   statusBadge(status: Experiment['status']): string {
     switch (status) {

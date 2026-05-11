@@ -1,0 +1,351 @@
+<div class="trial terminal-window">
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="btn-close"></span>
+      <span class="btn-minimize"></span>
+      <span class="btn-maximize"></span>
+    </div>
+    <div class="terminal-title">user&#64;court:~/tribunal/case-001</div>
+  </div>
+
+  <div class="terminal-body">
+
+    <!-- ============ SCENE: CALL TO ORDER ============ -->
+    <section class="scene" *ngIf="scene === 'call-to-order'">
+      <div class="banner">
+        <div class="banner-line">THE COURT OF MY HEART</div>
+        <div class="banner-sub">case #001 · sitting in Accra</div>
+      </div>
+
+      <div class="block">
+        <p class="hush">All rise.</p>
+        <p>
+          <span class="key">Presiding:</span> Her Honor, My Allowed Disturbance
+        </p>
+        <p>
+          <span class="key">Defendant:</span> Mawuli Badassou
+        </p>
+        <p>
+          <span class="key">Charge:</span> speaking out of pocket
+        </p>
+        <p>
+          <span class="key">Plea:</span> (forthcoming)
+        </p>
+
+        <p class="hush">Court is now in session. The defendant will be brought in.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn primary" (click)="go('charges')">proceed →</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: CHARGES ============ -->
+    <section class="scene" *ngIf="scene === 'charges'">
+      <div class="command-line"><span class="prompt">$</span> cat /case/charges.md</div>
+
+      <div class="block">
+        <p><span class="hash">#</span> Count 1 — Spoke harsh words.</p>
+        <p><span class="hash">#</span> Count 2 — Implied she is <em>"not smart."</em></p>
+        <p><span class="hash">#</span> Count 3 — Implied she is <em>"not good enough."</em></p>
+
+        <p class="hush">All counts are admitted. The defense will not contest the facts.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn ghost" (click)="go('call-to-order')">← back</button>
+        <button class="btn primary" (click)="go('plea')">enter plea →</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: PLEA ============ -->
+    <section class="scene" *ngIf="scene === 'plea'">
+      <div class="command-line"><span class="prompt">$</span> defendant.plea()</div>
+
+      <div class="block">
+        <p class="quote">
+          Mawuli Badassou stands and addresses the bench:
+        </p>
+        <p class="quote indent">
+          "Your Honor — guilty. On every count. I have no defense to mount.<br /><br />
+          I only ask that the court hear my case before sentencing. Not so I can be excused.
+          So that you know <em>that I know</em> what I did."
+        </p>
+
+        <p class="hush">Plea recorded: <span class="bad">GUILTY</span>.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn ghost" (click)="go('charges')">← back</button>
+        <button class="btn primary" (click)="go('statement')">hear the case →</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: STATEMENT OF FACTS ============ -->
+    <section class="scene" *ngIf="scene === 'statement'">
+      <div class="command-line"><span class="prompt">$</span> defendant.statement()</div>
+
+      <div class="block">
+        <p>I said things I shouldn't have said.</p>
+        <p>I knew them as soon as they left my mouth.</p>
+        <p>I said them anyway, and that part is the problem.</p>
+        <br />
+        <p>I'm not here to argue I didn't hurt you. I did.</p>
+        <br />
+        <p>
+          I'm here because the things I said about you are demonstrably,
+          factually, on-the-record wrong — and I want this court to hear the evidence.
+        </p>
+      </div>
+
+      <div class="controls">
+        <button class="btn ghost" (click)="go('plea')">← back</button>
+        <button class="btn primary" (click)="go('exhibit-a')">call the witnesses →</button>
+      </div>
+    </section>
+
+    <!-- ============ EXHIBITS ============ -->
+    <section class="scene" *ngIf="scene === 'exhibit-a'">
+      <div class="exhibit-tag">EXHIBIT A — on the matter of being "not smart"</div>
+      <div class="block">
+        <p><span class="key">Submitted:</span> the shop she works at.</p>
+        <p>
+          Her Madam taught her, and within a short window she was running
+          the shop herself. Madams do not hand the keys to people who are
+          <em>"not smart."</em> This court takes judicial notice that the
+          prosecution has, in fact, the brain.
+        </p>
+        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+      </div>
+      <div class="controls">
+        <button class="btn ghost" (click)="go('statement')">← back</button>
+        <button class="btn primary" (click)="go('exhibit-b')">next exhibit →</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'exhibit-b'">
+      <div class="exhibit-tag">EXHIBIT B — on the matter of being "not enough"</div>
+      <div class="block">
+        <p><span class="key">Submitted:</span> birthdays.</p>
+        <p>
+          She remembers them all. Birthdays, anniversaries, the day my cousin's
+          baby came home. I have a calendar app and still forget. She has a
+          brain and remembers without it.
+        </p>
+        <p>
+          This is not the memory of someone who is <em>"not enough."</em>
+          This is the memory of someone who notices people. Including me.
+        </p>
+        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+      </div>
+      <div class="controls">
+        <button class="btn ghost" (click)="go('exhibit-a')">← back</button>
+        <button class="btn primary" (click)="go('exhibit-c')">next exhibit →</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'exhibit-c'">
+      <div class="exhibit-tag">EXHIBIT C — on the matter of growth</div>
+      <div class="block">
+        <p><span class="key">Submitted:</span> she is teaching herself importation.</p>
+        <p>
+          Nobody asked her to. She decided. She is doing it.
+        </p>
+        <p>
+          Someone "not smart" does not pick up a new trade. Someone "not enough"
+          does not look at the world and decide to add one more skill to themselves.
+        </p>
+        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+      </div>
+      <div class="controls">
+        <button class="btn ghost" (click)="go('exhibit-b')">← back</button>
+        <button class="btn primary" (click)="go('exhibit-d')">next exhibit →</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'exhibit-d'">
+      <div class="exhibit-tag">EXHIBIT D — on the matter of taste</div>
+      <div class="block">
+        <p><span class="key">Submitted:</span> how she dresses.</p>
+        <p>
+          Her fashion sense is its own argument. When she walks in somewhere,
+          the room recalibrates. The defendant has, on several occasions,
+          just looked.
+        </p>
+        <p>
+          The court will accept good taste as a sign of intelligence.
+          The court has read books.
+        </p>
+        <p class="verdict-line">verdict on the charge: <span class="bad">false</span>.</p>
+      </div>
+      <div class="controls">
+        <button class="btn ghost" (click)="go('exhibit-c')">← back</button>
+        <button class="btn primary" (click)="go('exhibit-e')">next exhibit →</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'exhibit-e'">
+      <div class="exhibit-tag">EXHIBIT E — on the matter of her hands</div>
+      <div class="block">
+        <p><span class="key">Submitted:</span> she cooked for me once.</p>
+        <p>
+          Once was enough. I have not enjoyed a restaurant the same way since.
+          The defendant offers this in evidence not to flatter, but to factually
+          establish that she is good at what she puts her hands on.
+        </p>
+        <p class="side-note">
+          (side note from the defendant: medɔfo, please cook again. for the record.)
+        </p>
+      </div>
+      <div class="controls">
+        <button class="btn ghost" (click)="go('exhibit-d')">← back</button>
+        <button class="btn primary" (click)="go('closing')">closing argument →</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: CLOSING ============ -->
+    <section class="scene" *ngIf="scene === 'closing'">
+      <div class="command-line"><span class="prompt">$</span> defendant.closing()</div>
+
+      <div class="block">
+        <p>Your Honor —</p>
+        <br />
+        <p><em>Wo nkutoo.</em> You alone. The only one.</p>
+        <br />
+        <p>
+          The things I said were wrong because they were not true.
+          The witnesses spoke for themselves and the court heard them.
+          I will not insult you by asking the court for leniency.
+        </p>
+        <br />
+        <p>I only ask one thing:</p>
+        <p class="twi-line">
+          medɔfo, mepa wo kyɛw.<br />
+          <span class="translation">( my love, please forgive me. )</span>
+        </p>
+        <br />
+        <p>That is the whole defense.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn ghost" (click)="go('exhibit-e')">← back</button>
+        <button class="btn primary" (click)="go('verdict')">deliver the verdict →</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: VERDICT ============ -->
+    <section class="scene" *ngIf="scene === 'verdict'">
+      <div class="banner small">
+        <div class="banner-line">THE VERDICT</div>
+      </div>
+
+      <div class="block">
+        <p>The court will now hear the verdict.</p>
+        <p class="prompt-question">Your Honor — how do you find?</p>
+      </div>
+
+      <div class="controls verdict-controls">
+        <button class="btn ghost" (click)="go('closing')">↺ re-read closing</button>
+        <button class="btn warn" (click)="go('verdict-loop-1')">✗ not yet, do better</button>
+        <button class="btn primary big" (click)="go('sentencing')">✓ forgiven</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'verdict-loop-1'">
+      <div class="block">
+        <p class="hush">The court will hear additional argument.</p>
+        <p class="quote indent">
+          The defendant kneels.<br /><br />
+          "I hear you. I'm not asking to skip ahead. Take all the time you need.
+          I'll be here when you're ready. medɔfo, take the time."
+        </p>
+      </div>
+      <div class="controls verdict-controls">
+        <button class="btn warn" (click)="go('verdict-loop-2')">↺ I still need more time</button>
+        <button class="btn primary big" (click)="go('sentencing')">✓ okay, forgiven</button>
+      </div>
+    </section>
+
+    <section class="scene" *ngIf="scene === 'verdict-loop-2'">
+      <div class="block">
+        <p class="quote indent">
+          "Stay angry as long as you need to stay angry. I'm not going anywhere.<br /><br />
+          When you come back, I'll be here. With food. And you'll do the cooking —
+          court order."
+        </p>
+        <p class="hush">no more buttons. no rush. just this:</p>
+        <p class="twi-line center">
+          medɔfo — meda wo ase.<br />
+          <span class="translation">( my love — I thank you. )</span>
+        </p>
+      </div>
+      <div class="controls verdict-controls">
+        <button class="btn primary big" (click)="go('sentencing')">✓ alright. forgiven.</button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: SENTENCING ============ -->
+    <section class="scene" *ngIf="scene === 'sentencing'">
+      <div class="command-line"><span class="prompt">$</span> court.sentence_phase()</div>
+
+      <div class="block">
+        <p>The defendant is <span class="good">forgiven</span>.</p>
+        <p>The court will now pass sentence.</p>
+        <p class="hush">
+          Pick one — or pick all. The defendant will serve them concurrently.
+        </p>
+
+        <div class="picks">
+          <label class="pick">
+            <input type="checkbox" [(ngModel)]="sentence.cook" name="cook" />
+            <span class="pick-label">Cook with me — and you're teaching this time.</span>
+          </label>
+          <label class="pick">
+            <input type="checkbox" [(ngModel)]="sentence.takeOut" name="takeOut" />
+            <span class="pick-label">Pick anywhere. I'm taking you.</span>
+          </label>
+          <label class="pick">
+            <input type="checkbox" [(ngModel)]="sentence.buyTheThing" name="buyTheThing" />
+            <span class="pick-label">Buy me the thing I've been eyeing.</span>
+          </label>
+          <label class="pick">
+            <input type="checkbox" [(ngModel)]="sentence.justHold" name="justHold" />
+            <span class="pick-label">Just hold me. I'll think about the rest.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn primary" [disabled]="!hasPickedSentence()" (click)="go('adjourned')">
+          pass sentence →
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ SCENE: ADJOURNED ============ -->
+    <section class="scene" *ngIf="scene === 'adjourned'">
+      <div class="command-line"><span class="prompt">$</span> court.adjourned()</div>
+
+      <div class="block">
+        <p>Sentence recorded. Awaiting execution.</p>
+        <br />
+        <p>
+          The defendant is grateful for the court's patience — and for the privilege
+          of being the only disturbance you allow in your life.
+        </p>
+        <p class="twi-line center">
+          medɔfo — meda wo ase.<br />
+          <span class="translation">( my love — I thank you. )</span>
+        </p>
+      </div>
+
+      <div class="controls verdict-controls">
+        <a class="btn primary big" [href]="whatsappUrl()" target="_blank" rel="noopener">
+          tell him on WhatsApp →
+        </a>
+        <button class="btn ghost" (click)="go('call-to-order')">↺ start over</button>
+      </div>
+    </section>
+
+  </div>
+</div>

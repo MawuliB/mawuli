@@ -15,4 +15,12 @@ export const PLAYGROUND_ROUTES: Routes = [
       ),
     title: 'Playground · Dummy Flow',
   },
+  {
+    path: 'the-trial',
+    loadComponent: () =>
+      import('./experiments/the-trial/the-trial.component').then(
+        (m) => m.TheTrialComponent
+      ),
+    title: 'a small matter before the court',
+  },
 ];
