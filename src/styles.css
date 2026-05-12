@@ -607,17 +607,24 @@ label {
 
 .skip-to-content {
   position: absolute;
-  top: -40px;
+  top: 0;
   left: 0;
   background: var(--terminal-primary);
   color: var(--terminal-bg);
-  padding: var(--spacing-sm);
-  z-index: 100;
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 10000;
   text-decoration: none;
+  font-weight: bold;
+  /* Translate by the element's own full height — independent of padding /
+     font scaling, unlike the old `top: -40px` which leaked into view at
+     larger font sizes. */
+  transform: translateY(-100%);
+  transition: transform var(--transition-fast);
 }
 
-.skip-to-content:focus {
-  top: 0;
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  transform: translateY(0);
 }
 
 /* Focus visible for keyboard navigation */
