@@ -518,7 +518,15 @@ label {
 
 /* ============================================
    SCROLLBAR
+   Chromium/WebKit gets the detailed rules.
+   Firefox uses scrollbar-color / scrollbar-width on the root.
    ============================================ */
+
+html {
+  /* Firefox + future-spec browsers */
+  scrollbar-color: var(--terminal-primary-dim) var(--terminal-bg);
+  scrollbar-width: thin;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -527,7 +535,7 @@ label {
 
 ::-webkit-scrollbar-track {
   background: var(--terminal-bg);
-  border: 1px solid var(--terminal-border);
+  border-left: 1px solid var(--terminal-border);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -538,6 +546,10 @@ label {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--terminal-primary);
   box-shadow: 0 0 10px var(--terminal-glow);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--terminal-bg);
 }
 
 /* ============================================
@@ -605,26 +617,43 @@ label {
   border-width: 0;
 }
 
+/* Skip-to-content link — invisible to sighted users, but keyboard users
+   (tabbing from the URL bar) get a visible "Skip to content" pill at
+   top-left. Uses the canonical WCAG sr-only pattern, which is bulletproof
+   across browsers (transform / negative-top can leak depending on host). */
 .skip-to-content {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: var(--terminal-primary);
-  color: var(--terminal-bg);
-  padding: var(--spacing-sm) var(--spacing-md);
-  z-index: 10000;
-  text-decoration: none;
-  font-weight: bold;
-  /* Translate by the element's own full height — independent of padding /
-     font scaling, unlike the old `top: -40px` which leaked into view at
-     larger font sizes. */
-  transform: translateY(-100%);
-  transition: transform var(--transition-fast);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-to-content:focus,
 .skip-to-content:focus-visible {
-  transform: translateY(0);
+  position: fixed;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  width: auto;
+  height: auto;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  background: var(--terminal-primary);
+  color: var(--terminal-bg);
+  z-index: 10000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 16px var(--terminal-glow);
 }
 
 /* Focus visible for keyboard navigation */
