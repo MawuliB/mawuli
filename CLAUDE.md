@@ -1,6 +1,6 @@
 # Claude Code — Repo Instructions
 
-This is **Mawuli Badassou's personal portfolio** (Angular 17, terminal-themed, deployed at https://mawuli-vert.vercel.app via Vercel from the `production` branch).
+This is **Mawuli Badassou's personal portfolio** (Angular 17, terminal-themed, deployed at https://mawuli.thinks.work via Vercel from the `production` branch).
 
 The **playground** (ad-hoc experiments, dummy flows, private pages) lives in a separate sibling repo at [github.com/MawuliB/playground](https://github.com/MawuliB/playground) and a sibling local folder at [`../mawuli-playground`](../mawuli-playground). It used to live under `/playground` in this repo but was extracted so this repo is purely portfolio. **Don't add playground experiments here.**
 

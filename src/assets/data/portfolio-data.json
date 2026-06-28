@@ -272,7 +272,7 @@
       "longDescription": "The site you're looking at. Built with Angular 17 standalone components; everything is data-driven from a single JSON file consumed via a typed service. Linux/terminal aesthetic with custom cursor, keyboard navigation, and per-section terminal chrome.",
       "technologies": ["Angular 17", "TypeScript", "RxJS", "CSS", "Vercel"],
       "githubUrl": "https://github.com/MawuliB/mawuli",
-      "liveUrl": "https://mawuli-vert.vercel.app",
+      "liveUrl": "https://mawuli.thinks.work",
       "startDate": "2025-09",
       "status": "in-progress",
       "featured": false,
@@ -381,5 +381,5 @@
       "category": "training"
     }
   ],
-  "lastUpdated": "2026-05-12"
+  "lastUpdated": "2026-06-28"
 }

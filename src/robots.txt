@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mawuli-vert.vercel.app/sitemap.xml
+Sitemap: https://mawuli.thinks.work/sitemap.xml
