@@ -1,0 +1,33 @@
+name: IndexNow
+
+# Ping IndexNow (Bing, Yandex, Seznam, Naver) after a content change is pushed to
+# production. Vercel deploys the same push in parallel; IndexNow only *asks* the engines
+# to crawl and they do so asynchronously (minutes to hours later), so the exact timing
+# relative to the Vercel build does not matter. The key file is static and already live,
+# so verification succeeds regardless.
+#
+# Google does NOT participate in IndexNow — it stays on the sitemap + Search Console path.
+
+on:
+  push:
+    branches: [production]
+    paths:
+      - 'src/**' # app source, content JSON, and sitemap.xml all live under src/
+  workflow_dispatch: {} # also allow manual runs from the Actions tab
+
+# If several pushes land quickly, only ping once — IndexNow throttles rapid duplicate
+# submissions, so cancel superseded runs instead of firing a burst.
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # No `npm install`: scripts/indexnow.mjs uses only Node built-ins + global fetch.
+      - run: node scripts/indexnow.mjs
