@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PortfolioDataService } from '../services/portfolio-data.service';
 import { Profile } from '../models/portfolio.model';
@@ -32,12 +32,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     ╚═╝     ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝
   `;
 
-  constructor(private dataService: PortfolioDataService) {}
+  constructor(
+    private dataService: PortfolioDataService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     this.subscription = this.dataService.getProfile().subscribe((profile) => {
       this.profile = profile;
-      this.startTypingAnimation();
+      if (isPlatformBrowser(this.platformId)) {
+        this.startTypingAnimation();
+      } else {
+        // Prerender (server): emit the full name/tagline so crawlers and
+        // no-JS clients get complete content, not an empty animation frame.
+        this.displayedText = profile.name;
+        this.displayedTagline = profile.tagline;
+      }
     });
   }
 

@@ -35,6 +35,8 @@
           },
           "configurations": {
             "production": {
+              "server": "src/main.server.ts",
+              "prerender": true,
               "budgets": [
                 {
                   "type": "initial",
