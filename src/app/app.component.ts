@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,11 @@ export class AppComponent {
   title = 'mawuli';
   private trail: Array<{ x: number; y: number; timestamp: number }> = [];
   private maxTrailLength = 20;
+
+  constructor(private seo: SeoService) {
+    // Bakes per-route title/description/canonical/og into the prerendered HTML.
+    this.seo.init();
+  }
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
