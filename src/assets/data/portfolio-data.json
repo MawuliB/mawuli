@@ -1,8 +1,8 @@
 {
   "profile": {
     "name": "Mawuli Badassou",
-    "title": "DevOps Engineer | AWS Certified Solutions Architect",
-    "bio": "DevOps Engineer with 2+ years of experience designing and automating cloud infrastructure on AWS, with a background in backend development that enables direct collaboration across engineering teams. Proficient in Infrastructure as Code (Terraform, CloudFormation), CI/CD pipelines, and production observability. AWS Certified Solutions Architect – Associate.",
+    "title": "DevOps & Data Engineer | AWS Certified Solutions Architect",
+    "bio": "DevOps and data engineer with 2+ years of experience spanning cloud infrastructure and production data pipelines. Automates AWS infrastructure with IaC (Terraform, CloudFormation), CI/CD and observability, and builds and tunes Spark pipelines for a financial services data platform. Background in backend development supports direct collaboration across engineering teams.",
     "avatar": "assets/mine.png",
     "tagline": "Automate. Deploy. Optimize.",
     "location": "Accra, Ghana",
@@ -10,6 +10,7 @@
   },
   "skills": [
     { "name": "AWS", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "☁️" },
+    { "name": "Azure", "category": "devops", "level": 65, "yearsOfExperience": 1, "icon": "🔷" },
     { "name": "Terraform", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "🏗️" },
     { "name": "CloudFormation", "category": "devops", "level": 80, "yearsOfExperience": 1, "icon": "📋" },
     { "name": "GitHub Actions", "category": "devops", "level": 85, "yearsOfExperience": 2, "icon": "⚙️" },
@@ -30,6 +31,10 @@
     { "name": "PostgreSQL", "category": "database", "level": 80, "yearsOfExperience": 2, "icon": "🐘" },
     { "name": "DynamoDB", "category": "database", "level": 75, "yearsOfExperience": 1, "icon": "🗃️" },
     { "name": "SQL", "category": "database", "level": 85, "yearsOfExperience": 3, "icon": "🗄️" },
+    { "name": "Apache Spark", "category": "data", "level": 80, "yearsOfExperience": 1, "icon": "✨" },
+    { "name": "ETL Pipelines", "category": "data", "level": 80, "yearsOfExperience": 1, "icon": "🔀" },
+    { "name": "AWS EMR", "category": "data", "level": 70, "yearsOfExperience": 1, "icon": "🧮" },
+    { "name": "Athena", "category": "data", "level": 70, "yearsOfExperience": 1, "icon": "🔎" },
     { "name": "Angular", "category": "frontend", "level": 65, "yearsOfExperience": 1, "icon": "🅰️" },
     { "name": "TypeScript", "category": "frontend", "level": 70, "yearsOfExperience": 1, "icon": "📘" },
     { "name": "Kubernetes", "category": "devops", "level": 60, "yearsOfExperience": 1, "icon": "☸️" }
@@ -42,8 +47,12 @@
       "location": "Accra, Ghana",
       "startDate": "2025-01",
       "endDate": "Present",
-      "description": "Designing and automating multi-environment AWS infrastructure, CI/CD pipelines, and production observability.",
+      "description": "Designing and automating multi-environment AWS infrastructure, CI/CD pipelines, and production observability, and building and tuning Spark ETL pipelines for a financial services data product.",
       "responsibilities": [
+        "Built core extractors and business logic for the Spark ETL pipeline behind a financial services data product; took the management fees engine end to end, validated against the legacy system on over 99% of checks",
+        "Halved pipeline runtime, 218 to ~105 minutes, by profiling where time was spent, narrowing a shared dataset from 377 to ~147 columns, and consolidating 103 extractors to ~40",
+        "Diagnosed defects that were silently dropping data, including a shared-attribute collision that made extractors read the wrong source columns; added guard tests blocking the whole bug class",
+        "Deputized for the data team lead during absences and reviewed team pull requests, flagging issues before merge",
         "Restructured and fully imported a multi-environment (dev/staging/prod) AWS infrastructure into Terraform; built a reusable modules library to standardize and accelerate infrastructure provisioning across all cloud accounts",
         "Set up Prometheus and Grafana for production monitoring; diagnosed a critical outage by tracing a memory leak through metrics and logs, coordinated the fix with the backend team, and added service-level CPU/memory limits and alerting to prevent recurrence",
         "Built custom Grafana dashboards tracking API Gateway metrics — request rate, response time, response size, and rate-limit violations — with threshold-based alerting to surface performance issues early",
@@ -55,8 +64,11 @@
         "Migrated the production email system to AWS SES and refactored the sending layer with connection pooling and parallel processing, improving throughput and removing reliability bottlenecks",
         "Automated dev/staging environment shutdowns outside business hours, cutting compute costs by ~45–50%"
       ],
-      "technologies": ["AWS", "Terraform", "CloudFormation", "Ansible", "GitHub Actions", "GitLab CI/CD", "Prometheus", "Grafana", "Jaeger", "Docker", "Kafka", "Python", "Bash", "DynamoDB", "PostgreSQL"],
+      "technologies": ["AWS", "Terraform", "CloudFormation", "Ansible", "GitHub Actions", "GitLab CI/CD", "Prometheus", "Grafana", "Jaeger", "Docker", "Kafka", "Python", "Bash", "DynamoDB", "PostgreSQL", "Apache Spark", "AWS EMR", "Athena"],
       "achievements": [
+        "Halved Spark pipeline runtime from 218 to ~105 minutes with zero data loss",
+        "Management fees engine matched 3,811 of 3,843 legacy anchor values exactly",
+        "Won the DevOps Week hackathon as part of a team",
         "Achieved RTO of 16 min (vs. 20 min target) in full DR simulation with 24h RPO",
         "Migrated 12+ manually created AWS resources into reusable Terraform modules across dev/staging/prod",
         "Cut compute costs by ~45–50% through scheduled non-production shutdowns",
@@ -306,6 +318,26 @@
   },
   "certifications": [
     {
+      "id": "8425a534-fe91-4891-b86d-c48aca42a6a0",
+      "name": "KCNA: Kubernetes and Cloud Native Associate",
+      "issuer": "The Linux Foundation",
+      "issuedDate": "2026-09-29",
+      "expiresDate": "2028-09-28",
+      "imageUrl": "https://images.credly.com/images/f28f1d88-428a-47f6-95b5-7da1dd6c1000/KCNA_badge.png",
+      "verifyUrl": "https://www.credly.com/badges/8425a534-fe91-4891-b86d-c48aca42a6a0/public_url",
+      "category": "kubernetes"
+    },
+    {
+      "id": "8C2105B9B4C1DE63",
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "issuer": "Microsoft",
+      "issuedDate": "2026-06-23",
+      "expiresDate": "2027-06-23",
+      "imageUrl": "https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg",
+      "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/MawuliBadassou-5290/8C2105B9B4C1DE63?sharingId=4C185E0A12F2C1E5",
+      "category": "other"
+    },
+    {
       "id": "5b802809-ae41-44a7-aa47-954150ab3ffc",
       "name": "AWS Certified Solutions Architect – Associate",
       "issuer": "Amazon Web Services (AWS)",
@@ -381,5 +413,5 @@
       "category": "training"
     }
   ],
-  "lastUpdated": "2026-06-28"
+  "lastUpdated": "2026-10-05"
 }

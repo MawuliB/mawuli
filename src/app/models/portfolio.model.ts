@@ -13,7 +13,7 @@ export interface Profile {
 
 export interface Skill {
   name: string;
-  category: 'frontend' | 'backend' | 'database' | 'devops' | 'tools' | 'other';
+  category: 'frontend' | 'backend' | 'database' | 'data' | 'devops' | 'tools' | 'other';
   level: number; // 0-100
   yearsOfExperience?: number;
   icon?: string;

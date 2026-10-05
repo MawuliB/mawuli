@@ -9,6 +9,8 @@ interface DeviconEntry {
 
 const DEVICON_MAP: Record<string, DeviconEntry> = {
   aws: { slug: 'amazonwebservices', variant: 'original-wordmark' },
+  azure: { slug: 'azure', variant: 'original' },
+  'apache spark': { slug: 'apachespark', variant: 'original' },
   terraform: { slug: 'terraform', variant: 'original' },
   'gitlab ci/cd': { slug: 'gitlab', variant: 'original' },
   jenkins: { slug: 'jenkins', variant: 'original' },
