@@ -149,6 +149,26 @@
   ],
   "projects": [
     {
+      "id": 9,
+      "title": "Dynamiq Concept",
+      "organization": "Dynamiq Concept",
+      "description": "Full-stack platform for a Ghanaian photography studio: portfolio, session booking with deposits, and a data/airtime shop, all on one Next.js deployment.",
+      "longDescription": "Built and run end to end for a photography and videography business in Ghana. Two businesses share one Next.js deployment: the dark-themed photography site handles portfolio, services, and a multi-step booking flow (pay in full, pay a deposit, or pay after the shoot), while a separate light-themed shop sells data and airtime through a cart and checkout. A single admin panel manages bookings, orders, products, services, gallery, testimonials, blocked dates, and site settings. Payments run through two scoped Paystack merchant accounts behind one webhook that verifies against both keys, records every event for idempotency, and derives booking status from the running total of successful payments, including manually recorded cash and Mobile Money payments.",
+      "technologies": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "NextAuth", "Tailwind CSS", "Paystack", "Upstash Redis", "Resend", "Supabase Storage", "Vercel"],
+      "liveUrl": "https://dynamiqconcept.thinks.work",
+      "startDate": "2026-05",
+      "endDate": "Present",
+      "status": "in-progress",
+      "featured": true,
+      "highlights": [
+        "🌐 Live in production: booking, payments, and shop",
+        "Booking flow with full, deposit, and pay-after-work options plus an availability calendar",
+        "Two Paystack merchant accounts behind one idempotent, signature-verified webhook",
+        "Admin panel for bookings, orders, catalog, gallery, and offline payment recording",
+        "Per-IP rate limiting, hashed reset tokens, JSON-LD, sitemap, and IndexNow for SEO"
+      ]
+    },
+    {
       "id": 1,
       "title": "AWS Disaster Recovery Strategy",
       "organization": "AmaliTech",
@@ -413,5 +433,5 @@
       "category": "training"
     }
   ],
-  "lastUpdated": "2026-10-05"
+  "lastUpdated": "2026-10-06"
 }
