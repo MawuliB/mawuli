@@ -169,6 +169,25 @@
       ]
     },
     {
+      "id": 10,
+      "title": "Multi-Region DR Automation (Terraform)",
+      "description": "Pilot-light disaster recovery across two AWS regions: a Route 53 health check triggers a Lambda that scales up the standby fleet and promotes the RDS replica, with no manual steps.",
+      "longDescription": "Solo capstone for my DevOps training. The whole stack is defined in Terraform across 13 reusable modules spanning three regions. The primary region runs an ALB, Auto Scaling group, and RDS MySQL, while the secondary region idles at zero instances with an encrypted cross-region read replica and S3 cross-region replication. A Route 53 health check flips DNS to the secondary ALB, and a CloudWatch alarm in us-east-1 invokes a Python Lambda that scales the standby fleet up, promotes the replica, and reports progress over SNS. The repo documents the architecture, a failover demo, and the known limitations.",
+      "technologies": ["Terraform", "AWS", "Route 53", "Lambda", "RDS", "S3", "CloudWatch", "Python", "GitHub Actions"],
+      "githubUrl": "https://github.com/MawuliB/terraform_disaster_recovery",
+      "startDate": "2025-02",
+      "endDate": "2025-04",
+      "status": "completed",
+      "featured": false,
+      "highlights": [
+        "🎓 Solo capstone: DevOps training",
+        "Automated failover: health check → CloudWatch alarm → Lambda",
+        "Standby fleet scaled from 0 and RDS read replica promoted on failover",
+        "S3 cross-region replication and KMS-encrypted replica",
+        "13 Terraform modules across three regions, validated in CI"
+      ]
+    },
+    {
       "id": 1,
       "title": "AWS Disaster Recovery Strategy",
       "organization": "AmaliTech",
@@ -433,5 +452,5 @@
       "category": "training"
     }
   ],
-  "lastUpdated": "2026-10-06"
+  "lastUpdated": "2026-10-07"
 }
